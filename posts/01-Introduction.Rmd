@@ -38,6 +38,9 @@ Ví dụ như
 
 - Lượng khách trong nhà hàng tăng cao vào các ngày cuối tuần.
 
+- Lượng quần áo mua cao nhất vào tháng 12 cuối năm và thấp nhất vào tháng 1 mỗi năm
+
+![](../images/01/seasonal.png)
 
 ***Chu kì***
 
