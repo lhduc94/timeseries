@@ -9,7 +9,9 @@ Chuỗi thời gian rời rạc là tập hợp các điểm quan sát có kho�
 - Có thể bị mất dữ liệu do mất kết nối mạng hoặc máy chủ không phản hồi.
 
 Chuỗi thời gian liên tục là tập hợp các điểm quan sát có khoảng cách quan sát là một giây.
+
 ## Các pattern Time Series
+
 Khi mô tả về chuỗi thời gian, chúng ta thường nhắc đến các yếu tố như xu hướng, chu kỳ và theo mùa.
 
 ***Xu hướng***
