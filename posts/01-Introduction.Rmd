@@ -13,6 +13,7 @@ Chuỗi thời gian liên tục là tập hợp các điểm quan sát có kho�
 Khi mô tả về chuỗi thời gian, chúng ta thường nhắc đến các yếu tố như xu hướng, chu kỳ và theo mùa.
 
 ***Xu hướng***
+
 Chúng ta nói dữ liệu có tính xu hướng khi nó tăng hoặc giảm trong một thời gian dài, xu hướng không nhất thiết phải là tăng/giảm tuyến tính, nó có thể là đường cong. Một chuỗi thời gian có thể tồn tại cả xu hướng tăng và xu hướng giảm cùng một lúc.
 
 ![abc](../images/01/danso.png)
