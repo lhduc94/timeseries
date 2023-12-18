@@ -4,7 +4,7 @@ Chuỗi thời gian là tập hợp các quan sát $x_t$ theo thời gian tuần
 
 Chuỗi thời gian rời rạc là tập hợp các điểm quan sát có khoảng cách quan sát lớn hơn một giây. Chuỗi thời gian rời rạc có thể có những đặc điểm:
 
-- Thời gian thu thập có thể là không thường xuyên ( mỗi điểm mỗi phút) hoặc không quy tắc (hành vi đăng nhập của người dùng tại bất cứ thời điểm nào).
+- Thời gian thu thập các điểm dữ liệu có thể là không thường xuyên ( mỗi điểm mỗi phút) hoặc không quy tắc (hành vi đăng nhập của người dùng tại bất cứ thời điểm nào).
 
 - Có thể bị mất dữ liệu do mất kết nối mạng hoặc máy chủ không phản hồi.
 
@@ -23,10 +23,25 @@ Chúng ta nói dữ liệu có tính xu hướng khi nó tăng hoặc giảm tro
 Ví dụ về dân số Việt Nam có xu hướng tăng hằng năm
 ![](../images/01/danso.png)
 
-Ví dụ về tỉ lệ tử vong của trẻ sơ sinh có xu hướng giảm
+Ví dụ về tỉ lệ tử vong của trẻ sơ sinh có xu hướng giảm dần thời gian nhờ có sự tiến bộ về y tế
 ![](https://upload.wikimedia.org/wikipedia/commons/1/15/First-World-Infant-Mortality-Trends.jpg)
 
-Ví dụ về sự thay đổi của giá Bitcoin theo thời gian, giá bitcoin có xu hướng tăng mạnh từ giữa tháng 08/2020 đến 03/2021. Đến tháng 11/2021 bắt đầu có xu hướng giảm dần
+Ví dụ về sự thay đổi của giá Bitcoin theo thời gian, giá bitcoin có xu hướng tăng mạnh từ giữa tháng 08/2020 đến 03/2021, đến tháng 11/2021 bắt đầu có xu hướng giảm dần
 ![](../images/01/coin.png)
 
+***Thời vụ***
+
+Một chuỗi thời gian có tính chất thời vụ khi các giá trị của chuỗi thời gian bị ảnh hưởng bởi thời điểm nào đó trong năm hoặc theo ngày của mỗi tuần. Tính chất thời vụ luôn có tần suất tăng/giảm cố định và đã biết trước.
+Ví dụ như
+
+- Số lượng hành khách đặt vé máy bay tăng cao vào các ngày lễ tết.
+
+- Lượng khách trong nhà hàng tăng cao vào các ngày cuối tuần.
+
+
+***Chu kì***
+
+Biến đổi chu kỳ xảy ra khi một dữ liệu tăng giảm không có tần suất cố định. Những biến động này thường xảy ra do điều kiện kinh tế và hay gọi là "chu kì kinh doanh". Độ dài của một chu kì thường ít nhất là 2 năm.
+
+![](https://sciencetheory.net/wp-content/uploads/2020/03/Business-Cycle-Graph-e1577193470836.png)
 ## Dự đoán chuỗi thời gian

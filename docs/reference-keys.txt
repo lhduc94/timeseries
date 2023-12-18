@@ -1,4 +1,3 @@
 giới-thiệu-về-time-series
 time-series-là-gì
 các-pattern-time-series
-dự-đoán-chuỗi-thời-gian
