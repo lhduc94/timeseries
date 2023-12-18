@@ -1,2 +1,4 @@
 giới-thiệu-về-time-series
 time-series-là-gì
+ví-dụ-về-chuỗi-thời-gian
+dự-đoán-chuỗi-thời-gian
