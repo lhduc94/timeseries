@@ -20,7 +20,7 @@ Khi mô tả về chuỗi thời gian, chúng ta thường nhắc đến các y�
 
 Chúng ta nói dữ liệu có tính xu hướng khi nó tăng hoặc giảm trong một thời gian dài, xu hướng không nhất thiết phải là tăng/giảm tuyến tính, nó có thể là đường cong. Một chuỗi thời gian có thể tồn tại cả xu hướng tăng và xu hướng giảm cùng một lúc.
 
-![](../images/01/danso.png)
+->![](../images/01/danso.png)<-
 
 ## Ví dụ về Chuỗi thời gian
 
