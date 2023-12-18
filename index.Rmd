@@ -1,11 +1,11 @@
 --- 
-title: "Sổ ghi chép"
+title: "Phân tích Chuỗi thời gian"
 author: "Lê Huỳnh Đức"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 output: bookdown::gitbook
 documentclass: book
-description: "Notes"
+description: "Time Serie Analysis"
 ---
 
 # Lời nói đầu {-}
