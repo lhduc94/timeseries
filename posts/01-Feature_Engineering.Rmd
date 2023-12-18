@@ -1,0 +1,68 @@
+# Feature Engineering 
+## Giới thiệu
+Feature Engineering là quá trình chuyển đổi tập dữ liệu thô ban đầu thành tập dữ liệu có các đặc trưng (features) biểu diễn dữ liệu ban đầu tốt hơn
+Feature Engineering giúp cải thiện hiệu suất của mô hình cũng như cải thiện độ chính xác của mô hình
+
+Các bước thực hiện Feature Engineering bao gồm:
+
+- **Feature Understanding**: Là bước hiểu các cột dữ liệu
+
+- **Feature Structuring**: Nếu dữ liệu là dữ liệu phi cấu trúc, chúng ta phải chuyển đổi nó về dữ liệu có cấu trúc hoặc dạng dữ liệu mà máy có thể hiểu được
+
+- **Feature Optimization**: Sau khi có dữ liệu đã được cấu trúc, bước này giúp tìm kiếm những feature hoặc chọn lọc những feature tối ưu
+
+- **Feature Evaluation**: Sau khi đã chọn được các Feature tối ưu, chúng ta đánh giá các lựa chọn bằng cách đánh giá mô hình dự đoán
+
+Các loại Feature Engineering:
+
+- **Feature Improvement**: Biến đối các feature có sẵn thành các feature dễ hiểu hơn bằng các phép biến đổi toán học
+
+- **Feature Construction**: Tạo thêm các feature dễ hiểu từ những feature dễ hiểu khác
+
+- **Feature Selection**: Lựa chọn những feature tốt nhất từ tập feature
+
+- **Feature Extraction**: Dựa vào thuật toán để tạo những feature mới, đôi khi những feature này không thể giải thích được
+
+- **Feature Learning**: Bằng các thuật toán hiện đại, sử dụng các phương pháp pretrained model để tạo tập feature mới từ tập feature đã cho
+
+## Feature Engineering cơ bản
+### Loại dữ liệu
+
+#### Dữ liệu có cấu trúc
+Là loại dữ liệu đã được tổ chức thành một cấu trúc và có data model. Dữ liệu thường được biểu diễn dưới dạng bảng với các cột và dòng trong đó mỗi dòng thể hiện một quan sát của dữ liệu và mỗi cột tương ứng với các thuộc tính, đặc trưng của dữ liệu.
+
+Ví dụ về các dữ liệu có cấu trúc:
+- Các bảng trong Cơ sở dữ liệu quan hệ là các dữ liệu có cấu trúc
+- Các dữ liệu được lưu dưới dạng file CSV, Excel
+
+#### Dữ liệu phi cấu trúc
+#### ABC
+Thông thường, một tập dữ liệu có cả phần có cấu trúc và phi cấu  trúc. Ví dụ: Nếu chúng ta đang xử lý tập dữ liệu về các cuộc gọi điện thoại. Tập hợp con của dữ liệu này bao gồm ngà thực hiện của gọi, tên người thực cuộc gọi, địa điệm thực hiện cuộc gọi, người nhận cuộc gọi là dữ liệu có cấu trúc. Tập ghi âm thô của cuộc gọi sẽ là dữ liệu phi cấu trúc
+
+| Ví dụ |  Phần cấu trúc | Phần phi cấu trúc  |
+|---|----|----|
+|   Cuộc gọi  thoại    |  Người gọi, người nhận, thời gian gọi, địa điểm gọi, mục đích gọi | Bản ghi âm cuộc gọi  |
+|   Form bảo hiểm    | Ngày tháng, người điền thông tin, mục muốn bồi thường  |  Nội dung các câu hỏi |
+|    Job Description   | Tên công ty, vị trí cần tuyển, số năm kinh nghiệm yêu cầu  |  Nội dung từng phần |
+
+
+
+## Các tài liệu tham khảo
+[Feature Engineering and Selection: A Practical Approach for Predictive Models](http://www.feat.engineering/)
+
+
+## Một số thứ xàm xí thu nhặt được
+### "Dự đoán xấp xỉ" - Approximate Predictions giúp Feature Selection nhanh hơn
+[link](https://towardsdatascience.com/approximate-predictions-make-feature-selection-radically-faster-0f9664877687)
+
+Nhắc lại về SHAP Value, SHAP value thể hiện gía trị đóng góp của mỗi feature cho từng quan sát
+
+Thay vì chọn candidated features sau đó train lại, thì chọn candidated features sau đó dùng bảng SHAP để ước lượng giá trị dự đoán. Như thế sẽ giảm được thời gian đào tạo.
+
+Bài viết đã so sánh 2 cách:
+
+- **(A)** : Train lại trên tập candidated features, predict trên tập valid
+
+- **(B)** : Dựa trên bảng SHAP, tính toán luôn
+
+Sau đó so sánh correlation của 2 phương án A, B trên các tập dataset khác nhau. Kết quả giá trị tối thiểu của Rho là 0.87 và giá trị tối đa là 1
