@@ -12,7 +12,7 @@ Chuỗi thời gian liên tục là tập hợp các điểm quan sát có kho�
 
 ---
 
-## Các pattern Time Series
+## Các patterns Time Series
 
 Khi mô tả về chuỗi thời gian, chúng ta thường nhắc đến các yếu tố như xu hướng, chu kỳ và theo mùa.
 
