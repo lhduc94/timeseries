@@ -26,6 +26,8 @@ Ví dụ về dân số Việt Nam có xu hướng tăng hằng năm
 Ví dụ về tỉ lệ tử vong của trẻ sơ sinh có xu hướng giảm
 ![](https://upload.wikimedia.org/wikipedia/commons/1/15/First-World-Infant-Mortality-Trends.jpg)
 
+Ví dụ về sự thay đổi của giá Bitcoin theo thời gian, giá bitcoin có xu hướng tăng mạnh từ giữa tháng 08/2020 đến 03/2021. Đến tháng 11/2021 bắt đầu có xu hướng giảm dần
+![](../images/01/coin.png)
 ## Ví dụ về Chuỗi thời gian
 
 ## Dự đoán chuỗi thời gian
