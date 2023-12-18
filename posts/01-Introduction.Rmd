@@ -1,1 +1,5 @@
 # Giới thiệu về Time Series
+## Time Series là gì
+## Các thành phần của Time Series
+## Ví dụ về Chuỗi thời gian
+## Dự đoán chuỗi thời gian
