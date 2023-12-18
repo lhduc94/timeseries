@@ -3,7 +3,9 @@
 Chuỗi thời gian là tập hợp các quan sát $x_t$ theo thời gian tuần tự
 
 Chuỗi thời gian rời rạc là tập hợp các điểm quan sát có khoảng cách quan sát lớn hơn một giây. Chuỗi thời gian rời rạc có thể có những đặc điểm:
+
 - Thời gian thu thập có thể là không thường xuyên ( mỗi điểm mỗi phút) hoặc không quy tắc (hành vi đăng nhập của người dùng tại bất cứ thời điểm nào)
+
 - Có thể bị mất dữ liệu do mất kết nối mạng hoặc máy chủ không phản hồi
 
 Chuỗi thời gian liên tục là tập hợp các điểm quan sát có khoảng cách quan sát là một giây
