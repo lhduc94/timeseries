@@ -10,7 +10,7 @@ Chuỗi thời gian rời rạc là tập hợp các điểm quan sát có kho�
 
 Chuỗi thời gian liên tục là tập hợp các điểm quan sát có khoảng cách quan sát là một giây.
 
-...
+---
 
 ## Các pattern Time Series
 
