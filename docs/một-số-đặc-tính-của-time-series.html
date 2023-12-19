@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Phân tích Chuỗi thời gian</title>
+  <title>Chương 2 Một số đặc tính của Time Series | Phân tích Chuỗi thời gian</title>
   <meta name="description" content="Time Serie Analysis" />
   <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Phân tích Chuỗi thời gian" />
+  <meta property="og:title" content="Chương 2 Một số đặc tính của Time Series | Phân tích Chuỗi thời gian" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="Time Serie Analysis" />
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Phân tích Chuỗi thời gian" />
+  <meta name="twitter:title" content="Chương 2 Một số đặc tính của Time Series | Phân tích Chuỗi thời gian" />
   
   <meta name="twitter:description" content="Time Serie Analysis" />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
+<link rel="prev" href="giới-thiệu-về-time-series.html"/>
 
-<link rel="next" href="giới-thiệu-về-time-series.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -173,22 +173,53 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Phân tích Chuỗi thời gian</h1>
-<p class="author"><em>Lê Huỳnh Đức</em></p>
-<p class="date"><em>2023-12-19</em></p>
-</div>
-<div id="lời-nói-đầu" class="section level1 unnumbered hasAnchor">
-<h1>Lời nói đầu<a href="index.html#lời-nói-đầu" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="một-số-đặc-tính-của-time-series" class="section level1 hasAnchor" number="2">
+<h1><span class="header-section-number">Chương 2</span> Một số đặc tính của Time Series<a href="một-số-đặc-tính-của-time-series.html#một-số-đặc-tính-của-time-series" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="lag" class="section level2 hasAnchor" number="2.1">
+<h2><span class="header-section-number">2.1</span> Lag<a href="một-số-đặc-tính-của-time-series.html#lag" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Lag của Time Series thể hiện việc lùi về một mốc trước đó. Ví dụ lag(1) nghĩa là lùi về trước đó 1 đơn vị <span class="math inline">\(X_{T-1}\)</span>. Lag(n) nghĩa là lùi về trước đó n đơn vị <span class="math inline">\(X_{T-n}\)</span>
+Ví dụ về số lượng quần áo bán ra của US từ năm 1992 đến năm 2019</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="một-số-đặc-tính-của-time-series.html#cb1-1" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">&#39;../data/us-retail-sales.csv&#39;</span>)</span>
+<span id="cb1-2"><a href="một-số-đặc-tính-của-time-series.html#cb1-2" tabindex="-1"></a>df</span></code></pre></div>
+<pre><code>    Month   Clothing
+0   1992-01-01  6938
+1   1992-02-01  7524
+2   1992-03-01  8475
+3   1992-04-01  9401
+4   1992-05-01  9558
+... ... ...
+331 2019-08-01  23829
+332 2019-09-01  19567
+333 2019-10-01  21400
+334 2019-11-01  25170
+335 2019-12-01  35157</code></pre>
+<p>Trong pandas, để tìm lag, ta dùng phương thức <code>shift</code>. Ví dụ</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="một-số-đặc-tính-của-time-series.html#cb3-1" tabindex="-1"></a>df[<span class="st">&#39;lag_1&#39;</span>] <span class="op">=</span> df[<span class="st">&#39;Clothing&#39;</span>].shift(<span class="dv">1</span>)</span>
+<span id="cb3-2"><a href="một-số-đặc-tính-của-time-series.html#cb3-2" tabindex="-1"></a>df[<span class="st">&#39;lag_3&#39;</span>] <span class="op">=</span> df[<span class="st">&#39;Clothing&#39;</span>].shift(<span class="dv">3</span>)</span>
+<span id="cb3-3"><a href="một-số-đặc-tính-của-time-series.html#cb3-3" tabindex="-1"></a>df</span></code></pre></div>
+<pre><code>         Month  Clothing    lag_1    lag_3
+0   1992-01-01      6938      NaN      NaN
+1   1992-02-01      7524   6938.0      NaN
+2   1992-03-01      8475   7524.0      NaN
+3   1992-04-01      9401   8475.0   6938.0
+4   1992-05-01      9558   9401.0   7524.0
+..         ...       ...      ...      ...
+331 2019-08-01     23829  21742.0  23079.0
+332 2019-09-01     19567  23829.0  21116.0
+333 2019-10-01     21400  19567.0  21742.0
+334 2019-11-01     25170  21400.0  23829.0
+335 2019-12-01     35157  25170.0  19567.0
+</code></pre>
 
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
+<a href="giới-thiệu-về-time-series.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 
-<a href="giới-thiệu-về-time-series.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

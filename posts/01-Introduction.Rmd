@@ -47,4 +47,9 @@ Ví dụ như
 Biến đổi chu kỳ xảy ra khi một dữ liệu tăng giảm không có tần suất cố định. Những biến động này thường xảy ra do điều kiện kinh tế và hay gọi là "chu kì kinh doanh". Độ dài của một chu kì thường ít nhất là 2 năm.
 
 ![](https://sciencetheory.net/wp-content/uploads/2020/03/Business-Cycle-Graph-e1577193470836.png)
+
+
+
 ## Dự đoán chuỗi thời gian
+
+---

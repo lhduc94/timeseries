@@ -1,3 +1,6 @@
 giới-thiệu-về-time-series
 time-series-là-gì
 các-patterns-time-series
+dự-đoán-chuỗi-thời-gian
+một-số-đặc-tính-của-time-series
+lag
