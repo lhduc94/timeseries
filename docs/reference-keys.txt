@@ -5,3 +5,4 @@ dự-đoán-chuỗi-thời-gian
 một-số-đặc-tính-của-time-series
 lag
 autocorrelation-tự-tương-quan
+ứng-dụng-của-autocorrelation
