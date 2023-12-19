@@ -102,3 +102,5 @@ plt.show()
 ```
 
 ![](../images/02/auto_corr.png)
+
+Trong hình vẽ ta có thể thấy, correlation tại lag=12 và lag=24 có giá trị rất cao, do đó có thể suy đoán được timeseries này có tính tuần hoàn sau 12 tháng 
