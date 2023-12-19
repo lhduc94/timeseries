@@ -6,3 +6,5 @@ một-số-đặc-tính-của-time-series
 lag
 autocorrelation-tự-tương-quan
 ứng-dụng-của-autocorrelation
+partial-autocorrelation
+stationary-tính-dừng-của-dữ-liệu

@@ -107,7 +107,6 @@ Trong hình vẽ ta có thể thấy, correlation tại lag=12 và lag=24 có gi
 
 #### Ứng dụng của Autocorrelation 
 - **Xử lý Tín Hiệu và Thời Gian**:
-
     - **Phân tích chuỗi thời gian**: Được sử dụng để phát hiện chu kỳ, mô hình chuỗi thời gian, và dự đoán giá trị trong tương lai.
     - **Xử lý âm thanh**: Trong xử lý tín hiệu âm thanh, tự động tương quan có thể được sử dụng để phát hiện các tần số quan trọng và các sự kiện lặp lại trong dữ liệu âm thanh.
 - **Khoa học Dữ Liệu**:
@@ -121,4 +120,13 @@ Trong hình vẽ ta có thể thấy, correlation tại lag=12 và lag=24 có gi
 - **Khoa học và Tâm lý học**:
     - **Nghiên cứu tâm lý**: Trong nghiên cứu tâm lý, tự động tương quan có thể được sử dụng để phân tích sự phụ thuộc thời gian của các biến tâm lý và hành vi, giúp hiểu rõ hơn về sự ảnh hưởng và tương tác giữa các yếu tố khác nhau trong tâm lý học.
 Như vậy, tự động tương quan là một công cụ quan trọng và linh hoạt, được sử dụng rộng rãi trong nhiều lĩnh vực để phân tích, mô hình, và hiểu rõ hơn về sự phụ thuộc và tương tác trong dữ liệu và các hệ thống phức tạp.
+
 ## Partial Autocorrelation
+
+Partial Autocorrelation cũng tương tự như Autocorrelation. Tuy nhiên, nó mở rộng hơn bằng cách loại bỏ ảnh hưởng của các mốc thời gian trước đó.
+
+Ví dụ tương quan Partial Autocorrelation với lag = 3 sẽ bỏ qua các giá trị trễ tại lag = 1 và lag = 2
+
+## Stationary (Tính dừng của dữ liệu)
+
+Chuỗi thời gian dừng là chuỗi có các đặc trưng thống kê như mean, variance, autocorrelation không đổi theo thời gian.

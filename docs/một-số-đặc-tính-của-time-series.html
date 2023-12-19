@@ -153,6 +153,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="2.1" data-path="một-số-đặc-tính-của-time-series.html"><a href="một-số-đặc-tính-của-time-series.html#lag"><i class="fa fa-check"></i><b>2.1</b> Lag</a></li>
 <li class="chapter" data-level="2.2" data-path="một-số-đặc-tính-của-time-series.html"><a href="một-số-đặc-tính-của-time-series.html#autocorrelation-tự-tương-quan"><i class="fa fa-check"></i><b>2.2</b> Autocorrelation (Tự tương quan)</a></li>
+<li class="chapter" data-level="2.3" data-path="một-số-đặc-tính-của-time-series.html"><a href="một-số-đặc-tính-của-time-series.html#partial-autocorrelation"><i class="fa fa-check"></i><b>2.3</b> Partial Autocorrelation</a></li>
+<li class="chapter" data-level="2.4" data-path="một-số-đặc-tính-của-time-series.html"><a href="một-số-đặc-tính-của-time-series.html#stationary-tính-dừng-của-dữ-liệu"><i class="fa fa-check"></i><b>2.4</b> Stationary (Tính dừng của dữ liệu)</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="" target="blank">Lê Huỳnh Đức</a></li>
@@ -247,34 +249,42 @@ Ví dụ tương quan giữa <code>Clothing</code> và <code>lag_1</code></p>
 <div id="ứng-dụng-của-autocorrelation" class="section level4 hasAnchor" number="2.2.0.1">
 <h4><span class="header-section-number">2.2.0.1</span> Ứng dụng của Autocorrelation<a href="một-số-đặc-tính-của-time-series.html#ứng-dụng-của-autocorrelation" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <ul>
-<li><p><strong>Xử lý Tín Hiệu và Thời Gian</strong>:</p>
+<li><strong>Xử lý Tín Hiệu và Thời Gian</strong>:
 <ul>
 <li><strong>Phân tích chuỗi thời gian</strong>: Được sử dụng để phát hiện chu kỳ, mô hình chuỗi thời gian, và dự đoán giá trị trong tương lai.</li>
 <li><strong>Xử lý âm thanh</strong>: Trong xử lý tín hiệu âm thanh, tự động tương quan có thể được sử dụng để phát hiện các tần số quan trọng và các sự kiện lặp lại trong dữ liệu âm thanh.</li>
 </ul></li>
-<li><p><strong>Khoa học Dữ Liệu</strong>:</p>
+<li><strong>Khoa học Dữ Liệu</strong>:
 <ul>
 <li><strong>Phân tích dữ liệu</strong>: Trong khoa học dữ liệu và thống kê, tự động tương quan giúp phát hiện mối tương quan giữa các biến và mô tả sự phụ thuộc thời gian của dữ liệu.</li>
 <li><strong>Phát hiện xu hướng và chu kỳ</strong>: Tự động tương quan có thể giúp xác định xu hướng và chu kỳ trong dữ liệu, giúp các nhà nghiên cứu và chuyên gia dự đoán và phân tích xu hướng thị trường, tình hình thời tiết, và nhiều ứng dụng khác.</li>
 </ul></li>
-<li><p><strong>Kỹ thuật và Kỹ thuật số</strong>:</p>
+<li><strong>Kỹ thuật và Kỹ thuật số</strong>:
 <ul>
 <li><strong>Xử lý ảnh</strong>: Trong xử lý ảnh, tự động tương quan có thể được sử dụng để phát hiện biến đổi không gian và mô hình hình dạng.</li>
 <li><strong>Kỹ thuật số và mạng truyền thông</strong>: Trong mạng truyền thông số và kỹ thuật số, tự động tương quan giúp phân tích tín hiệu, phát hiện tín hiệu trong nhiễu và cải thiện chất lượng truyền thông.</li>
 </ul></li>
-<li><p><strong>Tài chính và Kinh tế</strong>:</p>
+<li><strong>Tài chính và Kinh tế</strong>:
 <ul>
 <li>Phân tích thị trường: Trong tài chính, tự động tương quan giúp phân tích và dự đoán xu hướng thị trường, giúp các nhà giao dịch và nhà đầu tư hiểu rõ hơn về sự biến động và rủi ro trong thị trường tài chính.</li>
 </ul></li>
-<li><p><strong>Khoa học và Tâm lý học</strong>:</p>
+<li><strong>Khoa học và Tâm lý học</strong>:
 <ul>
 <li><strong>Nghiên cứu tâm lý</strong>: Trong nghiên cứu tâm lý, tự động tương quan có thể được sử dụng để phân tích sự phụ thuộc thời gian của các biến tâm lý và hành vi, giúp hiểu rõ hơn về sự ảnh hưởng và tương tác giữa các yếu tố khác nhau trong tâm lý học.
-Như vậy, tự động tương quan là một công cụ quan trọng và linh hoạt, được sử dụng rộng rãi trong nhiều lĩnh vực để phân tích, mô hình, và hiểu rõ hơn về sự phụ thuộc và tương tác trong dữ liệu và các hệ thống phức tạp.
-## Partial Autocorrelation</li>
+Như vậy, tự động tương quan là một công cụ quan trọng và linh hoạt, được sử dụng rộng rãi trong nhiều lĩnh vực để phân tích, mô hình, và hiểu rõ hơn về sự phụ thuộc và tương tác trong dữ liệu và các hệ thống phức tạp.</li>
 </ul></li>
 </ul>
-
 </div>
+</div>
+<div id="partial-autocorrelation" class="section level2 hasAnchor" number="2.3">
+<h2><span class="header-section-number">2.3</span> Partial Autocorrelation<a href="một-số-đặc-tính-của-time-series.html#partial-autocorrelation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Partial Autocorrelation cũng tương tự như Autocorrelation. Tuy nhiên, nó mở rộng hơn bằng cách loại bỏ ảnh hưởng của các mốc thời gian trước đó.</p>
+<p>Ví dụ tương quan Partial Autocorrelation với lag = 3 sẽ bỏ qua các giá trị trễ tại lag = 1 và lag = 2</p>
+</div>
+<div id="stationary-tính-dừng-của-dữ-liệu" class="section level2 hasAnchor" number="2.4">
+<h2><span class="header-section-number">2.4</span> Stationary (Tính dừng của dữ liệu)<a href="một-số-đặc-tính-của-time-series.html#stationary-tính-dừng-của-dữ-liệu" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Chuỗi thời gian dừng là chuỗi có các đặc trưng thống kê như mean, variance, autocorrelation không đổi theo thời gian.</p>
+
 </div>
 </div>
             </section>
