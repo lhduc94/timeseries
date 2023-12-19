@@ -151,7 +151,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="2" data-path="một-số-đặc-tính-của-time-series.html"><a href="một-số-đặc-tính-của-time-series.html"><i class="fa fa-check"></i><b>2</b> Một số đặc tính của Time Series</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="một-số-đặc-tính-của-time-series.html"><a href="một-số-đặc-tính-của-time-series.html#lag"><i class="fa fa-check"></i><b>2.1</b> Lag</a></li>
+<li class="chapter" data-level="2.1" data-path="một-số-đặc-tính-của-time-series.html"><a href="một-số-đặc-tính-của-time-series.html#lag"><i class="fa fa-check"></i><b>2.1</b> Lag</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="một-số-đặc-tính-của-time-series.html"><a href="một-số-đặc-tính-của-time-series.html#autocorrelation-tự-tương-quan"><i class="fa fa-check"></i><b>2.1.1</b> Autocorrelation (Tự tương quan)</a></li>
+</ul></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="" target="blank">Lê Huỳnh Đức</a></li>
@@ -177,11 +180,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number">Chương 2</span> Một số đặc tính của Time Series<a href="một-số-đặc-tính-của-time-series.html#một-số-đặc-tính-của-time-series" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <div id="lag" class="section level2 hasAnchor" number="2.1">
 <h2><span class="header-section-number">2.1</span> Lag<a href="một-số-đặc-tính-của-time-series.html#lag" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Lag của Time Series thể hiện việc lùi về một mốc trước đó. Ví dụ lag(1) nghĩa là lùi về trước đó 1 đơn vị <span class="math inline">\(X_{T-1}\)</span>. Lag(n) nghĩa là lùi về trước đó n đơn vị <span class="math inline">\(X_{T-n}\)</span>
-Ví dụ về số lượng quần áo bán ra của US từ năm 1992 đến năm 2019</p>
+<p>Lag của Time Series thể hiện việc lùi về một mốc trước đó. Ví dụ lag(1) nghĩa là lùi về trước đó 1 đơn vị <span class="math inline">\(X_{T-1}\)</span>. Lag(n) nghĩa là lùi về trước đó n đơn vị <span class="math inline">\(X_{T-n}\)</span></p>
+<p>Ví dụ về số lượng quần áo bán ra của US từ năm 1992 đến năm 2019</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="một-số-đặc-tính-của-time-series.html#cb1-1" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">&#39;../data/us-retail-sales.csv&#39;</span>)</span>
 <span id="cb1-2"><a href="một-số-đặc-tính-của-time-series.html#cb1-2" tabindex="-1"></a>df</span></code></pre></div>
-<pre><code>    Month   Clothing
+<pre><code>         Month  Clothing
 0   1992-01-01  6938
 1   1992-02-01  7524
 2   1992-03-01  8475
@@ -196,21 +199,53 @@ Ví dụ về số lượng quần áo bán ra của US từ năm 1992 đến n�
 <p>Trong pandas, để tìm lag, ta dùng phương thức <code>shift</code>. Ví dụ</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="một-số-đặc-tính-của-time-series.html#cb3-1" tabindex="-1"></a>df[<span class="st">&#39;lag_1&#39;</span>] <span class="op">=</span> df[<span class="st">&#39;Clothing&#39;</span>].shift(<span class="dv">1</span>)</span>
 <span id="cb3-2"><a href="một-số-đặc-tính-của-time-series.html#cb3-2" tabindex="-1"></a>df[<span class="st">&#39;lag_3&#39;</span>] <span class="op">=</span> df[<span class="st">&#39;Clothing&#39;</span>].shift(<span class="dv">3</span>)</span>
-<span id="cb3-3"><a href="một-số-đặc-tính-của-time-series.html#cb3-3" tabindex="-1"></a>df</span></code></pre></div>
-<pre><code>         Month  Clothing    lag_1    lag_3
-0   1992-01-01      6938      NaN      NaN
-1   1992-02-01      7524   6938.0      NaN
-2   1992-03-01      8475   7524.0      NaN
-3   1992-04-01      9401   8475.0   6938.0
-4   1992-05-01      9558   9401.0   7524.0
-..         ...       ...      ...      ...
-331 2019-08-01     23829  21742.0  23079.0
-332 2019-09-01     19567  23829.0  21116.0
-333 2019-10-01     21400  19567.0  21742.0
-334 2019-11-01     25170  21400.0  23829.0
-335 2019-12-01     35157  25170.0  19567.0
-</code></pre>
+<span id="cb3-3"><a href="một-số-đặc-tính-của-time-series.html#cb3-3" tabindex="-1"></a>df[<span class="st">&#39;lag_12&#39;</span>] <span class="op">=</span> df[<span class="st">&#39;Clothing&#39;</span>].shift(<span class="dv">12</span>)</span>
+<span id="cb3-4"><a href="một-số-đặc-tính-của-time-series.html#cb3-4" tabindex="-1"></a>df</span></code></pre></div>
+<pre><code>         Month  Clothing    lag_1    lag_3   lag_12
+0   1992-01-01      6938      NaN      NaN      NaN
+1   1992-02-01      7524   6938.0      NaN      NaN
+2   1992-03-01      8475   7524.0      NaN      NaN
+3   1992-04-01      9401   8475.0   6938.0      NaN
+4   1992-05-01      9558   9401.0   7524.0      NaN
+..         ...       ...      ...      ...      ...
+331 2019-08-01     23829  21742.0  23079.0  23121.0
+332 2019-09-01     19567  23829.0  21116.0  19782.0
+333 2019-10-01     21400  19567.0  21742.0  21203.0
+334 2019-11-01     25170  21400.0  23829.0  25364.0
+335 2019-12-01     35157  25170.0  19567.0  33950.0</code></pre>
+<div id="autocorrelation-tự-tương-quan" class="section level3 hasAnchor" number="2.1.1">
+<h3><span class="header-section-number">2.1.1</span> Autocorrelation (Tự tương quan)<a href="một-số-đặc-tính-của-time-series.html#autocorrelation-tự-tương-quan" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><strong>Correlation</strong></p>
+<p>Correlation là tương quan giữa 2 biến khác nhau, giá trị correlation nằm trong khoảng từ -1 đến 1, nếu giá trị càng tiến -1 nghĩa là 2 biến có sự tương quan nghịch, giá trị càng tiến đến +1 nghĩa là 2 biến có sự tương quan thuận</p>
+<p><strong>Autocorrelation</strong></p>
+<p>Autocorrelation là tương quan giữa một chuỗi timeseries và chuỗi đó với giá trị trước đó của chính nó.
+Ví dụ tương quan giữa <code>Clothing</code> và <code>lag_1</code></p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="một-số-đặc-tính-của-time-series.html#cb5-1" tabindex="-1"></a>df[[<span class="st">&#39;Clothing&#39;</span>,<span class="st">&#39;lag_1&#39;</span>]].corr()</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="một-số-đặc-tính-của-time-series.html#cb6-1" tabindex="-1"></a>            Clothing       lag_1</span>
+<span id="cb6-2"><a href="một-số-đặc-tính-của-time-series.html#cb6-2" tabindex="-1"></a>Clothing    <span class="fl">1.000000</span>    <span class="fl">0.518296</span></span>
+<span id="cb6-3"><a href="một-số-đặc-tính-của-time-series.html#cb6-3" tabindex="-1"></a>lag_1       <span class="fl">0.518296</span>    <span class="fl">1.000000</span></span></code></pre></div>
+<p>Tương quan giữa 2 biến này là 0.5</p>
+<p><img src="../images/02/lag_corr.png" /></p>
+<p>Để tính correlation giữa Timeseries và các lag của nó, ta sử dụng hàm <code>acf</code> trong statsmodel</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="một-số-đặc-tính-của-time-series.html#cb7-1" tabindex="-1"></a><span class="im">from</span> statsmodels.api <span class="im">import</span> tsa</span>
+<span id="cb7-2"><a href="một-số-đặc-tính-của-time-series.html#cb7-2" tabindex="-1"></a>tsa.acf(df[<span class="st">&#39;Clothing&#39;</span>])</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="một-số-đặc-tính-của-time-series.html#cb8-1" tabindex="-1"></a>array([<span class="fl">1.</span>        , <span class="fl">0.50679045</span>, <span class="fl">0.42793583</span>, <span class="fl">0.48943282</span>, <span class="fl">0.54920848</span>,</span>
+<span id="cb8-2"><a href="một-số-đặc-tính-của-time-series.html#cb8-2" tabindex="-1"></a>       <span class="fl">0.51760066</span>, <span class="fl">0.47709491</span>, <span class="fl">0.50840091</span>, <span class="fl">0.5311846</span> , <span class="fl">0.46104267</span>,</span>
+<span id="cb8-3"><a href="một-số-đặc-tính-của-time-series.html#cb8-3" tabindex="-1"></a>       <span class="fl">0.38738473</span>, <span class="fl">0.45582436</span>, <span class="fl">0.9264336</span> , <span class="fl">0.45220705</span>, <span class="fl">0.37936738</span>,</span>
+<span id="cb8-4"><a href="một-số-đặc-tính-của-time-series.html#cb8-4" tabindex="-1"></a>       <span class="fl">0.43736208</span>, <span class="fl">0.49102051</span>, <span class="fl">0.46205604</span>, <span class="fl">0.42158496</span>, <span class="fl">0.4519868</span> ,</span>
+<span id="cb8-5"><a href="một-số-đặc-tính-của-time-series.html#cb8-5" tabindex="-1"></a>       <span class="fl">0.47432784</span>, <span class="fl">0.403097</span>  , <span class="fl">0.33531148</span>, <span class="fl">0.40104508</span>, <span class="fl">0.85039363</span>,</span>
+<span id="cb8-6"><a href="một-số-đặc-tính-của-time-series.html#cb8-6" tabindex="-1"></a>       <span class="fl">0.39243258</span>])</span></code></pre></div>
+<p>Ở đây correlation giữa <code>Clothing</code> và <code>lag_1</code> là 0.507, hơi khác so với dùng pandas, trong khuôn khổ phần này ta tập trung vào thư viện statsmodel hơn</p>
+<p>Để visualize các giá trị correlation này ta dùng hàm <code>plot_acf</code>, ví dụ vẽ autocorrelation với lag tối đa là 30</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb9-1"><a href="một-số-đặc-tính-của-time-series.html#cb9-1" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb9-2"><a href="một-số-đặc-tính-của-time-series.html#cb9-2" tabindex="-1"></a><span class="im">from</span> statsmodels.graphics.tsaplots <span class="im">import</span> plot_acf</span>
+<span id="cb9-3"><a href="một-số-đặc-tính-của-time-series.html#cb9-3" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">5</span>))</span>
+<span id="cb9-4"><a href="một-số-đặc-tính-của-time-series.html#cb9-4" tabindex="-1"></a>plot_acf(df[<span class="st">&#39;Clothing&#39;</span>], lags<span class="op">=</span><span class="dv">30</span>, ax<span class="op">=</span>ax)</span>
+<span id="cb9-5"><a href="một-số-đặc-tính-của-time-series.html#cb9-5" tabindex="-1"></a>_ <span class="op">=</span>plt.xticks(<span class="bu">list</span>(<span class="bu">range</span>(<span class="dv">31</span>)))</span>
+<span id="cb9-6"><a href="một-số-đặc-tính-của-time-series.html#cb9-6" tabindex="-1"></a>plt.show()</span></code></pre></div>
+<p><img src="../images/02/auto_corr.png" /></p>
 
+</div>
 </div>
 </div>
             </section>
