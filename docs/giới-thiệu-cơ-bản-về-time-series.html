@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Phân tích Chuỗi thời gian</title>
+  <title>Chương 1 Giới thiệu Cơ bản về Time Series | Phân tích Chuỗi thời gian</title>
   <meta name="description" content="Time Serie Analysis" />
   <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Phân tích Chuỗi thời gian" />
+  <meta property="og:title" content="Chương 1 Giới thiệu Cơ bản về Time Series | Phân tích Chuỗi thời gian" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="Time Serie Analysis" />
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Phân tích Chuỗi thời gian" />
+  <meta name="twitter:title" content="Chương 1 Giới thiệu Cơ bản về Time Series | Phân tích Chuỗi thời gian" />
   
   <meta name="twitter:description" content="Time Serie Analysis" />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="giới-thiệu-cơ-bản-về-time-series.html"/>
+<link rel="prev" href="index.html"/>
+<link rel="next" href="arima.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -190,22 +190,76 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Phân tích Chuỗi thời gian</h1>
-<p class="author"><em>Lê Huỳnh Đức</em></p>
-<p class="date"><em>2023-12-25</em></p>
+<div id="giới-thiệu-cơ-bản-về-time-series" class="section level1 hasAnchor" number="1">
+<h1><span class="header-section-number">Chương 1</span> Giới thiệu Cơ bản về Time Series<a href="giới-thiệu-cơ-bản-về-time-series.html#giới-thiệu-cơ-bản-về-time-series" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="time-series-là-gì" class="section level2 hasAnchor" number="1.1">
+<h2><span class="header-section-number">1.1</span> Time Series là gì<a href="giới-thiệu-cơ-bản-về-time-series.html#time-series-là-gì" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Chuỗi thời gian là tập hợp các quan sát <span class="math inline">\(x_t\)</span> theo thời gian tuần tự.</p>
+<p>Chuỗi thời gian rời rạc là tập hợp các điểm quan sát có khoảng cách quan sát lớn hơn một giây. Chuỗi thời gian rời rạc có thể có những đặc điểm:</p>
+<ul>
+<li><p>Thời gian thu thập các điểm dữ liệu có thể là không thường xuyên ( mỗi điểm mỗi phút) hoặc không quy tắc (hành vi đăng nhập của người dùng tại bất cứ thời điểm nào).</p></li>
+<li><p>Có thể bị mất dữ liệu do mất kết nối mạng hoặc máy chủ không phản hồi.</p></li>
+</ul>
+<p>Chuỗi thời gian liên tục là tập hợp các điểm quan sát có khoảng cách quan sát là một giây.</p>
+<p><strong>Thời gian là gì</strong>
+Thời gian có thể định nghĩa theo:</p>
+<ul>
+<li>Giờ, phút giây</li>
+<li>Theo không gian: Máy thứ nhất, máy thứ hai trong cùng một băng chuyền</li>
+<li>Theo độ sâu: Xuống 1 milimet, xuống 2 milimet</li>
+</ul>
+<hr />
 </div>
-<div id="lời-nói-đầu" class="section level1 unnumbered hasAnchor">
-<h1>Lời nói đầu<a href="index.html#lời-nói-đầu" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="các-patterns-time-series" class="section level2 hasAnchor" number="1.2">
+<h2><span class="header-section-number">1.2</span> Các patterns Time Series<a href="giới-thiệu-cơ-bản-về-time-series.html#các-patterns-time-series" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Khi mô tả về chuỗi thời gian, chúng ta thường nhắc đến các yếu tố như xu hướng, chu kỳ và theo mùa.</p>
+<p><strong><em>Xu hướng</em></strong></p>
+<p>Chúng ta nói dữ liệu có tính xu hướng khi nó tăng hoặc giảm trong một thời gian dài, xu hướng không nhất thiết phải là tăng/giảm tuyến tính, nó có thể là đường cong. Một chuỗi thời gian có thể tồn tại cả xu hướng tăng và xu hướng giảm cùng một lúc.</p>
+<p>Ví dụ về dân số Việt Nam có xu hướng tăng hằng năm
+<img src="../images/01/danso.png" /></p>
+<p>Ví dụ về tỉ lệ tử vong của trẻ sơ sinh có xu hướng giảm dần thời gian nhờ có sự tiến bộ về y tế
+<img src="https://upload.wikimedia.org/wikipedia/commons/1/15/First-World-Infant-Mortality-Trends.jpg" /></p>
+<p>Ví dụ về sự thay đổi của giá Bitcoin theo thời gian, giá bitcoin có xu hướng tăng mạnh từ giữa tháng 08/2020 đến 03/2021, đến tháng 11/2021 bắt đầu có xu hướng giảm dần
+<img src="../images/01/coin.png" /></p>
+<p><strong><em>Thời vụ</em></strong></p>
+<p>Một chuỗi thời gian có tính chất thời vụ khi các giá trị của chuỗi thời gian bị ảnh hưởng bởi thời điểm nào đó trong năm hoặc theo ngày của mỗi tuần. Tính chất thời vụ luôn có tần suất tăng/giảm cố định và đã biết trước.
+Ví dụ như</p>
+<ul>
+<li><p>Số lượng hành khách đặt vé máy bay tăng cao vào các ngày lễ tết.</p></li>
+<li><p>Lượng khách trong nhà hàng tăng cao vào các ngày cuối tuần.</p></li>
+<li><p>Lượng quần áo mua cao nhất vào tháng 12 cuối năm và thấp nhất vào tháng 1 mỗi năm</p></li>
+</ul>
+<p><img src="../images/01/seasonal.png" /></p>
+<p><strong><em>Chu kì</em></strong></p>
+<p>Biến đổi chu kỳ xảy ra khi một dữ liệu tăng giảm không có tần suất cố định. Những biến động này thường xảy ra do điều kiện kinh tế và hay gọi là “chu kì kinh doanh”. Độ dài của một chu kì thường ít nhất là 2 năm.</p>
+<p><img src="https://sciencetheory.net/wp-content/uploads/2020/03/Business-Cycle-Graph-e1577193470836.png" /></p>
+<hr />
+</div>
+<div id="stationary-tính-dừng-của-dữ-liệu" class="section level2 hasAnchor" number="1.3">
+<h2><span class="header-section-number">1.3</span> Stationary (Tính dừng của dữ liệu)<a href="giới-thiệu-cơ-bản-về-time-series.html#stationary-tính-dừng-của-dữ-liệu" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Chuỗi thời gian dừng là chuỗi có các đặc trưng thống kê như mean, variance, autocorrelation không đổi theo thời gian.</p>
+</div>
+<div id="các-bài-toán-về-chuỗi-thời-gian" class="section level2 hasAnchor" number="1.4">
+<h2><span class="header-section-number">1.4</span> Các bài toán về chuỗi thời gian<a href="giới-thiệu-cơ-bản-về-time-series.html#các-bài-toán-về-chuỗi-thời-gian" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="dự-đoán-giá-trị-tiếp-theo-dựa-trên-các-giá-trị-trước-đó" class="section level3 hasAnchor" number="1.4.1">
+<h3><span class="header-section-number">1.4.1</span> Dự đoán giá trị tiếp theo dựa trên các giá trị trước đó<a href="giới-thiệu-cơ-bản-về-time-series.html#dự-đoán-giá-trị-tiếp-theo-dựa-trên-các-giá-trị-trước-đó" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+</div>
+<div id="phân-loại-chuỗi-thời-gian" class="section level3 hasAnchor" number="1.4.2">
+<h3><span class="header-section-number">1.4.2</span> Phân loại chuỗi thời gian<a href="giới-thiệu-cơ-bản-về-time-series.html#phân-loại-chuỗi-thời-gian" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+</div>
+<div id="phân-đoạn-chuỗi-thời-gian" class="section level3 hasAnchor" number="1.4.3">
+<h3><span class="header-section-number">1.4.3</span> Phân đoạn chuỗi thời gian<a href="giới-thiệu-cơ-bản-về-time-series.html#phân-đoạn-chuỗi-thời-gian" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 
+</div>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="giới-thiệu-cơ-bản-về-time-series.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="arima.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
