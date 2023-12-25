@@ -16,7 +16,7 @@ Có 2 loại trung bình trượt : Centered MA và Trailing MA
 Với trung bình trượt với cửa sổ trượt $k$ bằng 3 ta có:
 
 $$\begin{align}
-\Large \bar{y}_{T} = \frac{y_{T+1} + y_{T} + y_{T-1}}{3}
+\Large S_{T} = \frac{y_{T+1} + y_{T} + y_{T-1}}{3}
 \end{align}$$
 
 
@@ -24,26 +24,26 @@ $$\begin{align}
 Tổng quát hơn
 
 $$\begin{align}
-\Large \bar{y}_{T} = \frac{1}{m}  \sum_{j=-m}^{m}{y_{T+j}}
+\Large S_{T} = \frac{1}{m}  \sum_{j=-m}^{m}{y_{T+j}}
 \end{align}$$
 
 Trong đó $k = 2m + 1$
 
-Phương pháp này sử dụng giá trị tương lai $y_{T+1}$ do đó không áp dụng được vào các mô hình dự báo. Phương pháp dùng để thống kê mô tả dữ liệu, là một phương pháp để loại bỏ xu hướng và tính mùa vụ của Time Series
+Phương pháp này sử dụng giá trị tương lai $y_{T+1}$ do đó không áp dụng được vào các mô hình dự báo. Phương pháp dùng để thống kê mô tả dữ liệu
 
 ### Trailing Moving Average
 
 Với trung bình trượt với cửa sổ trượt $k$ bằng 3 ta có
 
 $$\begin{align}
-\Large \bar{y}_{T} = \frac{y_{T} + y_{T - 1} + y_{T - 2}}{3}
+\Large S_{T} = \frac{y_{T} + y_{T - 1} + y_{T - 2}}{3}
 \end{align}$$
 
 Tổng quát hơn
 
-$\begin{align}
-\Large \bar{y}_{T} = \frac{1}{k} \sum^{k}_{i=1}{y_{T-i+1}}
-\end{align}$
+$$\begin{align}
+\Large S_{T} = \frac{1}{k} \sum^{k}_{i=1}{y_{T-i+1}}
+\end{align}$$
 
 Phương pháp này chỉ sử dụng dữ liệu quá khứ nên có thể áp dụng cho việc dự báo các giá trị tương lai
 
@@ -109,3 +109,26 @@ với các tham số $k =6$ và $k=12$
 
 !['abc'](../images/03/6-MA.png "abc")
 !['abcd'](../images/03/12-MA.png "abcd")
+
+## Exponential Smoothing
+
+Hàm làm mịn Exponential là một hàm làm mịn sử dụng hàm mũ. Trong khi các hàm Moving Average đơn giản sử dụng các giá trị quá khứ với trọng số bằng nhau thì hàm Exponential sử dụng hàm số mũ cho trọng số đảm bảo giảm dần theo thời gian.
+
+Hàm làm mịn Exponential thường áp dụng vào xử lý tín hiệu số để lọc những nhiễu có tầm số cao. Hàm này là dạy truy hồi với công thức như sau
+
+$
+S_{0} = Y_{0} \\
+S_{T} = \alpha Y_{T} + (1 - \alpha)S_{T-1},  T > 0
+$
+
+Trong đó $ \alpha $ được gọi là tham số smoothing và  $0 < \alpha < 1$
+
+** Tại sao lại gọi là Hàm mũ**
+
+Với công thức Truy hồi trên ta có thể biến đổi như sau
+
+$
+S_T = \alpha Y_T + (1 - \alpha)S_{T-1} \\
+S_T = \alpha Y_T + (1 - \alpha)(\alpha Y_{T-1} + (1 - \alpha)S_{T-2})\\
+S_T = \alpha Y_T + \alpha(1 - \alpha)Y_{T-1} + (1-\alpha)^2S_{T-2}\\
+$

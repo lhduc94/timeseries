@@ -16,3 +16,4 @@ moving-average-smoothing
 centered-moving-average
 trailing-moving-average
 ví-dụ
+exponential-smoothing
