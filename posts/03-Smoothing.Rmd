@@ -23,9 +23,9 @@ $$\begin{align}
 
 Tổng quát hơn
 
-$\begin{align}
+$$\begin{align}
 \Large \bar{y}_{T} = \frac{1}{m}  \sum_{j=-m}^{m}{y_{T+j}}
-\end{align}$
+\end{align}$$
 
 Trong đó $k = 2m + 1$
 
