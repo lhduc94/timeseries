@@ -275,14 +275,14 @@ với các tham số <span class="math inline">\(k =6\)</span> và <span class="
 <h2><span class="header-section-number">3.2</span> Exponential Smoothing<a href="smoothing.html#exponential-smoothing" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Hàm làm mịn Exponential là một hàm làm mịn sử dụng hàm mũ. Trong khi các hàm Moving Average đơn giản sử dụng các giá trị quá khứ với trọng số bằng nhau thì hàm Exponential sử dụng hàm số mũ cho trọng số đảm bảo giảm dần theo thời gian.</p>
 <p>Hàm làm mịn Exponential thường áp dụng vào xử lý tín hiệu số để lọc những nhiễu có tầm số cao. Hàm này là dạy truy hồi với công thức như sau</p>
-<p>$
+<p>$\
 S_{0} = Y_{0} \
 S_{T} = Y_{T} + (1 - )S_{T-1}, T &gt; 0
 $</p>
 <p>Trong đó $ $ được gọi là tham số smoothing và <span class="math inline">\(0 &lt; \alpha &lt; 1\)</span></p>
 <p><strong>Tại sao lại gọi là Hàm mũ</strong></p>
 <p>Với công thức Truy hồi trên ta có thể biến đổi như sau</p>
-<p>$
+<p>$\
 S_T = Y_T + (1 - )S_{T-1} \
 S_T = Y_T + (1 - )(Y_{T-1} + (1 - )S_{T-2})\
 S_T = Y_T + (1 - )Y_{T-1} + (1-)^2S_{T-2}\

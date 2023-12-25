@@ -116,7 +116,7 @@ Hàm làm mịn Exponential là một hàm làm mịn sử dụng hàm mũ. Tron
 
 Hàm làm mịn Exponential thường áp dụng vào xử lý tín hiệu số để lọc những nhiễu có tầm số cao. Hàm này là dạy truy hồi với công thức như sau
 
-$
+$\\
 S_{0} = Y_{0} \\
 S_{T} = \alpha Y_{T} + (1 - \alpha)S_{T-1},  T > 0
 $
@@ -127,7 +127,7 @@ Trong đó $ \alpha $ được gọi là tham số smoothing và  $0 < \alpha < 
 
 Với công thức Truy hồi trên ta có thể biến đổi như sau
 
-$
+$\\
 S_T = \alpha Y_T + (1 - \alpha)S_{T-1} \\
 S_T = \alpha Y_T + (1 - \alpha)(\alpha Y_{T-1} + (1 - \alpha)S_{T-2})\\
 S_T = \alpha Y_T + \alpha(1 - \alpha)Y_{T-1} + (1-\alpha)^2S_{T-2}\\
