@@ -108,5 +108,5 @@ Với dữ liệu bao gồm xu hướng và mùa vụ, việc gia tăng cửa s�
 với các tham số $k =6$ và $k=12$
 
 |$k=6$|$k=12$|
-|:----:|:-----:|
+|:----:|:----:|
 |!['abc'](../images/03/6-MA.png "abc")| !['abcd'](../images/03/12-MA.png "abcd")|
