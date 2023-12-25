@@ -107,4 +107,5 @@ plt.legend(fontsize=15)
 Với dữ liệu bao gồm xu hướng và mùa vụ, việc gia tăng cửa sổ trượt giúp loại bỏ tính mùa vụ và chỉ để lại tính xu hướng. Ví dụ dưới đây cho dữ liệu `Số Vật liệu xây dựng đã sử dụng ở Mỹ`
 với các tham số $k =6$ và $k=12$
 
-|!['abc'](../images/03/6-MA.png "abc")| !['abcd'](../images/03/12-MA.png "abcd")|
+!['abc'](../images/03/6-MA.png "abc")
+!['abcd'](../images/03/12-MA.png "abcd")
