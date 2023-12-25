@@ -121,7 +121,7 @@ S_{0} = Y_{0} \\
 S_{T} = \alpha Y_{T} + (1 - \alpha)S_{T-1},  T > 0
 $
 
-Trong đó $ \alpha $ được gọi là tham số smoothing và  $0 < \alpha < 1$
+Trong đó $\alpha$ được gọi là tham số smoothing và  $0 < \alpha < 1$
 
 **Tại sao lại gọi là Hàm mũ**
 
