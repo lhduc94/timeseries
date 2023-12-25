@@ -204,7 +204,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="centered-moving-average" class="section level3 hasAnchor" number="3.1.1">
 <h3><span class="header-section-number">3.1.1</span> Centered Moving Average<a href="smoothing.html#centered-moving-average" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Với trung bình trượt với cửa sổ trượt <span class="math inline">\(k\)</span> bằng 3 ta có:</p>
-<p><span class="math inline">\(\begin{align} \Large \bar{y}_{T} = \frac{y_{T+1} + y_{T} + y_{T-1}}{3} \end{align}\)</span></p>
+<p><span class="math display">\[\begin{align}
+\Large \bar{y}_{T} = \frac{y_{T+1} + y_{T} + y_{T-1}}{3}
+\end{align}\]</span></p>
 <p>Tổng quát hơn</p>
 <p><span class="math inline">\(\begin{align} \Large \bar{y}_{T} = \frac{1}{m} \sum_{j=-m}^{m}{y_{T+j}} \end{align}\)</span></p>
 <p>Trong đó <span class="math inline">\(k = 2m + 1\)</span></p>
