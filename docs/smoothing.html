@@ -217,7 +217,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="trailing-moving-average" class="section level3 hasAnchor" number="3.1.2">
 <h3><span class="header-section-number">3.1.2</span> Trailing Moving Average<a href="smoothing.html#trailing-moving-average" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Với trung bình trượt với cửa sổ trượt <span class="math inline">\(k\)</span> bằng 3 ta có</p>
-<p><span class="math inline">\(\begin{align} \Large \bar{y}_{T} = \frac{y_{T} + y_{T - 1} + y_{T - 2}}{3} \end{align}\)</span></p>
+<p><span class="math display">\[\begin{align}
+\Large \bar{y}_{T} = \frac{y_{T} + y_{T - 1} + y_{T - 2}}{3}
+\end{align}\]</span></p>
 <p>Tổng quát hơn</p>
 <p><span class="math inline">\(\begin{align} \Large \bar{y}_{T} = \frac{1}{k} \sum^{k}_{i=1}{y_{T-i+1}} \end{align}\)</span></p>
 <p>Phương pháp này chỉ sử dụng dữ liệu quá khứ nên có thể áp dụng cho việc dự báo các giá trị tương lai</p>

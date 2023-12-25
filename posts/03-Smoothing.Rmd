@@ -35,9 +35,9 @@ Phương pháp này sử dụng giá trị tương lai $y_{T+1}$ do đó không 
 
 Với trung bình trượt với cửa sổ trượt $k$ bằng 3 ta có
 
-$\begin{align}
+$$\begin{align}
 \Large \bar{y}_{T} = \frac{y_{T} + y_{T - 1} + y_{T - 2}}{3}
-\end{align}$
+\end{align}$$
 
 Tổng quát hơn
 
