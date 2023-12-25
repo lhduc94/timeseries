@@ -1,4 +1,4 @@
-# Giới thiệu về Time Series
+# Giới thiệu Cơ bản về Time Series
 ## Time Series là gì
 Chuỗi thời gian là tập hợp các quan sát $x_t$ theo thời gian tuần tự.
 
@@ -9,6 +9,14 @@ Chuỗi thời gian rời rạc là tập hợp các điểm quan sát có kho�
 - Có thể bị mất dữ liệu do mất kết nối mạng hoặc máy chủ không phản hồi.
 
 Chuỗi thời gian liên tục là tập hợp các điểm quan sát có khoảng cách quan sát là một giây.
+
+**Thời gian là gì**
+Thời gian có thể định nghĩa theo:
+
+- Giờ, phút giây
+- Theo không gian: Máy thứ nhất, máy thứ hai trong cùng một băng chuyền
+- Theo độ sâu: Xuống 1 milimet, xuống 2 milimet
+
 
 ---
 
@@ -49,7 +57,16 @@ Biến đổi chu kỳ xảy ra khi một dữ liệu tăng giảm không có t�
 ![](https://sciencetheory.net/wp-content/uploads/2020/03/Business-Cycle-Graph-e1577193470836.png)
 
 
-
-## Dự đoán chuỗi thời gian
-
 ---
+
+## Stationary (Tính dừng của dữ liệu)
+
+Chuỗi thời gian dừng là chuỗi có các đặc trưng thống kê như mean, variance, autocorrelation không đổi theo thời gian.
+
+## Các bài toán về chuỗi thời gian
+
+### Dự đoán giá trị tiếp theo dựa trên các giá trị trước đó
+
+### Phân loại chuỗi thời gian
+
+### Phân đoạn chuỗi thời gian

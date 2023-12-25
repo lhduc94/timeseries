@@ -1,4 +1,4 @@
-# Một số đặc tính của Time Series
+# ARIMA
 
 ## Lag
 
@@ -127,6 +127,3 @@ Partial Autocorrelation cũng tương tự như Autocorrelation. Tuy nhiên, nó
 
 Ví dụ tương quan Partial Autocorrelation với lag = 3 sẽ bỏ qua các giá trị trễ tại lag = 1 và lag = 2
 
-## Stationary (Tính dừng của dữ liệu)
-
-Chuỗi thời gian dừng là chuỗi có các đặc trưng thống kê như mean, variance, autocorrelation không đổi theo thời gian.
