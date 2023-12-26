@@ -182,25 +182,23 @@ df['ExponentialSmoothing_PANDAS'] = df['Births'].ewm(alpha=0.3, adjust=False).me
 df['ExponentialSmoothing_FUNCTION'] = exponential_smoothing(df['Births'], 0.3)
 ## dùng tsa
 es = tsa.SimpleExpSmoothing(df['Births'])
-model = es.fit(smoothing_level=0.3)
-df['ExponentialSmoothing_TSA'] = model.fittedvalues
-
+df['ExponentialSmoothing_TSA'] = es.predict(es.params, start=1, end=df.shape[0])
 df
 ```
 
 ```python
-		 Month	BuildingMaterials	ExponentialSmoothing_PANDAS	  ExponentialSmoothing_FUNCTION	  ExponentialSmoothing_TSA
-0	1992-01-01				 8964					8964.000000						8964.000000	 			   8964.000000
-1	1992-02-01				 9023					8981.700000						8981.700000				   8964.000000
-2	1992-03-01				10608					9469.590000						9469.590000				   8981.700000
-3	1992-04-01				11630				   10117.713000					   10117.713000				   9469.590000
-4	1992-05-01				12327				   10780.499100					   10780.499100				  10117.713000
-...		   ...				  ...							...								...						   ...
-331	2019-08-01				32375				   32749.580399					   32749.580399				  32910.114856
-332	2019-09-01				29963				   31913.606280					   31913.606280				  32749.580399
-333	2019-10-01				32629				   32128.224396					   32128.224396				  31913.606280
-334	2019-11-01				29793				   31427.657077					   31427.657077				  32128.224396
-335	2019-12-01				28621				   30585.659954					   30585.659954				  31427.657077
+				  Date	Births	ExponentialSmoothing_PANDAS	ExponentialSmoothing_FUNCTION	ExponentialSmoothing_TSA
+0	1959-01-01		35					  35.000000						35.000000				   35.000000
+1	1959-01-02		32					  34.100000						34.100000				   34.100000
+2	1959-01-03		30					  32.870000						32.870000				   32.870000
+3	1959-01-04		31					  32.309000						32.309000				   32.309000
+4	1959-01-05		44					  35.816300						35.816300				   35.816300
+...		   ...	   ...							...							  ...						 ...
+360	1959-12-27	    37					  38.828280						38.828280				   38.828280
+361	1959-12-28		52					  42.779796						42.779796				   42.779796
+362	1959-12-29		48					  44.345857						44.345857				   44.345857
+363	1959-12-30		55					  47.542100						47.542100				   47.542100
+364	1959-12-31		50					  48.279470						48.279470				   48.279470
 ```
 
 Biểu đồ so sánh giữa giá trị gốc và Exponential Smoothing
