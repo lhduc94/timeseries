@@ -187,7 +187,7 @@ df
 ```
 
 ```python
-				  Date	Births	ExponentialSmoothing_PANDAS	ExponentialSmoothing_FUNCTION	ExponentialSmoothing_TSA
+	Date	    Births	ExponentialSmoothing_PANDAS	ExponentialSmoothing_FUNCTION	ExponentialSmoothing_TSA
 0	1959-01-01		35					  35.000000						35.000000				   35.000000
 1	1959-01-02		32					  34.100000						34.100000				   34.100000
 2	1959-01-03		30					  32.870000						32.870000				   32.870000
