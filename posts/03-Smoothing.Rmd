@@ -1,6 +1,6 @@
 # Smoothing
 
-Kỹ thuật làm mịn là một trong các kỹ thuật tiền xử lý dữ liệu để loại bỏ các nhiễu trong dữ liệu. Việc làm mịn dữ liệu giúp thể hiện rõ tính mùa vụ của dữ liệu và giúp đơn giản hóa các mô hình dự đoán.
+Kỹ thuật làm mịn là một trong các kỹ thuật tiền xử lý dữ liệu để loại bỏ các nhiễu trong dữ liệu. Việc làm mịn dữ liệu giúp xóa bỏ mùa vụ của dữ liệu và giúp đơn giản hóa các mô hình dự đoán.
 
 Các kỹ thuật làm mịn dữ liệu bao gồm:
 
