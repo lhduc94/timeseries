@@ -11,6 +11,7 @@ Chuỗi thời gian rời rạc là tập hợp các điểm quan sát có kho�
 Chuỗi thời gian liên tục là tập hợp các điểm quan sát có khoảng cách quan sát là một giây.
 
 **Thời gian là gì**
+
 Thời gian có thể định nghĩa theo:
 
 - Giờ, phút giây

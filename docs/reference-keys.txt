@@ -17,4 +17,7 @@ centered-moving-average
 trailing-moving-average
 ví-dụ
 exponential-smoothing
+simple-exponential-smoothing
+double-exponential-smoothing-holts-method
+triple-exponential-smoothing-holt-winters-method
 autoregressive-model

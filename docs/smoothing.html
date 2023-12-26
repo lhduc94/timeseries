@@ -169,7 +169,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.1.2" data-path="smoothing.html"><a href="smoothing.html#trailing-moving-average"><i class="fa fa-check"></i><b>2.1.2</b> Trailing Moving Average</a></li>
 <li class="chapter" data-level="2.1.3" data-path="smoothing.html"><a href="smoothing.html#ví-dụ"><i class="fa fa-check"></i><b>2.1.3</b> Ví dụ</a></li>
 </ul></li>
-<li class="chapter" data-level="2.2" data-path="smoothing.html"><a href="smoothing.html#exponential-smoothing"><i class="fa fa-check"></i><b>2.2</b> Exponential Smoothing</a></li>
+<li class="chapter" data-level="2.2" data-path="smoothing.html"><a href="smoothing.html#exponential-smoothing"><i class="fa fa-check"></i><b>2.2</b> Exponential Smoothing</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="smoothing.html"><a href="smoothing.html#simple-exponential-smoothing"><i class="fa fa-check"></i><b>2.2.1</b> Simple Exponential Smoothing</a></li>
+<li class="chapter" data-level="2.2.2" data-path="smoothing.html"><a href="smoothing.html#double-exponential-smoothing-holts-method"><i class="fa fa-check"></i><b>2.2.2</b> Double Exponential Smoothing (Holt’s Method)</a></li>
+<li class="chapter" data-level="2.2.3" data-path="smoothing.html"><a href="smoothing.html#triple-exponential-smoothing-holt-winters-method"><i class="fa fa-check"></i><b>2.2.3</b> Triple Exponential Smoothing (Holt-Winters’ Method)</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="autoregressive-model.html"><a href="autoregressive-model.html"><i class="fa fa-check"></i><b>3</b> Autoregressive Model</a></li>
 <li class="divider"></li>
@@ -295,6 +300,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="exponential-smoothing" class="section level2 hasAnchor" number="2.2">
 <h2><span class="header-section-number">2.2</span> Exponential Smoothing<a href="smoothing.html#exponential-smoothing" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Hàm làm mịn Exponential là một hàm làm mịn sử dụng hàm mũ. Trong khi các hàm Moving Average đơn giản sử dụng các giá trị quá khứ với trọng số bằng nhau thì hàm Exponential sử dụng hàm số mũ cho trọng số đảm bảo giảm dần theo thời gian.</p>
+<div id="simple-exponential-smoothing" class="section level3 hasAnchor" number="2.2.1">
+<h3><span class="header-section-number">2.2.1</span> Simple Exponential Smoothing<a href="smoothing.html#simple-exponential-smoothing" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Hàm làm mịn Exponential thường áp dụng vào xử lý tín hiệu số để lọc những nhiễu có tầm số cao. Hàm này là dạy truy hồi với công thức như sau</p>
 <p><span class="math inline">\(S_{0} = Y_{0}\)</span></p>
 <p><span class="math inline">\(S_{T} = \alpha Y_{T} + (1 - \alpha)S_{T-1}, T &gt; 0\)</span></p>
@@ -347,7 +354,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb19-8"><a href="smoothing.html#cb19-8" tabindex="-1"></a>plt.legend(fontsize<span class="op">=</span><span class="dv">15</span>)</span>
 <span id="cb19-9"><a href="smoothing.html#cb19-9" tabindex="-1"></a>plt.title(<span class="st">&#39;Exponential Smoothing with alpha=0.3&#39;</span>, fontsize<span class="op">=</span><span class="dv">15</span>)</span></code></pre></div>
 <p><img src="../images/02/Exponential_Smoothing.png" /></p>
+</div>
+<div id="double-exponential-smoothing-holts-method" class="section level3 hasAnchor" number="2.2.2">
+<h3><span class="header-section-number">2.2.2</span> Double Exponential Smoothing (Holt’s Method)<a href="smoothing.html#double-exponential-smoothing-holts-method" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+</div>
+<div id="triple-exponential-smoothing-holt-winters-method" class="section level3 hasAnchor" number="2.2.3">
+<h3><span class="header-section-number">2.2.3</span> Triple Exponential Smoothing (Holt-Winters’ Method)<a href="smoothing.html#triple-exponential-smoothing-holt-winters-method" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 
+</div>
 </div>
 </div>
             </section>

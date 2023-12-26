@@ -138,6 +138,7 @@ plt.title('12-MA', fontsize=15)
 
 Hàm làm mịn Exponential là một hàm làm mịn sử dụng hàm mũ. Trong khi các hàm Moving Average đơn giản sử dụng các giá trị quá khứ với trọng số bằng nhau thì hàm Exponential sử dụng hàm số mũ cho trọng số đảm bảo giảm dần theo thời gian.
 
+### Simple Exponential Smoothing
 Hàm làm mịn Exponential thường áp dụng vào xử lý tín hiệu số để lọc những nhiễu có tầm số cao. Hàm này là dạy truy hồi với công thức như sau
 
 $S_{0} = Y_{0}$
@@ -215,3 +216,7 @@ plt.title('Exponential Smoothing with alpha=0.3', fontsize=15)
 ```
 
 ![](../images/02/Exponential_Smoothing.png)
+
+### Double Exponential Smoothing (Holt's Method) 
+
+### Triple Exponential Smoothing (Holt-Winters' Method)
