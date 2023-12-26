@@ -285,10 +285,9 @@ S_{T} = \alpha Y_{T} + (1 - \alpha)S_{T-1},  T &gt; 0
 <p><strong>Tại sao lại gọi là Hàm mũ</strong></p>
 <p>Với công thức Truy hồi trên ta có thể biến đổi như sau</p>
 <p><span class="math inline">\(S_T = \alpha Y_T + (1 - \alpha)S_{T-1}\)</span>
-$
-S_T = Y_T + (1 - )(Y_{T-1} + (1 - )S_{T-2})\
-S_T = Y_T + (1 - )Y_{T-1} + (1-)^2S_{T-2}\
-S_T = $</p>
+<span class="math inline">\(S_T = \alpha Y_T + (1 - \alpha)(\alpha Y_{T-1} + (1 - \alpha)S_{T-2})\)</span>
+<span class="math inline">\(S_T = \alpha Y_T + \alpha(1 - \alpha)Y_{T-1} + (1-\alpha)^2S_{T-2}\)</span>
+<span class="math inline">\(S_T = \alpha[Y_T + (1 - \alpha)Y_{T-1} + (1-\alpha)^2Y_{T-2} + (1-\alpha)^3Y_{T-3} + ... +(1-\alpha)^TY_0]\)</span></p>
 <p>Ta có thể thấy <span class="math inline">\(S_T\)</span> có liên quan đến trung bình các giá trị với các trọng số
 <span class="math inline">\(1, (1-\alpha), (1-\alpha)^2, ....,(1-\alpha)^T\)</span></p>
 
