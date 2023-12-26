@@ -1,6 +1,6 @@
 # Giới thiệu Cơ bản về Time Series
 ## Time Series là gì
-Chuỗi thời gian là tập hợp các quan sát $x_t$ theo thời gian tuần tự.
+Chuỗi thời gian là tập hợp các quan sát $y_t$ theo thời gian tuần tự.
 
 Chuỗi thời gian rời rạc là tập hợp các điểm quan sát có khoảng cách quan sát lớn hơn một giây. Chuỗi thời gian rời rạc có thể có những đặc điểm:
 
@@ -58,6 +58,8 @@ Biến đổi chu kỳ xảy ra khi một dữ liệu tăng giảm không có t�
 
 ![](https://sciencetheory.net/wp-content/uploads/2020/03/Business-Cycle-Graph-e1577193470836.png)
 
+***Irregularity***
+Unexpected situations/events/scenarios and spikes in a short time span.
 
 ---
 

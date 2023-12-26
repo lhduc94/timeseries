@@ -176,7 +176,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.2.3" data-path="smoothing.html"><a href="smoothing.html#triple-exponential-smoothing-holt-winters-method"><i class="fa fa-check"></i><b>2.2.3</b> Triple Exponential Smoothing (Holt-Winters’ Method)</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="autoregressive-model.html"><a href="autoregressive-model.html"><i class="fa fa-check"></i><b>3</b> Autoregressive Model</a></li>
+<li class="chapter" data-level="3" data-path="autoregressive-model.html"><a href="autoregressive-model.html"><i class="fa fa-check"></i><b>3</b> Autoregressive Model</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="autoregressive-model.html"><a href="autoregressive-model.html#mô-hình-tự-hồi-quy-là-gì"><i class="fa fa-check"></i><b>3.1</b> Mô hình tự hồi quy là gì</a></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="" target="blank">Lê Huỳnh Đức</a></li>
 
@@ -199,7 +202,60 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="autoregressive-model" class="section level1 hasAnchor" number="3">
 <h1><span class="header-section-number">Chương 3</span> Autoregressive Model<a href="autoregressive-model.html#autoregressive-model" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="mô-hình-tự-hồi-quy-là-gì" class="section level2 hasAnchor" number="3.1">
+<h2><span class="header-section-number">3.1</span> Mô hình tự hồi quy là gì<a href="autoregressive-model.html#mô-hình-tự-hồi-quy-là-gì" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Mô hình tự hồi quy là mô hình ước lượng giá trị tương lai của timeseries dựa vào các giá trị trong quá khứ cửa chính timeseries đó.</p>
+<p>Công thức tự hồi quy được biểu diễn như sau</p>
+<p><span class="math display">\[
+y_t = c + \theta_1 y_{t-1} + \theta_2 y_{t-2} + \theta_3 y_{t-3} + .... + \theta_p y_{t-p} + \epsilon_t
+\]</span></p>
+<p>Trong đó: <span class="math inline">\(\epsilon_t\)</span> là nhiễu trắng. Có thể nói mô hình này là mô hình hồi quy đa biến với các biến là các giá trị lag tại thời điểm từ <span class="math inline">\(1\)</span> đến <span class="math inline">\(p\)</span>. Chúng ta kí hiệu mô hình này là <span class="math inline">\(AR(p)\)</span></p>
+<p>Để sử dụng AR model, ta dùng class <code>AutoReg</code> của thư viện <code>statsmodels</code>, chúng ta dùng <code>root_mean_squared_error</code> để đánh giá mô hình. Mô hình sẽ được huấn luyện và dự đoán cho 7 ngày tiếp theo</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb20-1"><a href="autoregressive-model.html#cb20-1" tabindex="-1"></a></span>
+<span id="cb20-2"><a href="autoregressive-model.html#cb20-2" tabindex="-1"></a><span class="im">from</span> statsmodels.tsa.ar_model <span class="im">import</span> AutoReg</span>
+<span id="cb20-3"><a href="autoregressive-model.html#cb20-3" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd </span>
+<span id="cb20-4"><a href="autoregressive-model.html#cb20-4" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb20-5"><a href="autoregressive-model.html#cb20-5" tabindex="-1"></a></span>
+<span id="cb20-6"><a href="autoregressive-model.html#cb20-6" tabindex="-1"></a><span class="co"># Đọc dữ liệu</span></span>
+<span id="cb20-7"><a href="autoregressive-model.html#cb20-7" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">&#39;../data/us-retail-sales.csv&#39;</span>)</span>
+<span id="cb20-8"><a href="autoregressive-model.html#cb20-8" tabindex="-1"></a></span>
+<span id="cb20-9"><a href="autoregressive-model.html#cb20-9" tabindex="-1"></a><span class="co"># Chia dữ liệu thành train test</span></span>
+<span id="cb20-10"><a href="autoregressive-model.html#cb20-10" tabindex="-1"></a>Y <span class="op">=</span> df.Clothing.values</span>
+<span id="cb20-11"><a href="autoregressive-model.html#cb20-11" tabindex="-1"></a>train, test <span class="op">=</span> Y[:<span class="bu">len</span>(Y)<span class="op">-</span><span class="dv">7</span>], Y[<span class="bu">len</span>(Y)<span class="op">-</span><span class="dv">7</span>:]</span>
+<span id="cb20-12"><a href="autoregressive-model.html#cb20-12" tabindex="-1"></a></span>
+<span id="cb20-13"><a href="autoregressive-model.html#cb20-13" tabindex="-1"></a><span class="co"># Huấn luyện mô hình với p=29</span></span>
+<span id="cb20-14"><a href="autoregressive-model.html#cb20-14" tabindex="-1"></a>model <span class="op">=</span> AutoReg(train, lags<span class="op">=</span><span class="dv">29</span>)</span>
+<span id="cb20-15"><a href="autoregressive-model.html#cb20-15" tabindex="-1"></a>model_fit <span class="op">=</span> model.fit()</span>
+<span id="cb20-16"><a href="autoregressive-model.html#cb20-16" tabindex="-1"></a></span>
+<span id="cb20-17"><a href="autoregressive-model.html#cb20-17" tabindex="-1"></a><span class="co"># Dự đoán kết quả mô hình</span></span>
+<span id="cb20-18"><a href="autoregressive-model.html#cb20-18" tabindex="-1"></a>Y_hat <span class="op">=</span> model_fit.predict(start<span class="op">=</span><span class="bu">len</span>(train), end<span class="op">=</span><span class="bu">len</span>(train)<span class="op">+</span><span class="bu">len</span>(test)<span class="op">-</span><span class="dv">1</span>, dynamic<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb20-19"><a href="autoregressive-model.html#cb20-19" tabindex="-1"></a><span class="cf">for</span> y_hat, y_true <span class="kw">in</span> <span class="bu">zip</span>(Y_hat, test):</span>
+<span id="cb20-20"><a href="autoregressive-model.html#cb20-20" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f&#39;Predicted=</span><span class="sc">{</span>y_hat<span class="sc">}</span><span class="ss"> </span><span class="ch">\t</span><span class="ss">Expected=</span><span class="sc">{</span>y_true<span class="sc">}</span><span class="ss">&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb21-1"><a href="autoregressive-model.html#cb21-1" tabindex="-1"></a>Predicted<span class="op">=</span><span class="fl">21279.50586647284</span>     Expected<span class="op">=</span><span class="dv">21116</span></span>
+<span id="cb21-2"><a href="autoregressive-model.html#cb21-2" tabindex="-1"></a>Predicted<span class="op">=</span><span class="fl">22101.240803540295</span>    Expected<span class="op">=</span><span class="dv">21742</span></span>
+<span id="cb21-3"><a href="autoregressive-model.html#cb21-3" tabindex="-1"></a>Predicted<span class="op">=</span><span class="fl">23214.72663871385</span>     Expected<span class="op">=</span><span class="dv">23829</span></span>
+<span id="cb21-4"><a href="autoregressive-model.html#cb21-4" tabindex="-1"></a>Predicted<span class="op">=</span><span class="fl">19752.699859625853</span>    Expected<span class="op">=</span><span class="dv">19567</span></span>
+<span id="cb21-5"><a href="autoregressive-model.html#cb21-5" tabindex="-1"></a>Predicted<span class="op">=</span><span class="fl">21334.77904024157</span>     Expected<span class="op">=</span><span class="dv">21400</span></span>
+<span id="cb21-6"><a href="autoregressive-model.html#cb21-6" tabindex="-1"></a>Predicted<span class="op">=</span><span class="fl">25209.963983161964</span>    Expected<span class="op">=</span><span class="dv">25170</span></span>
+<span id="cb21-7"><a href="autoregressive-model.html#cb21-7" tabindex="-1"></a>Predicted<span class="op">=</span><span class="fl">34357.54441580368</span>     Expected<span class="op">=</span><span class="dv">35157</span></span></code></pre></div>
+<p>Để xem các params của mô hình ta gọi <code>model_fit.params</code>. Trong đó giá trị đầu tiên là hằng số <span class="math inline">\(c\)</span>, các giá trị tiếp theo tương ứng là các <span class="math inline">\(\theta\)</span> tại các lag</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb22-1"><a href="autoregressive-model.html#cb22-1" tabindex="-1"></a>model_fit.params</span></code></pre></div>
+<pre><code>array([ 2.28853925e+02,  1.79171595e-01,  2.54201532e-01,  3.05500421e-01,
+       -3.11981291e-02,  6.65420755e-02,  1.10686710e-01, -3.19428627e-02,
+        4.96965486e-02,  8.89945569e-02, -1.20435797e-01, -3.84651164e-02,
+        8.06193600e-01, -1.26996681e-01, -1.27501050e-01, -2.69789259e-01,
+       -1.01531188e-01, -4.45741520e-02, -1.10645162e-01,  3.58745006e-02,
+       -4.99340277e-02, -9.73275266e-02,  1.14918312e-01,  4.15776199e-02,
+        2.03791299e-01, -6.05281674e-02, -1.38168187e-01, -3.51125341e-02,
+        1.36761315e-01, -1.65243492e-02])</code></pre>
+<p>Để đánh giá kết quả mô hình, chúng ta dùng thư viện <code>sklearn.metrics</code></p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb24-1"><a href="autoregressive-model.html#cb24-1" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> mean_squared_error</span>
+<span id="cb24-2"><a href="autoregressive-model.html#cb24-2" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&#39;RMSE:&#39;</span>, np.sqrt(mean_squared_error(test, Y_hat)))</span></code></pre></div>
+<pre><code>416.20469692462274</code></pre>
+<p>Dưới đây là biểu đồ thể hiện giá trị Dự đoán và giá trị thực tế trong 7 ngày</p>
+<p><img src="../images/03/autoregressive.png" /></p>
 
+</div>
 </div>
             </section>
 

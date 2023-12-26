@@ -21,3 +21,4 @@ simple-exponential-smoothing
 double-exponential-smoothing-holts-method
 triple-exponential-smoothing-holt-winters-method
 autoregressive-model
+mô-hình-tự-hồi-quy-là-gì

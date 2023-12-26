@@ -1,1 +1,79 @@
 # Autoregressive Model
+
+## Mô hình tự hồi quy là gì
+Mô hình tự hồi quy là mô hình ước lượng giá trị tương lai của timeseries dựa vào các giá trị trong quá khứ cửa chính timeseries đó.
+
+Công thức tự hồi quy được biểu diễn như sau
+
+$$
+y_t = c + \theta_1 y_{t-1} + \theta_2 y_{t-2} + \theta_3 y_{t-3} + .... + \theta_p y_{t-p} + \epsilon_t
+$$
+
+Trong đó: $\epsilon_t$ là nhiễu trắng. Có thể nói mô hình này là mô hình hồi quy đa biến với các biến là các giá trị lag tại thời điểm từ $1$ đến $p$. Chúng ta kí hiệu mô hình này là $AR(p)$
+
+Để sử dụng AR model, ta dùng class `AutoReg` của thư viện `statsmodels`, chúng ta dùng `root_mean_squared_error` để đánh giá mô hình. Mô hình sẽ được huấn luyện và dự đoán cho 7 ngày tiếp theo
+
+```python
+
+from statsmodels.tsa.ar_model import AutoReg
+import pandas as pd 
+import numpy as np
+
+# Đọc dữ liệu
+df = pd.read_csv('../data/us-retail-sales.csv')
+
+# Chia dữ liệu thành train test
+Y = df.Clothing.values
+train, test = Y[:len(Y)-7], Y[len(Y)-7:]
+
+# Huấn luyện mô hình với p=29
+model = AutoReg(train, lags=29)
+model_fit = model.fit()
+
+# Dự đoán kết quả mô hình
+Y_hat = model_fit.predict(start=len(train), end=len(train)+len(test)-1, dynamic=False)
+for y_hat, y_true in zip(Y_hat, test):
+    print(f'Predicted={y_hat} \tExpected={y_true}')
+```
+
+```python
+Predicted=21279.50586647284 	Expected=21116
+Predicted=22101.240803540295 	Expected=21742
+Predicted=23214.72663871385 	Expected=23829
+Predicted=19752.699859625853 	Expected=19567
+Predicted=21334.77904024157 	Expected=21400
+Predicted=25209.963983161964 	Expected=25170
+Predicted=34357.54441580368 	Expected=35157
+```
+
+Để xem các params của mô hình ta gọi `model_fit.params`. Trong đó giá trị đầu tiên là hằng số $c$, các giá trị tiếp theo tương ứng là các $\theta$ tại các lag 
+
+```python
+model_fit.params
+```
+
+```
+array([ 2.28853925e+02,  1.79171595e-01,  2.54201532e-01,  3.05500421e-01,
+       -3.11981291e-02,  6.65420755e-02,  1.10686710e-01, -3.19428627e-02,
+        4.96965486e-02,  8.89945569e-02, -1.20435797e-01, -3.84651164e-02,
+        8.06193600e-01, -1.26996681e-01, -1.27501050e-01, -2.69789259e-01,
+       -1.01531188e-01, -4.45741520e-02, -1.10645162e-01,  3.58745006e-02,
+       -4.99340277e-02, -9.73275266e-02,  1.14918312e-01,  4.15776199e-02,
+        2.03791299e-01, -6.05281674e-02, -1.38168187e-01, -3.51125341e-02,
+        1.36761315e-01, -1.65243492e-02])
+```
+
+Để đánh giá kết quả mô hình, chúng ta dùng thư viện `sklearn.metrics`
+
+```python
+from sklearn.metrics import mean_squared_error
+print('RMSE:', np.sqrt(mean_squared_error(test, Y_hat)))
+```
+
+```
+416.20469692462274
+```
+
+Dưới đây là biểu đồ thể hiện giá trị Dự đoán và giá trị thực tế trong 7 ngày
+
+![](../images/03/autoregressive.png)
