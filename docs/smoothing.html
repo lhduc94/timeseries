@@ -277,10 +277,7 @@ với các tham số <span class="math inline">\(k =6\)</span> và <span class="
 <span id="cb14-8"><a href="smoothing.html#cb14-8" tabindex="-1"></a>plt.ylabel(<span class="st">&#39;BuildingMaterials&#39;</span>,fontsize<span class="op">=</span><span class="dv">15</span>)</span>
 <span id="cb14-9"><a href="smoothing.html#cb14-9" tabindex="-1"></a>plt.legend(fontsize<span class="op">=</span><span class="dv">15</span>)</span>
 <span id="cb14-10"><a href="smoothing.html#cb14-10" tabindex="-1"></a>plt.title(<span class="st">&#39;6-MA&#39;</span>, fontsize<span class="op">=</span><span class="dv">15</span>)</span></code></pre></div>
-<div class="float">
-<img src="../images/03/6-MA.png" title="abc" alt="‘abc’" />
-<div class="figcaption">‘abc’</div>
-</div>
+<p><img src="../images/03/6-MA.png" /></p>
 <div class="sourceCode" id="cb15"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb15-1"><a href="smoothing.html#cb15-1" tabindex="-1"></a>fig2 <span class="op">=</span> plt.figure(figsize<span class="op">=</span>(<span class="dv">7</span>,<span class="dv">5</span>))</span>
 <span id="cb15-2"><a href="smoothing.html#cb15-2" tabindex="-1"></a>df[<span class="st">&#39;BuildingMaterials_MA&#39;</span>] <span class="op">=</span> df[<span class="st">&#39;BuildingMaterials&#39;</span>].rolling(window<span class="op">=</span><span class="dv">12</span>, center<span class="op">=</span><span class="va">False</span>).mean()</span>
 <span id="cb15-3"><a href="smoothing.html#cb15-3" tabindex="-1"></a>sns.lineplot(x<span class="op">=</span><span class="st">&#39;Month&#39;</span>, y<span class="op">=</span><span class="st">&#39;BuildingMaterials&#39;</span>, data<span class="op">=</span>df, label<span class="op">=</span><span class="st">&#39;original&#39;</span>)</span>
@@ -291,10 +288,7 @@ với các tham số <span class="math inline">\(k =6\)</span> và <span class="
 <span id="cb15-8"><a href="smoothing.html#cb15-8" tabindex="-1"></a>plt.ylabel(<span class="st">&#39;BuildingMaterials&#39;</span>,fontsize<span class="op">=</span><span class="dv">15</span>)</span>
 <span id="cb15-9"><a href="smoothing.html#cb15-9" tabindex="-1"></a>plt.legend(fontsize<span class="op">=</span><span class="dv">15</span>)</span>
 <span id="cb15-10"><a href="smoothing.html#cb15-10" tabindex="-1"></a>plt.title(<span class="st">&#39;12-MA&#39;</span>, fontsize<span class="op">=</span><span class="dv">15</span>)</span></code></pre></div>
-<div class="float">
-<img src="../images/03/12-MA.png" title="abcd" alt="‘abcd’" />
-<div class="figcaption">‘abcd’</div>
-</div>
+<p><img src="../images/03/12-MA.png" /></p>
 </div>
 </div>
 <div id="exponential-smoothing" class="section level2 hasAnchor" number="3.2">

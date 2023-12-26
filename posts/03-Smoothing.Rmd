@@ -118,7 +118,7 @@ plt.ylabel('BuildingMaterials',fontsize=15)
 plt.legend(fontsize=15)
 plt.title('6-MA', fontsize=15)
 ```
-!['abc'](../images/03/6-MA.png "abc")
+![](../images/03/6-MA.png )
 
 ```python
 fig2 = plt.figure(figsize=(7,5))
@@ -132,7 +132,7 @@ plt.ylabel('BuildingMaterials',fontsize=15)
 plt.legend(fontsize=15)
 plt.title('12-MA', fontsize=15)
 ```
-!['abcd'](../images/03/12-MA.png "abcd")
+![](../images/03/12-MA.png)
 
 ## Exponential Smoothing
 
