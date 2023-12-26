@@ -23,3 +23,4 @@ triple-exponential-smoothing-holt-winters-method
 arima
 autoregressive-model
 moving-average-model
+autoregressive-moving-average-model

@@ -180,6 +180,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="3.1" data-path="arima.html"><a href="arima.html#autoregressive-model"><i class="fa fa-check"></i><b>3.1</b> Autoregressive Model</a></li>
 <li class="chapter" data-level="3.2" data-path="arima.html"><a href="arima.html#moving-average-model"><i class="fa fa-check"></i><b>3.2</b> Moving Average Model</a></li>
+<li class="chapter" data-level="3.3" data-path="arima.html"><a href="arima.html#autoregressive-moving-average-model"><i class="fa fa-check"></i><b>3.3</b> AutoRegressive Moving Average Model</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="" target="blank">Lê Huỳnh Đức</a></li>
@@ -209,6 +210,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Công thức tự hồi quy được biểu diễn như sau</p>
 <p><span class="math display">\[
 y_t = c + \theta_1 y_{t-1} + \theta_2 y_{t-2} + \theta_3 y_{t-3} + .... + \theta_p y_{t-p} + \epsilon_t
+\]</span></p>
+<p>Hoặc có thể viết lại</p>
+<p><span class="math display">\[
+y_t = c + \sum^{p}_{1}\theta y_{t-i} + \epsilon_t
 \]</span></p>
 <p>Trong đó: <span class="math inline">\(\epsilon_t\)</span> là nhiễu trắng. Có thể nói mô hình này là mô hình hồi quy đa biến với các biến là các giá trị lag tại thời điểm từ <span class="math inline">\(1\)</span> đến <span class="math inline">\(p\)</span>. Chúng ta kí hiệu mô hình này là <span class="math inline">\(AR(p)\)</span></p>
 <p>Để sử dụng AR model, ta dùng class <code>AutoReg</code> của thư viện <code>statsmodels</code>, chúng ta dùng <code>root_mean_squared_error</code> để đánh giá mô hình. Mô hình sẽ được huấn luyện và dự đoán cho 7 ngày tiếp theo</p>
@@ -258,6 +263,42 @@ y_t = c + \theta_1 y_{t-1} + \theta_2 y_{t-2} + \theta_3 y_{t-3} + .... + \theta
 </div>
 <div id="moving-average-model" class="section level2 hasAnchor" number="3.2">
 <h2><span class="header-section-number">3.2</span> Moving Average Model<a href="arima.html#moving-average-model" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Thay vì sử dụng các giá trị trong quá khứ làm đầu vào để dự đoán, Moving Average Model sử dụng các lỗi dự báo của quá khứ để dự đoán giá trị tiếp theo.</p>
+<p>Lưu ý cần phân biệt Moving Average Smoothing và Moving Average Model.</p>
+<p><strong>Moving Average Smoothing</strong></p>
+<blockquote>
+<p>Ý tưởng chính là sử dụng một cửa sổ trượt trên chuỗi dữ liệu và tính trung bình của các giá trị trong cửa sổ đó. Kết quả là chuỗi dữ liệu mới, nơi mà các dao động ngắn hạn hoặc nhiễu được giảm thiểu, giúp nhận diện xu hướng và mô hình hóa chuỗi dữ liệu dễ dàng hơn.</p>
+</blockquote>
+<blockquote>
+<p>Ví dụ, khi bạn thấy một chuỗi dữ liệu có nhiều dao động ngắn hạn và bạn muốn làm trơn nó để nhận diện xu hướng chung, bạn có thể sử dụng moving average smoothing để tạo ra một phiên bản làm trơn của chuỗi dữ liệu.</p>
+</blockquote>
+<p>Công thức MA model như sau</p>
+<p><span class="math display">\[
+y_t = c + \theta_1 \epsilon_{t-1} + \theta_2 \epsilon_{t-2} + \theta_3 \epsilon_{t-3} + .... + \theta_q \epsilon_{t-q} + \epsilon_t
+\]</span>
+Hoặc có thể viết lại</p>
+<p><span class="math display">\[
+y_t = c  + \sum^{q}_{i=1}\theta_{i}\epsilon_{t-i} +  \epsilon_t
+\]</span></p>
+<p>Trong đó <span class="math inline">\(c\)</span> là trung bình series, <span class="math inline">\(\epsilon_{t-i}\)</span> là sai số tại <span class="math inline">\(t-i\)</span></p>
+<p>Trong thư viện <code>statsmodels</code> không hỗ trợ chính thức cách tính <strong>Moving Average Model</strong>, nhưng chúng ta có thể áp dụng thông qua <code>ARIMA</code>. Ở phần sau chúng ta sẽ tìm hiểu về <code>ARIMA</code> rồi quay ngược lại ví dụ về <code>MA</code></p>
+</div>
+<div id="autoregressive-moving-average-model" class="section level2 hasAnchor" number="3.3">
+<h2><span class="header-section-number">3.3</span> AutoRegressive Moving Average Model<a href="arima.html#autoregressive-moving-average-model" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Như cái tên của nó, mô hình này kết hợp 2 Mô hình Autoregressive và Moving Average</p>
+<p>Nhăc lại công thức AR</p>
+<p><span class="math display">\[
+y_t = c + \sum^{p}_{1}\theta y_{t-i} + \epsilon_t
+\]</span></p>
+<p>Và công thức MA</p>
+<p><span class="math display">\[
+y_t = c  + \sum^{q}_{i=1}\theta_{i}\epsilon_{t-i} +  \epsilon_t
+\]</span></p>
+<p>Do đó công thức ARMA là kết hợp cả hai công thức</p>
+<p><span class="math display">\[
+y_t = c + \epsilon_t + \sum^{p}_{1}\phi y_{t-i}  + \sum^{q}_{i=1}\theta_{i}\epsilon_{t-i}
+\]</span></p>
+<p>Tương tự, trong thư viện <code>statsmodels</code> không hỗ trợ chính thức cách tính <strong>Moving Average Model</strong>, nhưng chúng ta có thể áp dụng thông qua <code>ARIMA</code>. Ở phần sau chúng ta sẽ tìm hiểu về <code>ARIMA</code> rồi quay ngược lại ví dụ về <code>MA</code></p>
 
 </div>
 </div>

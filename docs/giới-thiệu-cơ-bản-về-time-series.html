@@ -180,6 +180,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="3.1" data-path="arima.html"><a href="arima.html#autoregressive-model"><i class="fa fa-check"></i><b>3.1</b> Autoregressive Model</a></li>
 <li class="chapter" data-level="3.2" data-path="arima.html"><a href="arima.html#moving-average-model"><i class="fa fa-check"></i><b>3.2</b> Moving Average Model</a></li>
+<li class="chapter" data-level="3.3" data-path="arima.html"><a href="arima.html#autoregressive-moving-average-model"><i class="fa fa-check"></i><b>3.3</b> AutoRegressive Moving Average Model</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="" target="blank">Lê Huỳnh Đức</a></li>
@@ -313,7 +314,7 @@ Ví dụ tương quan giữa <code>Clothing</code> và <code>lag_1</code></p>
 <span id="cb8-4"><a href="giới-thiệu-cơ-bản-về-time-series.html#cb8-4" tabindex="-1"></a>       <span class="fl">0.43736208</span>, <span class="fl">0.49102051</span>, <span class="fl">0.46205604</span>, <span class="fl">0.42158496</span>, <span class="fl">0.4519868</span> ,</span>
 <span id="cb8-5"><a href="giới-thiệu-cơ-bản-về-time-series.html#cb8-5" tabindex="-1"></a>       <span class="fl">0.47432784</span>, <span class="fl">0.403097</span>  , <span class="fl">0.33531148</span>, <span class="fl">0.40104508</span>, <span class="fl">0.85039363</span>,</span>
 <span id="cb8-6"><a href="giới-thiệu-cơ-bản-về-time-series.html#cb8-6" tabindex="-1"></a>       <span class="fl">0.39243258</span>])</span></code></pre></div>
-<p>Ở đây correlation giữa <code>Clothing</code> và <code>lag_1</code> là 0.507, hơi khác so với dùng pandas, trong khuôn khổ phần này ta tập trung vào thư viện statsmodel hơn</p>
+<p>Ở đây correlation giữa <code>Clothing</code> và <code>lag_1</code> là 0.507, hơi khác so với dùng pandas, trong khuôn khổ phần này ta tập trung vào thư viện <code>statsmodels</code> hơn</p>
 <p>Để visualize các giá trị correlation này ta dùng hàm <code>plot_acf</code>, ví dụ vẽ autocorrelation với lag tối đa là 30</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb9-1"><a href="giới-thiệu-cơ-bản-về-time-series.html#cb9-1" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb9-2"><a href="giới-thiệu-cơ-bản-về-time-series.html#cb9-2" tabindex="-1"></a><span class="im">from</span> statsmodels.graphics.tsaplots <span class="im">import</span> plot_acf</span>

@@ -8,6 +8,12 @@ $$
 y_t = c + \theta_1 y_{t-1} + \theta_2 y_{t-2} + \theta_3 y_{t-3} + .... + \theta_p y_{t-p} + \epsilon_t
 $$
 
+Hoặc có thể viết lại
+
+$$
+y_t = c + \sum^{p}_{1}\theta y_{t-i} + \epsilon_t
+$$
+
 Trong đó: $\epsilon_t$ là nhiễu trắng. Có thể nói mô hình này là mô hình hồi quy đa biến với các biến là các giá trị lag tại thời điểm từ $1$ đến $p$. Chúng ta kí hiệu mô hình này là $AR(p)$
 
 Để sử dụng AR model, ta dùng class `AutoReg` của thư viện `statsmodels`, chúng ta dùng `root_mean_squared_error` để đánh giá mô hình. Mô hình sẽ được huấn luyện và dự đoán cho 7 ngày tiếp theo
@@ -78,3 +84,52 @@ Dưới đây là biểu đồ thể hiện giá trị Dự đoán và giá tr�
 ![](../images/03/autoregressive.png)
 
 ## Moving Average Model
+
+Thay vì sử dụng các giá trị trong quá khứ làm đầu vào để dự đoán, Moving Average Model sử dụng các lỗi dự báo của quá khứ để dự đoán giá trị tiếp theo. 
+
+Lưu ý cần phân biệt Moving Average Smoothing và Moving Average Model.
+
+**Moving Average Smoothing**
+
+> Ý tưởng chính là sử dụng một cửa sổ trượt trên chuỗi dữ liệu và tính trung bình của các giá trị trong cửa sổ đó. Kết quả là chuỗi dữ liệu mới, nơi mà các dao động ngắn hạn hoặc nhiễu được giảm thiểu, giúp nhận diện xu hướng và mô hình hóa chuỗi dữ liệu dễ dàng hơn.
+
+> Ví dụ, khi bạn thấy một chuỗi dữ liệu có nhiều dao động ngắn hạn và bạn muốn làm trơn nó để nhận diện xu hướng chung, bạn có thể sử dụng moving average smoothing để tạo ra một phiên bản làm trơn của chuỗi dữ liệu.
+
+Công thức MA model như sau
+
+$$
+y_t = c + \theta_1 \epsilon_{t-1} + \theta_2 \epsilon_{t-2} + \theta_3 \epsilon_{t-3} + .... + \theta_q \epsilon_{t-q} + \epsilon_t 
+$$
+Hoặc có thể viết lại
+
+$$
+y_t = c  + \sum^{q}_{i=1}\theta_{i}\epsilon_{t-i} +  \epsilon_t
+$$
+
+Trong đó $c$ là trung bình series, $\epsilon_{t-i}$ là sai số tại $t-i$
+
+Trong thư viện `statsmodels` không hỗ trợ chính thức cách tính **Moving Average Model**, nhưng chúng ta có thể áp dụng thông qua `ARIMA`. Ở phần sau chúng ta sẽ tìm hiểu về `ARIMA` rồi quay ngược lại ví dụ về `MA`
+
+## AutoRegressive Moving Average Model
+
+Như cái tên của nó, mô hình này kết hợp 2 Mô hình Autoregressive và Moving Average
+
+Nhăc lại công thức AR
+
+$$
+y_t = c + \sum^{p}_{1}\theta y_{t-i} + \epsilon_t
+$$
+
+Và công thức MA
+
+$$
+y_t = c  + \sum^{q}_{i=1}\theta_{i}\epsilon_{t-i} +  \epsilon_t
+$$
+
+Do đó công thức ARMA là kết hợp cả hai công thức
+
+$$
+y_t = c + \epsilon_t + \sum^{p}_{1}\phi y_{t-i}  + \sum^{q}_{i=1}\theta_{i}\epsilon_{t-i}
+$$
+
+Tương tự, trong thư viện `statsmodels` không hỗ trợ chính thức cách tính **Moving Average Model**, nhưng chúng ta có thể áp dụng thông qua `ARIMA`. Ở phần sau chúng ta sẽ tìm hiểu về `ARIMA` rồi quay ngược lại ví dụ về `MA`

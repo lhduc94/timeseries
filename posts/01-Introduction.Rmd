@@ -157,7 +157,7 @@ array([1.        , 0.50679045, 0.42793583, 0.48943282, 0.54920848,
        0.47432784, 0.403097  , 0.33531148, 0.40104508, 0.85039363,
        0.39243258])
 ```
-Ở đây correlation giữa `Clothing` và `lag_1` là 0.507, hơi khác so với dùng pandas, trong khuôn khổ phần này ta tập trung vào thư viện statsmodel hơn
+Ở đây correlation giữa `Clothing` và `lag_1` là 0.507, hơi khác so với dùng pandas, trong khuôn khổ phần này ta tập trung vào thư viện `statsmodels` hơn
 
 Để visualize các giá trị correlation này ta dùng hàm `plot_acf`, ví dụ vẽ autocorrelation với lag tối đa là 30
 
