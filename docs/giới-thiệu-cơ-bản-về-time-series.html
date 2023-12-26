@@ -31,7 +31,7 @@
   
   
 <link rel="prev" href="index.html"/>
-<link rel="next" href="arima.html"/>
+<link rel="next" href="smoothing.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -147,7 +147,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="1.1" data-path="giới-thiệu-cơ-bản-về-time-series.html"><a href="giới-thiệu-cơ-bản-về-time-series.html#time-series-là-gì"><i class="fa fa-check"></i><b>1.1</b> Time Series là gì</a></li>
 <li class="chapter" data-level="1.2" data-path="giới-thiệu-cơ-bản-về-time-series.html"><a href="giới-thiệu-cơ-bản-về-time-series.html#các-patterns-time-series"><i class="fa fa-check"></i><b>1.2</b> Các patterns Time Series</a></li>
-<li class="chapter" data-level="1.3" data-path="giới-thiệu-cơ-bản-về-time-series.html"><a href="giới-thiệu-cơ-bản-về-time-series.html#stationary-tính-dừng-của-dữ-liệu"><i class="fa fa-check"></i><b>1.3</b> Stationary (Tính dừng của dữ liệu)</a></li>
+<li class="chapter" data-level="1.3" data-path="giới-thiệu-cơ-bản-về-time-series.html"><a href="giới-thiệu-cơ-bản-về-time-series.html#các-đặc-điểm-của-time-series"><i class="fa fa-check"></i><b>1.3</b> Các đặc điểm của Time Series</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="giới-thiệu-cơ-bản-về-time-series.html"><a href="giới-thiệu-cơ-bản-về-time-series.html#stationary-tính-dừng-của-dữ-liệu"><i class="fa fa-check"></i><b>1.3.1</b> Stationary (Tính dừng của dữ liệu)</a></li>
+<li class="chapter" data-level="1.3.2" data-path="giới-thiệu-cơ-bản-về-time-series.html"><a href="giới-thiệu-cơ-bản-về-time-series.html#autocorrelation-tự-tương-quan"><i class="fa fa-check"></i><b>1.3.2</b> Autocorrelation (Tự tương quan)</a></li>
+<li class="chapter" data-level="1.3.3" data-path="giới-thiệu-cơ-bản-về-time-series.html"><a href="giới-thiệu-cơ-bản-về-time-series.html#partial-autocorrelation"><i class="fa fa-check"></i><b>1.3.3</b> Partial Autocorrelation</a></li>
+</ul></li>
 <li class="chapter" data-level="1.4" data-path="giới-thiệu-cơ-bản-về-time-series.html"><a href="giới-thiệu-cơ-bản-về-time-series.html#các-bài-toán-về-chuỗi-thời-gian"><i class="fa fa-check"></i><b>1.4</b> Các bài toán về chuỗi thời gian</a>
 <ul>
 <li class="chapter" data-level="1.4.1" data-path="giới-thiệu-cơ-bản-về-time-series.html"><a href="giới-thiệu-cơ-bản-về-time-series.html#dự-đoán-giá-trị-tiếp-theo-dựa-trên-các-giá-trị-trước-đó"><i class="fa fa-check"></i><b>1.4.1</b> Dự đoán giá trị tiếp theo dựa trên các giá trị trước đó</a></li>
@@ -155,21 +160,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.4.3" data-path="giới-thiệu-cơ-bản-về-time-series.html"><a href="giới-thiệu-cơ-bản-về-time-series.html#phân-đoạn-chuỗi-thời-gian"><i class="fa fa-check"></i><b>1.4.3</b> Phân đoạn chuỗi thời gian</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="arima.html"><a href="arima.html"><i class="fa fa-check"></i><b>2</b> ARIMA</a>
+<li class="chapter" data-level="2" data-path="smoothing.html"><a href="smoothing.html"><i class="fa fa-check"></i><b>2</b> Smoothing</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="arima.html"><a href="arima.html#lag"><i class="fa fa-check"></i><b>2.1</b> Lag</a></li>
-<li class="chapter" data-level="2.2" data-path="arima.html"><a href="arima.html#autocorrelation-tự-tương-quan"><i class="fa fa-check"></i><b>2.2</b> Autocorrelation (Tự tương quan)</a></li>
-<li class="chapter" data-level="2.3" data-path="arima.html"><a href="arima.html#partial-autocorrelation"><i class="fa fa-check"></i><b>2.3</b> Partial Autocorrelation</a></li>
+<li class="chapter" data-level="2.1" data-path="smoothing.html"><a href="smoothing.html#moving-average-smoothing"><i class="fa fa-check"></i><b>2.1</b> Moving Average Smoothing</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="smoothing.html"><a href="smoothing.html#centered-moving-average"><i class="fa fa-check"></i><b>2.1.1</b> Centered Moving Average</a></li>
+<li class="chapter" data-level="2.1.2" data-path="smoothing.html"><a href="smoothing.html#trailing-moving-average"><i class="fa fa-check"></i><b>2.1.2</b> Trailing Moving Average</a></li>
+<li class="chapter" data-level="2.1.3" data-path="smoothing.html"><a href="smoothing.html#ví-dụ"><i class="fa fa-check"></i><b>2.1.3</b> Ví dụ</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="smoothing.html"><a href="smoothing.html"><i class="fa fa-check"></i><b>3</b> Smoothing</a>
-<ul>
-<li class="chapter" data-level="3.1" data-path="smoothing.html"><a href="smoothing.html#moving-average-smoothing"><i class="fa fa-check"></i><b>3.1</b> Moving Average Smoothing</a>
-<ul>
-<li class="chapter" data-level="3.1.1" data-path="smoothing.html"><a href="smoothing.html#centered-moving-average"><i class="fa fa-check"></i><b>3.1.1</b> Centered Moving Average</a></li>
-<li class="chapter" data-level="3.1.2" data-path="smoothing.html"><a href="smoothing.html#trailing-moving-average"><i class="fa fa-check"></i><b>3.1.2</b> Trailing Moving Average</a></li>
-<li class="chapter" data-level="3.1.3" data-path="smoothing.html"><a href="smoothing.html#ví-dụ"><i class="fa fa-check"></i><b>3.1.3</b> Ví dụ</a></li>
-</ul></li>
-<li class="chapter" data-level="3.2" data-path="smoothing.html"><a href="smoothing.html#exponential-smoothing"><i class="fa fa-check"></i><b>3.2</b> Exponential Smoothing</a></li>
+<li class="chapter" data-level="2.2" data-path="smoothing.html"><a href="smoothing.html#exponential-smoothing"><i class="fa fa-check"></i><b>2.2</b> Exponential Smoothing</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="" target="blank">Lê Huỳnh Đức</a></li>
@@ -209,6 +208,7 @@ Thời gian có thể định nghĩa theo:</p>
 <li>Theo không gian: Máy thứ nhất, máy thứ hai trong cùng một băng chuyền</li>
 <li>Theo độ sâu: Xuống 1 milimet, xuống 2 milimet</li>
 </ul>
+<p>Tóm lại, miễn các thông tin tuân theo thời gian và có hướng giá trị tuân theo</p>
 <hr />
 </div>
 <div id="các-patterns-time-series" class="section level2 hasAnchor" number="1.2">
@@ -236,9 +236,113 @@ Ví dụ như</p>
 <p><img src="https://sciencetheory.net/wp-content/uploads/2020/03/Business-Cycle-Graph-e1577193470836.png" /></p>
 <hr />
 </div>
-<div id="stationary-tính-dừng-của-dữ-liệu" class="section level2 hasAnchor" number="1.3">
-<h2><span class="header-section-number">1.3</span> Stationary (Tính dừng của dữ liệu)<a href="giới-thiệu-cơ-bản-về-time-series.html#stationary-tính-dừng-của-dữ-liệu" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Chuỗi thời gian dừng là chuỗi có các đặc trưng thống kê như mean, variance, autocorrelation không đổi theo thời gian.</p>
+<div id="các-đặc-điểm-của-time-series" class="section level2 hasAnchor" number="1.3">
+<h2><span class="header-section-number">1.3</span> Các đặc điểm của Time Series<a href="giới-thiệu-cơ-bản-về-time-series.html#các-đặc-điểm-của-time-series" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="stationary-tính-dừng-của-dữ-liệu" class="section level3 hasAnchor" number="1.3.1">
+<h3><span class="header-section-number">1.3.1</span> Stationary (Tính dừng của dữ liệu)<a href="giới-thiệu-cơ-bản-về-time-series.html#stationary-tính-dừng-của-dữ-liệu" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Chuỗi thời gian dừng là chuỗi có các đặc trưng thống kê như mean, variance, autocorrelation không đổi theo thời gian.
+### Lag</p>
+<p>Lag của Time Series thể hiện việc lùi về một mốc trước đó. Ví dụ lag(1) nghĩa là lùi về trước đó 1 đơn vị <span class="math inline">\(X_{T-1}\)</span>. Lag(n) nghĩa là lùi về trước đó n đơn vị <span class="math inline">\(X_{T-n}\)</span></p>
+<p>Ví dụ về số lượng quần áo bán ra của US từ năm 1992 đến năm 2019</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="giới-thiệu-cơ-bản-về-time-series.html#cb1-1" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">&#39;../data/us-retail-sales.csv&#39;</span>)</span>
+<span id="cb1-2"><a href="giới-thiệu-cơ-bản-về-time-series.html#cb1-2" tabindex="-1"></a>df</span></code></pre></div>
+<pre><code>         Month  Clothing
+0   1992-01-01  6938
+1   1992-02-01  7524
+2   1992-03-01  8475
+3   1992-04-01  9401
+4   1992-05-01  9558
+... ... ...
+331 2019-08-01  23829
+332 2019-09-01  19567
+333 2019-10-01  21400
+334 2019-11-01  25170
+335 2019-12-01  35157</code></pre>
+<p>Trong pandas, để tìm lag, ta dùng phương thức <code>shift</code>. Ví dụ</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="giới-thiệu-cơ-bản-về-time-series.html#cb3-1" tabindex="-1"></a>df[<span class="st">&#39;lag_1&#39;</span>] <span class="op">=</span> df[<span class="st">&#39;Clothing&#39;</span>].shift(<span class="dv">1</span>)</span>
+<span id="cb3-2"><a href="giới-thiệu-cơ-bản-về-time-series.html#cb3-2" tabindex="-1"></a>df[<span class="st">&#39;lag_3&#39;</span>] <span class="op">=</span> df[<span class="st">&#39;Clothing&#39;</span>].shift(<span class="dv">3</span>)</span>
+<span id="cb3-3"><a href="giới-thiệu-cơ-bản-về-time-series.html#cb3-3" tabindex="-1"></a>df[<span class="st">&#39;lag_12&#39;</span>] <span class="op">=</span> df[<span class="st">&#39;Clothing&#39;</span>].shift(<span class="dv">12</span>)</span>
+<span id="cb3-4"><a href="giới-thiệu-cơ-bản-về-time-series.html#cb3-4" tabindex="-1"></a>df</span></code></pre></div>
+<pre><code>         Month  Clothing    lag_1    lag_3   lag_12
+0   1992-01-01      6938      NaN      NaN      NaN
+1   1992-02-01      7524   6938.0      NaN      NaN
+2   1992-03-01      8475   7524.0      NaN      NaN
+3   1992-04-01      9401   8475.0   6938.0      NaN
+4   1992-05-01      9558   9401.0   7524.0      NaN
+..         ...       ...      ...      ...      ...
+331 2019-08-01     23829  21742.0  23079.0  23121.0
+332 2019-09-01     19567  23829.0  21116.0  19782.0
+333 2019-10-01     21400  19567.0  21742.0  21203.0
+334 2019-11-01     25170  21400.0  23829.0  25364.0
+335 2019-12-01     35157  25170.0  19567.0  33950.0</code></pre>
+</div>
+<div id="autocorrelation-tự-tương-quan" class="section level3 hasAnchor" number="1.3.2">
+<h3><span class="header-section-number">1.3.2</span> Autocorrelation (Tự tương quan)<a href="giới-thiệu-cơ-bản-về-time-series.html#autocorrelation-tự-tương-quan" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><strong>Correlation</strong></p>
+<p>Correlation là tương quan giữa 2 biến khác nhau, giá trị correlation nằm trong khoảng từ -1 đến 1, nếu giá trị càng tiến -1 nghĩa là 2 biến có sự tương quan nghịch, giá trị càng tiến đến +1 nghĩa là 2 biến có sự tương quan thuận</p>
+<p><strong>Autocorrelation</strong></p>
+<p>Autocorrelation là tương quan giữa một chuỗi timeseries và chuỗi đó với giá trị trước đó của chính nó.
+Ví dụ tương quan giữa <code>Clothing</code> và <code>lag_1</code></p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="giới-thiệu-cơ-bản-về-time-series.html#cb5-1" tabindex="-1"></a>df[[<span class="st">&#39;Clothing&#39;</span>,<span class="st">&#39;lag_1&#39;</span>]].corr()</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="giới-thiệu-cơ-bản-về-time-series.html#cb6-1" tabindex="-1"></a>            Clothing       lag_1</span>
+<span id="cb6-2"><a href="giới-thiệu-cơ-bản-về-time-series.html#cb6-2" tabindex="-1"></a>Clothing    <span class="fl">1.000000</span>    <span class="fl">0.518296</span></span>
+<span id="cb6-3"><a href="giới-thiệu-cơ-bản-về-time-series.html#cb6-3" tabindex="-1"></a>lag_1       <span class="fl">0.518296</span>    <span class="fl">1.000000</span></span></code></pre></div>
+<p>Tương quan giữa 2 biến này là 0.5</p>
+<p><img src="../images/01/lag_corr.png" /></p>
+<p>Để tính correlation giữa Timeseries và các lag của nó, ta sử dụng hàm <code>acf</code> trong statsmodel</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="giới-thiệu-cơ-bản-về-time-series.html#cb7-1" tabindex="-1"></a><span class="im">from</span> statsmodels.api <span class="im">import</span> tsa</span>
+<span id="cb7-2"><a href="giới-thiệu-cơ-bản-về-time-series.html#cb7-2" tabindex="-1"></a>tsa.acf(df[<span class="st">&#39;Clothing&#39;</span>])</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="giới-thiệu-cơ-bản-về-time-series.html#cb8-1" tabindex="-1"></a>array([<span class="fl">1.</span>        , <span class="fl">0.50679045</span>, <span class="fl">0.42793583</span>, <span class="fl">0.48943282</span>, <span class="fl">0.54920848</span>,</span>
+<span id="cb8-2"><a href="giới-thiệu-cơ-bản-về-time-series.html#cb8-2" tabindex="-1"></a>       <span class="fl">0.51760066</span>, <span class="fl">0.47709491</span>, <span class="fl">0.50840091</span>, <span class="fl">0.5311846</span> , <span class="fl">0.46104267</span>,</span>
+<span id="cb8-3"><a href="giới-thiệu-cơ-bản-về-time-series.html#cb8-3" tabindex="-1"></a>       <span class="fl">0.38738473</span>, <span class="fl">0.45582436</span>, <span class="fl">0.9264336</span> , <span class="fl">0.45220705</span>, <span class="fl">0.37936738</span>,</span>
+<span id="cb8-4"><a href="giới-thiệu-cơ-bản-về-time-series.html#cb8-4" tabindex="-1"></a>       <span class="fl">0.43736208</span>, <span class="fl">0.49102051</span>, <span class="fl">0.46205604</span>, <span class="fl">0.42158496</span>, <span class="fl">0.4519868</span> ,</span>
+<span id="cb8-5"><a href="giới-thiệu-cơ-bản-về-time-series.html#cb8-5" tabindex="-1"></a>       <span class="fl">0.47432784</span>, <span class="fl">0.403097</span>  , <span class="fl">0.33531148</span>, <span class="fl">0.40104508</span>, <span class="fl">0.85039363</span>,</span>
+<span id="cb8-6"><a href="giới-thiệu-cơ-bản-về-time-series.html#cb8-6" tabindex="-1"></a>       <span class="fl">0.39243258</span>])</span></code></pre></div>
+<p>Ở đây correlation giữa <code>Clothing</code> và <code>lag_1</code> là 0.507, hơi khác so với dùng pandas, trong khuôn khổ phần này ta tập trung vào thư viện statsmodel hơn</p>
+<p>Để visualize các giá trị correlation này ta dùng hàm <code>plot_acf</code>, ví dụ vẽ autocorrelation với lag tối đa là 30</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb9-1"><a href="giới-thiệu-cơ-bản-về-time-series.html#cb9-1" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb9-2"><a href="giới-thiệu-cơ-bản-về-time-series.html#cb9-2" tabindex="-1"></a><span class="im">from</span> statsmodels.graphics.tsaplots <span class="im">import</span> plot_acf</span>
+<span id="cb9-3"><a href="giới-thiệu-cơ-bản-về-time-series.html#cb9-3" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">5</span>))</span>
+<span id="cb9-4"><a href="giới-thiệu-cơ-bản-về-time-series.html#cb9-4" tabindex="-1"></a>plot_acf(df[<span class="st">&#39;Clothing&#39;</span>], lags<span class="op">=</span><span class="dv">30</span>, ax<span class="op">=</span>ax)</span>
+<span id="cb9-5"><a href="giới-thiệu-cơ-bản-về-time-series.html#cb9-5" tabindex="-1"></a>_ <span class="op">=</span>plt.xticks(<span class="bu">list</span>(<span class="bu">range</span>(<span class="dv">31</span>)))</span>
+<span id="cb9-6"><a href="giới-thiệu-cơ-bản-về-time-series.html#cb9-6" tabindex="-1"></a>plt.show()</span></code></pre></div>
+<p><img src="../images/01/auto_corr.png" /></p>
+<p>Trong hình vẽ ta có thể thấy, correlation tại lag=12 và lag=24 có giá trị rất cao, do đó có thể suy đoán được timeseries này có tính tuần hoàn sau 12 tháng</p>
+<div id="ứng-dụng-của-autocorrelation" class="section level4 hasAnchor" number="1.3.2.1">
+<h4><span class="header-section-number">1.3.2.1</span> Ứng dụng của Autocorrelation<a href="giới-thiệu-cơ-bản-về-time-series.html#ứng-dụng-của-autocorrelation" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ul>
+<li><strong>Xử lý Tín Hiệu và Thời Gian</strong>:
+<ul>
+<li><strong>Phân tích chuỗi thời gian</strong>: Được sử dụng để phát hiện chu kỳ, mô hình chuỗi thời gian, và dự đoán giá trị trong tương lai.</li>
+<li><strong>Xử lý âm thanh</strong>: Trong xử lý tín hiệu âm thanh, tự động tương quan có thể được sử dụng để phát hiện các tần số quan trọng và các sự kiện lặp lại trong dữ liệu âm thanh.</li>
+</ul></li>
+<li><strong>Khoa học Dữ Liệu</strong>:
+<ul>
+<li><strong>Phân tích dữ liệu</strong>: Trong khoa học dữ liệu và thống kê, tự động tương quan giúp phát hiện mối tương quan giữa các biến và mô tả sự phụ thuộc thời gian của dữ liệu.</li>
+<li><strong>Phát hiện xu hướng và chu kỳ</strong>: Tự động tương quan có thể giúp xác định xu hướng và chu kỳ trong dữ liệu, giúp các nhà nghiên cứu và chuyên gia dự đoán và phân tích xu hướng thị trường, tình hình thời tiết, và nhiều ứng dụng khác.</li>
+</ul></li>
+<li><strong>Kỹ thuật và Kỹ thuật số</strong>:
+<ul>
+<li><strong>Xử lý ảnh</strong>: Trong xử lý ảnh, tự động tương quan có thể được sử dụng để phát hiện biến đổi không gian và mô hình hình dạng.</li>
+<li><strong>Kỹ thuật số và mạng truyền thông</strong>: Trong mạng truyền thông số và kỹ thuật số, tự động tương quan giúp phân tích tín hiệu, phát hiện tín hiệu trong nhiễu và cải thiện chất lượng truyền thông.</li>
+</ul></li>
+<li><strong>Tài chính và Kinh tế</strong>:
+<ul>
+<li>Phân tích thị trường: Trong tài chính, tự động tương quan giúp phân tích và dự đoán xu hướng thị trường, giúp các nhà giao dịch và nhà đầu tư hiểu rõ hơn về sự biến động và rủi ro trong thị trường tài chính.</li>
+</ul></li>
+<li><strong>Khoa học và Tâm lý học</strong>:
+<ul>
+<li><strong>Nghiên cứu tâm lý</strong>: Trong nghiên cứu tâm lý, tự động tương quan có thể được sử dụng để phân tích sự phụ thuộc thời gian của các biến tâm lý và hành vi, giúp hiểu rõ hơn về sự ảnh hưởng và tương tác giữa các yếu tố khác nhau trong tâm lý học.
+Như vậy, tự động tương quan là một công cụ quan trọng và linh hoạt, được sử dụng rộng rãi trong nhiều lĩnh vực để phân tích, mô hình, và hiểu rõ hơn về sự phụ thuộc và tương tác trong dữ liệu và các hệ thống phức tạp.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="partial-autocorrelation" class="section level3 hasAnchor" number="1.3.3">
+<h3><span class="header-section-number">1.3.3</span> Partial Autocorrelation<a href="giới-thiệu-cơ-bản-về-time-series.html#partial-autocorrelation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Partial Autocorrelation cũng tương tự như Autocorrelation. Tuy nhiên, nó mở rộng hơn bằng cách loại bỏ ảnh hưởng của các mốc thời gian trước đó.</p>
+<p>Ví dụ tương quan Partial Autocorrelation với lag = 3 sẽ bỏ qua các giá trị trễ tại lag = 1 và lag = 2</p>
+</div>
 </div>
 <div id="các-bài-toán-về-chuỗi-thời-gian" class="section level2 hasAnchor" number="1.4">
 <h2><span class="header-section-number">1.4</span> Các bài toán về chuỗi thời gian<a href="giới-thiệu-cơ-bản-về-time-series.html#các-bài-toán-về-chuỗi-thời-gian" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -260,7 +364,7 @@ Ví dụ như</p>
         </div>
       </div>
 <a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="arima.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="smoothing.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

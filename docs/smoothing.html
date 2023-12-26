@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chương 3 Smoothing | Phân tích Chuỗi thời gian</title>
+  <title>Chương 2 Smoothing | Phân tích Chuỗi thời gian</title>
   <meta name="description" content="Time Serie Analysis" />
   <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chương 3 Smoothing | Phân tích Chuỗi thời gian" />
+  <meta property="og:title" content="Chương 2 Smoothing | Phân tích Chuỗi thời gian" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="Time Serie Analysis" />
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chương 3 Smoothing | Phân tích Chuỗi thời gian" />
+  <meta name="twitter:title" content="Chương 2 Smoothing | Phân tích Chuỗi thời gian" />
   
   <meta name="twitter:description" content="Time Serie Analysis" />
   
@@ -30,7 +30,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="arima.html"/>
+<link rel="prev" href="giới-thiệu-cơ-bản-về-time-series.html"/>
 
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -147,7 +147,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="1.1" data-path="giới-thiệu-cơ-bản-về-time-series.html"><a href="giới-thiệu-cơ-bản-về-time-series.html#time-series-là-gì"><i class="fa fa-check"></i><b>1.1</b> Time Series là gì</a></li>
 <li class="chapter" data-level="1.2" data-path="giới-thiệu-cơ-bản-về-time-series.html"><a href="giới-thiệu-cơ-bản-về-time-series.html#các-patterns-time-series"><i class="fa fa-check"></i><b>1.2</b> Các patterns Time Series</a></li>
-<li class="chapter" data-level="1.3" data-path="giới-thiệu-cơ-bản-về-time-series.html"><a href="giới-thiệu-cơ-bản-về-time-series.html#stationary-tính-dừng-của-dữ-liệu"><i class="fa fa-check"></i><b>1.3</b> Stationary (Tính dừng của dữ liệu)</a></li>
+<li class="chapter" data-level="1.3" data-path="giới-thiệu-cơ-bản-về-time-series.html"><a href="giới-thiệu-cơ-bản-về-time-series.html#các-đặc-điểm-của-time-series"><i class="fa fa-check"></i><b>1.3</b> Các đặc điểm của Time Series</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="giới-thiệu-cơ-bản-về-time-series.html"><a href="giới-thiệu-cơ-bản-về-time-series.html#stationary-tính-dừng-của-dữ-liệu"><i class="fa fa-check"></i><b>1.3.1</b> Stationary (Tính dừng của dữ liệu)</a></li>
+<li class="chapter" data-level="1.3.2" data-path="giới-thiệu-cơ-bản-về-time-series.html"><a href="giới-thiệu-cơ-bản-về-time-series.html#autocorrelation-tự-tương-quan"><i class="fa fa-check"></i><b>1.3.2</b> Autocorrelation (Tự tương quan)</a></li>
+<li class="chapter" data-level="1.3.3" data-path="giới-thiệu-cơ-bản-về-time-series.html"><a href="giới-thiệu-cơ-bản-về-time-series.html#partial-autocorrelation"><i class="fa fa-check"></i><b>1.3.3</b> Partial Autocorrelation</a></li>
+</ul></li>
 <li class="chapter" data-level="1.4" data-path="giới-thiệu-cơ-bản-về-time-series.html"><a href="giới-thiệu-cơ-bản-về-time-series.html#các-bài-toán-về-chuỗi-thời-gian"><i class="fa fa-check"></i><b>1.4</b> Các bài toán về chuỗi thời gian</a>
 <ul>
 <li class="chapter" data-level="1.4.1" data-path="giới-thiệu-cơ-bản-về-time-series.html"><a href="giới-thiệu-cơ-bản-về-time-series.html#dự-đoán-giá-trị-tiếp-theo-dựa-trên-các-giá-trị-trước-đó"><i class="fa fa-check"></i><b>1.4.1</b> Dự đoán giá trị tiếp theo dựa trên các giá trị trước đó</a></li>
@@ -155,21 +160,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.4.3" data-path="giới-thiệu-cơ-bản-về-time-series.html"><a href="giới-thiệu-cơ-bản-về-time-series.html#phân-đoạn-chuỗi-thời-gian"><i class="fa fa-check"></i><b>1.4.3</b> Phân đoạn chuỗi thời gian</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="arima.html"><a href="arima.html"><i class="fa fa-check"></i><b>2</b> ARIMA</a>
+<li class="chapter" data-level="2" data-path="smoothing.html"><a href="smoothing.html"><i class="fa fa-check"></i><b>2</b> Smoothing</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="arima.html"><a href="arima.html#lag"><i class="fa fa-check"></i><b>2.1</b> Lag</a></li>
-<li class="chapter" data-level="2.2" data-path="arima.html"><a href="arima.html#autocorrelation-tự-tương-quan"><i class="fa fa-check"></i><b>2.2</b> Autocorrelation (Tự tương quan)</a></li>
-<li class="chapter" data-level="2.3" data-path="arima.html"><a href="arima.html#partial-autocorrelation"><i class="fa fa-check"></i><b>2.3</b> Partial Autocorrelation</a></li>
+<li class="chapter" data-level="2.1" data-path="smoothing.html"><a href="smoothing.html#moving-average-smoothing"><i class="fa fa-check"></i><b>2.1</b> Moving Average Smoothing</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="smoothing.html"><a href="smoothing.html#centered-moving-average"><i class="fa fa-check"></i><b>2.1.1</b> Centered Moving Average</a></li>
+<li class="chapter" data-level="2.1.2" data-path="smoothing.html"><a href="smoothing.html#trailing-moving-average"><i class="fa fa-check"></i><b>2.1.2</b> Trailing Moving Average</a></li>
+<li class="chapter" data-level="2.1.3" data-path="smoothing.html"><a href="smoothing.html#ví-dụ"><i class="fa fa-check"></i><b>2.1.3</b> Ví dụ</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="smoothing.html"><a href="smoothing.html"><i class="fa fa-check"></i><b>3</b> Smoothing</a>
-<ul>
-<li class="chapter" data-level="3.1" data-path="smoothing.html"><a href="smoothing.html#moving-average-smoothing"><i class="fa fa-check"></i><b>3.1</b> Moving Average Smoothing</a>
-<ul>
-<li class="chapter" data-level="3.1.1" data-path="smoothing.html"><a href="smoothing.html#centered-moving-average"><i class="fa fa-check"></i><b>3.1.1</b> Centered Moving Average</a></li>
-<li class="chapter" data-level="3.1.2" data-path="smoothing.html"><a href="smoothing.html#trailing-moving-average"><i class="fa fa-check"></i><b>3.1.2</b> Trailing Moving Average</a></li>
-<li class="chapter" data-level="3.1.3" data-path="smoothing.html"><a href="smoothing.html#ví-dụ"><i class="fa fa-check"></i><b>3.1.3</b> Ví dụ</a></li>
-</ul></li>
-<li class="chapter" data-level="3.2" data-path="smoothing.html"><a href="smoothing.html#exponential-smoothing"><i class="fa fa-check"></i><b>3.2</b> Exponential Smoothing</a></li>
+<li class="chapter" data-level="2.2" data-path="smoothing.html"><a href="smoothing.html#exponential-smoothing"><i class="fa fa-check"></i><b>2.2</b> Exponential Smoothing</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="" target="blank">Lê Huỳnh Đức</a></li>
@@ -191,19 +190,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="smoothing" class="section level1 hasAnchor" number="3">
-<h1><span class="header-section-number">Chương 3</span> Smoothing<a href="smoothing.html#smoothing" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="smoothing" class="section level1 hasAnchor" number="2">
+<h1><span class="header-section-number">Chương 2</span> Smoothing<a href="smoothing.html#smoothing" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>Kỹ thuật làm mịn là một trong các kỹ thuật tiền xử lý dữ liệu để loại bỏ các nhiễu trong dữ liệu. Việc làm mịn dữ liệu giúp xóa bỏ mùa vụ của dữ liệu và giúp đơn giản hóa các mô hình dự đoán.</p>
 <p>Các kỹ thuật làm mịn dữ liệu bao gồm:</p>
 <ul>
 <li>Làm mịn trung bình trượt (Moving Average Smoothing)</li>
 <li>Làm mịn cấp số nhân (Exponential smoothing)</li>
 </ul>
-<div id="moving-average-smoothing" class="section level2 hasAnchor" number="3.1">
-<h2><span class="header-section-number">3.1</span> Moving Average Smoothing<a href="smoothing.html#moving-average-smoothing" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="moving-average-smoothing" class="section level2 hasAnchor" number="2.1">
+<h2><span class="header-section-number">2.1</span> Moving Average Smoothing<a href="smoothing.html#moving-average-smoothing" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Có 2 loại trung bình trượt : Centered MA và Trailing MA</p>
-<div id="centered-moving-average" class="section level3 hasAnchor" number="3.1.1">
-<h3><span class="header-section-number">3.1.1</span> Centered Moving Average<a href="smoothing.html#centered-moving-average" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="centered-moving-average" class="section level3 hasAnchor" number="2.1.1">
+<h3><span class="header-section-number">2.1.1</span> Centered Moving Average<a href="smoothing.html#centered-moving-average" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Với trung bình trượt với cửa sổ trượt <span class="math inline">\(k\)</span> bằng 3 ta có:</p>
 <p><span class="math display">\[\begin{align}
 \Large S_{T} = \frac{y_{T+1} + y_{T} + y_{T-1}}{3}
@@ -215,8 +214,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Trong đó <span class="math inline">\(k = 2m + 1\)</span></p>
 <p>Phương pháp này sử dụng giá trị tương lai <span class="math inline">\(y_{T+1}\)</span> do đó không áp dụng được vào các mô hình dự báo. Phương pháp dùng để thống kê mô tả dữ liệu</p>
 </div>
-<div id="trailing-moving-average" class="section level3 hasAnchor" number="3.1.2">
-<h3><span class="header-section-number">3.1.2</span> Trailing Moving Average<a href="smoothing.html#trailing-moving-average" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="trailing-moving-average" class="section level3 hasAnchor" number="2.1.2">
+<h3><span class="header-section-number">2.1.2</span> Trailing Moving Average<a href="smoothing.html#trailing-moving-average" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Với trung bình trượt với cửa sổ trượt <span class="math inline">\(k\)</span> bằng 3 ta có</p>
 <p><span class="math display">\[\begin{align}
 \Large S_{T} = \frac{y_{T} + y_{T - 1} + y_{T - 2}}{3}
@@ -227,8 +226,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 \end{align}\]</span></p>
 <p>Phương pháp này chỉ sử dụng dữ liệu quá khứ nên có thể áp dụng cho việc dự báo các giá trị tương lai</p>
 </div>
-<div id="ví-dụ" class="section level3 hasAnchor" number="3.1.3">
-<h3><span class="header-section-number">3.1.3</span> Ví dụ<a href="smoothing.html#ví-dụ" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="ví-dụ" class="section level3 hasAnchor" number="2.1.3">
+<h3><span class="header-section-number">2.1.3</span> Ví dụ<a href="smoothing.html#ví-dụ" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Dưới đây là ví dụ về số bé gái sinh ra mỗi ngày</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb10-1"><a href="smoothing.html#cb10-1" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">&#39;../data/daily-total-female-births.csv&#39;</span>)</span>
 <span id="cb10-2"><a href="smoothing.html#cb10-2" tabindex="-1"></a>df[<span class="st">&#39;Date&#39;</span>] <span class="op">=</span> pd.to_datetime(df[<span class="st">&#39;Date&#39;</span>])</span>
@@ -265,7 +264,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb13-10"><a href="smoothing.html#cb13-10" tabindex="-1"></a>plt.yticks(fontsize<span class="op">=</span><span class="dv">15</span>)</span>
 <span id="cb13-11"><a href="smoothing.html#cb13-11" tabindex="-1"></a>plt.ylabel(<span class="st">&#39;Births&#39;</span>,fontsize<span class="op">=</span><span class="dv">15</span>)</span>
 <span id="cb13-12"><a href="smoothing.html#cb13-12" tabindex="-1"></a>plt.legend(fontsize<span class="op">=</span><span class="dv">15</span>)</span></code></pre></div>
-<p><img src="../images/03/MA.png" /></p>
+<p><img src="../images/02/MA.png" /></p>
 <p>với các tham số <span class="math inline">\(k =6\)</span> và <span class="math inline">\(k=12\)</span></p>
 <div class="sourceCode" id="cb14"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb14-1"><a href="smoothing.html#cb14-1" tabindex="-1"></a>fig1 <span class="op">=</span> plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>,<span class="dv">5</span>))</span>
 <span id="cb14-2"><a href="smoothing.html#cb14-2" tabindex="-1"></a>df[<span class="st">&#39;Births_MA&#39;</span>] <span class="op">=</span> df[<span class="st">&#39;Births&#39;</span>].rolling(window<span class="op">=</span><span class="dv">6</span>, center<span class="op">=</span><span class="va">False</span>).mean()</span>
@@ -277,7 +276,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb14-8"><a href="smoothing.html#cb14-8" tabindex="-1"></a>plt.ylabel(<span class="st">&#39;Birds&#39;</span>,fontsize<span class="op">=</span><span class="dv">15</span>)</span>
 <span id="cb14-9"><a href="smoothing.html#cb14-9" tabindex="-1"></a>plt.legend(fontsize<span class="op">=</span><span class="dv">15</span>)</span>
 <span id="cb14-10"><a href="smoothing.html#cb14-10" tabindex="-1"></a>plt.title(<span class="st">&#39;6-MA&#39;</span>, fontsize<span class="op">=</span><span class="dv">15</span>)</span></code></pre></div>
-<p><img src="../images/03/6-MA.png" /></p>
+<p><img src="../images/02/6-MA.png" /></p>
 <div class="sourceCode" id="cb15"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb15-1"><a href="smoothing.html#cb15-1" tabindex="-1"></a>fig2 <span class="op">=</span> plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>,<span class="dv">5</span>))</span>
 <span id="cb15-2"><a href="smoothing.html#cb15-2" tabindex="-1"></a>df[<span class="st">&#39;Births_MA&#39;</span>] <span class="op">=</span> df[<span class="st">&#39;Births&#39;</span>].rolling(window<span class="op">=</span><span class="dv">12</span>, center<span class="op">=</span><span class="va">False</span>).mean()</span>
 <span id="cb15-3"><a href="smoothing.html#cb15-3" tabindex="-1"></a>sns.lineplot(x<span class="op">=</span><span class="st">&#39;Date&#39;</span>, y<span class="op">=</span><span class="st">&#39;Births&#39;</span>, data<span class="op">=</span>df, label<span class="op">=</span><span class="st">&#39;original&#39;</span>)</span>
@@ -288,11 +287,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb15-8"><a href="smoothing.html#cb15-8" tabindex="-1"></a>plt.ylabel(<span class="st">&#39;Date&#39;</span>,fontsize<span class="op">=</span><span class="dv">15</span>)</span>
 <span id="cb15-9"><a href="smoothing.html#cb15-9" tabindex="-1"></a>plt.legend(fontsize<span class="op">=</span><span class="dv">15</span>)</span>
 <span id="cb15-10"><a href="smoothing.html#cb15-10" tabindex="-1"></a>plt.title(<span class="st">&#39;12-MA&#39;</span>, fontsize<span class="op">=</span><span class="dv">15</span>)</span></code></pre></div>
-<p><img src="../images/03/12-MA.png" /></p>
+<p><img src="../images/02/12-MA.png" /></p>
 </div>
 </div>
-<div id="exponential-smoothing" class="section level2 hasAnchor" number="3.2">
-<h2><span class="header-section-number">3.2</span> Exponential Smoothing<a href="smoothing.html#exponential-smoothing" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="exponential-smoothing" class="section level2 hasAnchor" number="2.2">
+<h2><span class="header-section-number">2.2</span> Exponential Smoothing<a href="smoothing.html#exponential-smoothing" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Hàm làm mịn Exponential là một hàm làm mịn sử dụng hàm mũ. Trong khi các hàm Moving Average đơn giản sử dụng các giá trị quá khứ với trọng số bằng nhau thì hàm Exponential sử dụng hàm số mũ cho trọng số đảm bảo giảm dần theo thời gian.</p>
 <p>Hàm làm mịn Exponential thường áp dụng vào xử lý tín hiệu số để lọc những nhiễu có tầm số cao. Hàm này là dạy truy hồi với công thức như sau</p>
 <p><span class="math inline">\(S_{0} = Y_{0}\)</span></p>
@@ -345,7 +344,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb19-7"><a href="smoothing.html#cb19-7" tabindex="-1"></a>plt.ylabel(<span class="st">&#39;Births&#39;</span>,fontsize<span class="op">=</span><span class="dv">15</span>)</span>
 <span id="cb19-8"><a href="smoothing.html#cb19-8" tabindex="-1"></a>plt.legend(fontsize<span class="op">=</span><span class="dv">15</span>)</span>
 <span id="cb19-9"><a href="smoothing.html#cb19-9" tabindex="-1"></a>plt.title(<span class="st">&#39;Exponential Smoothing with alpha=0.3&#39;</span>, fontsize<span class="op">=</span><span class="dv">15</span>)</span></code></pre></div>
-<p><img src="../images/03/Exponential_Smoothing.png" /></p>
+<p><img src="../images/02/Exponential_Smoothing.png" /></p>
 
 </div>
 </div>
@@ -354,7 +353,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="arima.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="giới-thiệu-cơ-bản-về-time-series.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 
     </div>
   </div>

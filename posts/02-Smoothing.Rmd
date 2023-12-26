@@ -102,7 +102,7 @@ plt.ylabel('Births',fontsize=15)
 plt.legend(fontsize=15)
 ```
 
-![](../images/03/MA.png)
+![](../images/02/MA.png)
 
 
 với các tham số $k =6$ và $k=12$
@@ -118,7 +118,7 @@ plt.ylabel('Birds',fontsize=15)
 plt.legend(fontsize=15)
 plt.title('6-MA', fontsize=15)
 ```
-![](../images/03/6-MA.png )
+![](../images/02/6-MA.png )
 
 ```python
 fig2 = plt.figure(figsize=(10,5))
@@ -132,7 +132,7 @@ plt.ylabel('Date',fontsize=15)
 plt.legend(fontsize=15)
 plt.title('12-MA', fontsize=15)
 ```
-![](../images/03/12-MA.png)
+![](../images/02/12-MA.png)
 
 ## Exponential Smoothing
 
@@ -214,4 +214,4 @@ plt.legend(fontsize=15)
 plt.title('Exponential Smoothing with alpha=0.3', fontsize=15)
 ```
 
-![](../images/03/Exponential_Smoothing.png)
+![](../images/02/Exponential_Smoothing.png)
