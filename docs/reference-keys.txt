@@ -16,3 +16,4 @@ centered-moving-average
 trailing-moving-average
 ví-dụ
 exponential-smoothing
+autoregressive-model
