@@ -16,7 +16,7 @@ Có 2 loại trung bình trượt : Centered MA và Trailing MA
 Với trung bình trượt với cửa sổ trượt $k$ bằng 3 ta có:
 
 $$\begin{align}
-\Large S_{T} = \frac{y_{T+1} + y_{T} + y_{T-1}}{3}
+\Large s_{t} = \frac{y_{t+1} + y_{t} + y_{t-1}}{3}
 \end{align}$$
 
 
@@ -24,25 +24,25 @@ $$\begin{align}
 Tổng quát hơn
 
 $$\begin{align}
-\Large S_{T} = \frac{1}{m}  \sum_{j=-m}^{m}{y_{T+j}}
+\Large s_{t} = \frac{1}{m}  \sum_{j=-m}^{m}{y_{t+j}}
 \end{align}$$
 
 Trong đó $k = 2m + 1$
 
-Phương pháp này sử dụng giá trị tương lai $y_{T+1}$ do đó không áp dụng được vào các mô hình dự báo. Phương pháp dùng để thống kê mô tả dữ liệu
+Phương pháp này sử dụng giá trị tương lai $y_{t+1}$ do đó không áp dụng được vào các mô hình dự báo. Phương pháp dùng để thống kê mô tả dữ liệu
 
 ### Trailing Moving Average
 
 Với trung bình trượt với cửa sổ trượt $k$ bằng 3 ta có
 
 $$\begin{align}
-\Large S_{T} = \frac{y_{T} + y_{T - 1} + y_{T - 2}}{3}
+\Large s_{t} = \frac{y_{t} + y_{t - 1} + y_{t - 2}}{3}
 \end{align}$$
 
 Tổng quát hơn
 
 $$\begin{align}
-\Large S_{T} = \frac{1}{k} \sum^{k}_{i=1}{y_{T-i+1}}
+\Large s_{t} = \frac{1}{k} \sum^{k}_{i=1}{y_{t-i+1}}
 \end{align}$$
 
 Phương pháp này chỉ sử dụng dữ liệu quá khứ nên có thể áp dụng cho việc dự báo các giá trị tương lai
@@ -141,9 +141,9 @@ Hàm làm mịn Exponential là một hàm làm mịn sử dụng hàm mũ. Tron
 ### Simple Exponential Smoothing
 Hàm làm mịn Exponential thường áp dụng vào xử lý tín hiệu số để lọc những nhiễu có tầm số cao. Hàm này là dạy truy hồi với công thức như sau
 
-$S_{0} = Y_{0}$
+$s_{0} = y_{0}$
 
-$S_{T} = \alpha Y_{T} + (1 - \alpha)S_{T-1},  T > 0$
+$s_{t} = \alpha y_{t} + (1 - \alpha)s_{t-1},  t > 0$
 
 Trong đó $\alpha$ được gọi là tham số smoothing và  $0 < \alpha < 1$
 
@@ -151,16 +151,16 @@ Trong đó $\alpha$ được gọi là tham số smoothing và  $0 < \alpha < 1$
 
 Với công thức Truy hồi trên ta có thể biến đổi như sau
 
-$S_T = \alpha Y_T + (1 - \alpha)S_{T-1}$
+$s_t = \alpha y_t + (1 - \alpha)s_{t-1}$
 
-$S_T = \alpha Y_T + (1 - \alpha)(\alpha Y_{T-1} + (1 - \alpha)S_{T-2})$
+$s_t = \alpha y_t + (1 - \alpha)(\alpha y_{t-1} + (1 - \alpha)s_{t-2})$
 
-$S_T = \alpha Y_T + \alpha(1 - \alpha)Y_{T-1} + (1-\alpha)^2S_{T-2}$
+$s_t = \alpha y_t + \alpha(1 - \alpha)y_{t-1} + (1-\alpha)^2s_{t-2}$
 
-$S_T = \alpha[Y_T + (1 - \alpha)Y_{T-1} + (1-\alpha)^2Y_{T-2} + (1-\alpha)^3Y_{T-3} + ... +(1-\alpha)^TY_0]$
+$s_t = \alpha[y_t + (1 - \alpha)y_{t-1} + (1-\alpha)^2y_{t-2} + (1-\alpha)^3y_{t-3} + ... +(1-\alpha)^Ty_0]$
 
 
-Ta có thể thấy $S_T$ có liên quan đến trung bình các giá trị với các trọng số 
+Ta có thể thấy $s_t$ có liên quan đến trung bình các giá trị với các trọng số 
 $1, (1-\alpha), (1-\alpha)^2, ....,(1-\alpha)^T$
 
 Dưới đây là code mẫu cho cách tính Exponential Smoothing
@@ -183,12 +183,12 @@ df['ExponentialSmoothing_PANDAS'] = df['Births'].ewm(alpha=0.3, adjust=False).me
 df['ExponentialSmoothing_FUNCTION'] = exponential_smoothing(df['Births'], 0.3)
 ## dùng tsa
 es = tsa.SimpleExpSmoothing(df['Births'])
-df['ExponentialSmoothing_TSA'] = es.predict(es.params, start=1, end=df.shape[0])
+df['ExponentialSmoothing_tSA'] = es.predict(es.params, start=1, end=df.shape[0])
 df
 ```
 
 ```python
-	Date	    Births	ExponentialSmoothing_PANDAS	ExponentialSmoothing_FUNCTION	ExponentialSmoothing_TSA
+	Date	    Births	ExponentialSmoothing_PANDAS	ExponentialSmoothing_FUNCTION	ExponentialSmoothing_tSA
 0	1959-01-01		35					  35.000000						35.000000				   35.000000
 1	1959-01-02		32					  34.100000						34.100000				   34.100000
 2	1959-01-03		30					  32.870000						32.870000				   32.870000
