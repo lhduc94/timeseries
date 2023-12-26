@@ -49,38 +49,39 @@ Phương pháp này chỉ sử dụng dữ liệu quá khứ nên có thể áp 
 
 ### Ví dụ
 
-Dưới đây là ví dụ về số Sales quần áo của US
+Dưới đây là ví dụ về số bé gái sinh ra mỗi ngày
 
 
 ```python
-df = pd.read_csv('../data/us-retail-sales.csv')
-df['lag_1'] = df['Clothing'].shift(1)
-df['lag_2'] = df['Clothing'].shift(2)
-df['lead_1'] = df['Clothing'].shift(-1)
-df['Centered_MA'] = (df['Clothing'] + df['lead_1'] + df['lag_1'])/3
-df['Trailing_MA'] = (df['Clothing'] + df['lag_1'] + df['lag_2'])/3
+df = pd.read_csv('../data/daily-total-female-births.csv')
+df['Date'] = pd.to_datetime(df['Date'])
+df['lag_1'] = df['Births'].shift(1)
+df['lag_2'] = df['Births'].shift(2)
+df['lead_1'] = df['Births'].shift(-1)
+df['Centered_MA'] = (df['Births'] + df['lead_1'] + df['lag_1'])/3
+df['Trailing_MA'] = (df['Births'] + df['lag_1'] + df['lag_2'])/3
 ```
 
 ```
-		 Month	 Clothing	  lag_1		lag_2	 lead_1	  Centered_MA	 Trailing_MA
-275	2014-12-01		32760	  	NaN		  NaN	15840.0	          NaN            NaN
-276	2015-01-01		15840	32760.0	      NaN	18079.0	 22226.333333			 NaN
-277	2015-02-01		18079	15840.0	  32760.0	20819.0	 18246.000000	22226.333333
-278	2015-03-01		20819	18079.0	  15840.0	20470.0	 19789.333333	18246.000000
-279	2015-04-01		20470	20819.0	  18079.0	22239.0	 21176.000000	19789.333333
-...		   ...		  ...	    ...		  ...	    ...	          ...	         ...
-331	2019-08-01		23829	21742.0	  21116.0	19567.0	 21712.666667	22229.000000
-332	2019-09-01		19567	23829.0   21742.0	21400.0	 21598.666667	21712.666667
-333	2019-10-01		21400	19567.0	  23829.0	25170.0	 22045.666667	21598.666667
-334	2019-11-01		25170	21400.0	  19567.0	35157.0	 27242.333333	22045.666667
-335	2019-12-01		35157	25170.0	  21400.0	    NaN	          NaN	27242.333333
+          Date Births	lag_1	lag_2	lead_1	Centered_MA	Trailing_MA	Births_MA
+0	1959-01-01	   35	  NaN	  NaN	  32.0	        NaN	        NaN	      NaN
+1	1959-01-02	   32	 35.0	  NaN	  30.0	  32.333333	        NaN	      NaN
+2	1959-01-03	   30	 32.0	 35.0	  31.0	  31.000000	  32.333333	      NaN
+3	1959-01-04	   31	 30.0	 32.0	  44.0	  35.000000	  31.000000	      NaN
+4	1959-01-05	   44	 31.0	 30.0	  29.0	  34.666667	  35.000000	      NaN
+...		   ...	  ...	  ...	  ...	   ...	        ...	        ...	      ...
+360	1959-12-27	   37	 34.0	 44.0	  52.0	  41.000000	  38.333333	41.666667
+361	1959-12-28	   52	 37.0	 34.0	  48.0	  45.666667	  41.000000	41.666667
+362	1959-12-29	   48	 52.0    37.0	  55.0	  51.666667	  45.666667	42.416667
+363	1959-12-30	   55	 48.0    52.0	  50.0	  51.000000	  51.666667	43.666667
+364	1959-12-31	   50	 55.0    48.0	   NaN	        NaN	  51.000000	44.333333
 ```
 
 Ta cũng có thể sử dụng phương thức `rolling()` trong Pandas
 
 ```python
-df['Centered_MA'] = df['Clothing'].rolling(window=3, center=True).mean()
-df['Trailing_MA'] = df['Clothing'].rolling(window=3, center=False).mean()
+df['Centered_MA'] = df['Births'].rolling(window=3, center=True).mean()
+df['Trailing_MA'] = df['Births'].rolling(window=3, center=False).mean()
 ```
 
 Để visualize dữ liệu, ta có thể dùng `seaborn`
@@ -91,44 +92,43 @@ import seaborn as sns
 import matplotlib.pyplot as plt 
 
 plt.figure(figsize=(10,5))
-plt.title("US Retail Sale - Clothing", fontsize=15)
-sns.lineplot(x='Month', y='Clothing', data=df, label='original')
+plt.title("Births", fontsize=15)
+sns.lineplot(x='Date', y='Births', data=df, label='original')
 # sns.lineplot(x='Month', y='Centered_MA', data=df, label='Centered_MA')
-sns.lineplot(x='Month', y='Centered_MA', data=df, label='Trailing_MA')
-plt.xlabel('Month',fontsize=15)
+sns.lineplot(x='Date', y='Births', data=df, label='Trailing_MA')
+plt.xlabel('Date',fontsize=15)
 plt.yticks(fontsize=15)
-plt.ylabel('Clothing',fontsize=15)
+plt.ylabel('Births',fontsize=15)
 plt.legend(fontsize=15)
 ```
 
 ![](../images/03/MA.png)
 
 
-Với dữ liệu bao gồm xu hướng và mùa vụ, việc gia tăng cửa sổ trượt giúp loại bỏ tính mùa vụ và chỉ để lại tính xu hướng. Ví dụ dưới đây cho dữ liệu `Số Vật liệu xây dựng đã sử dụng ở Mỹ`
 với các tham số $k =6$ và $k=12$
 ```python
-fig1 = plt.figure(figsize=(7,5))
-df['BuildingMaterials_MA'] = df['BuildingMaterials'].rolling(window=6, center=False).mean()
-sns.lineplot(x='Month', y='BuildingMaterials', data=df, label='original')
-sns.lineplot(x='Month', y='BuildingMaterials_MA', data=df, label='6-MA')
+fig1 = plt.figure(figsize=(10,5))
+df['Births_MA'] = df['Births'].rolling(window=6, center=False).mean()
+sns.lineplot(x='Date', y='Births', data=df, label='original')
+sns.lineplot(x='Date', y='Births_MA', data=df, label='6-MA')
 plt.xlabel('Month',fontsize=15)
 plt.xticks(fontsize=15)
 plt.yticks(fontsize=15)
-plt.ylabel('BuildingMaterials',fontsize=15)
+plt.ylabel('Birds',fontsize=15)
 plt.legend(fontsize=15)
 plt.title('6-MA', fontsize=15)
 ```
 ![](../images/03/6-MA.png )
 
 ```python
-fig2 = plt.figure(figsize=(7,5))
-df['BuildingMaterials_MA'] = df['BuildingMaterials'].rolling(window=12, center=False).mean()
-sns.lineplot(x='Month', y='BuildingMaterials', data=df, label='original')
-sns.lineplot(x='Month', y='BuildingMaterials_MA', data=df, label='12-MA')
-plt.xlabel('Month',fontsize=15)
+fig2 = plt.figure(figsize=(10,5))
+df['Births_MA'] = df['Births'].rolling(window=12, center=False).mean()
+sns.lineplot(x='Date', y='Births', data=df, label='original')
+sns.lineplot(x='Date', y='Births_MA', data=df, label='12-MA')
+plt.xlabel('Date',fontsize=15)
 plt.xticks(fontsize=15)
 plt.yticks(fontsize=15)
-plt.ylabel('BuildingMaterials',fontsize=15)
+plt.ylabel('Date',fontsize=15)
 plt.legend(fontsize=15)
 plt.title('12-MA', fontsize=15)
 ```
@@ -177,11 +177,11 @@ Hoặc chúng ta cũng có thể sử dụng phương thức `ewm` của `Pandas
 ```python
 from statsmodels.api import tsa
 ## dùng pandas
-df['ExponentialSmoothing_PANDAS'] = df['BuildingMaterials'].ewm(alpha=0.3, adjust=False).mean()
-## dùng function
-df['ExponentialSmoothing_FUNCTION'] = exponential_smoothing(df['BuildingMaterials'], 0.3)
+df['ExponentialSmoothing_PANDAS'] = df['Births'].ewm(alpha=0.3, adjust=False).mean()
+## dùng functions
+df['ExponentialSmoothing_FUNCTION'] = exponential_smoothing(df['Births'], 0.3)
 ## dùng tsa
-es = tsa.SimpleExpSmoothing(df['BuildingMaterials'])
+es = tsa.SimpleExpSmoothing(df['Births'])
 model = es.fit(smoothing_level=0.3)
 df['ExponentialSmoothing_TSA'] = model.fittedvalues
 
@@ -205,13 +205,13 @@ df
 
 Biểu đồ so sánh giữa giá trị gốc và Exponential Smoothing
 ```python
-fig4= plt.figure(figsize=(7,5))
-sns.lineplot(x='Month', y='BuildingMaterials', data=df, label='original')
-sns.lineplot(x='Month', y='ExponentialSmoothing_PANDAS', data=df, label='ExponentialSmoothing')
-plt.xlabel('Month',fontsize=15)
+fig4= plt.figure(figsize=(10,5))
+sns.lineplot(x='Date', y='Births', data=df, label='original')
+sns.lineplot(x='Date', y='ExponentialSmoothing_PANDAS', data=df, label='ExponentialSmoothing')
+plt.xlabel('Date',fontsize=15)
 plt.xticks(fontsize=15)
 plt.yticks(fontsize=15)
-plt.ylabel('BuildingMaterials',fontsize=15)
+plt.ylabel('Births',fontsize=15)
 plt.legend(fontsize=15)
 plt.title('Exponential Smoothing with alpha=0.3', fontsize=15)
 ```
