@@ -203,3 +203,18 @@ df
 334	2019-11-01				29793				   31427.657077					   31427.657077				  32128.224396
 335	2019-12-01				28621				   30585.659954					   30585.659954				  31427.657077
 ```
+
+Biểu đồ so sánh giữa giá trị gốc và Exponential Smoothing
+```python
+fig4= plt.figure(figsize=(7,5))
+sns.lineplot(x='Month', y='BuildingMaterials', data=df, label='original')
+sns.lineplot(x='Month', y='ExponentialSmoothing_PANDAS', data=df, label='ExponentialSmoothing')
+plt.xlabel('Month',fontsize=15)
+plt.xticks(fontsize=15)
+plt.yticks(fontsize=15)
+plt.ylabel('BuildingMaterials',fontsize=15)
+plt.legend(fontsize=15)
+plt.title('Exponential Smoothing with alpha=0.3', fontsize=15)
+```
+
+![](../images/03/Exponential_Smoothing.png)
