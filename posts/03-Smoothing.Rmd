@@ -180,7 +180,6 @@ from statsmodels.api import tsa
 df['ExponentialSmoothing_PANDAS'] = df['BuildingMaterials'].ewm(alpha=0.3, adjust=False).mean()
 ## dùng function
 df['ExponentialSmoothing_FUNCTION'] = exponential_smoothing(df['BuildingMaterials'], 0.3)
-
 ## dùng tsa
 es = tsa.SimpleExpSmoothing(df['BuildingMaterials'])
 model = es.fit(smoothing_level=0.3)

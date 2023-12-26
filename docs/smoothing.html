@@ -319,13 +319,12 @@ với các tham số <span class="math inline">\(k =6\)</span> và <span class="
 <span id="cb17-3"><a href="smoothing.html#cb17-3" tabindex="-1"></a>df[<span class="st">&#39;ExponentialSmoothing_PANDAS&#39;</span>] <span class="op">=</span> df[<span class="st">&#39;BuildingMaterials&#39;</span>].ewm(alpha<span class="op">=</span><span class="fl">0.3</span>, adjust<span class="op">=</span><span class="va">False</span>).mean()</span>
 <span id="cb17-4"><a href="smoothing.html#cb17-4" tabindex="-1"></a><span class="co">## dùng function</span></span>
 <span id="cb17-5"><a href="smoothing.html#cb17-5" tabindex="-1"></a>df[<span class="st">&#39;ExponentialSmoothing_FUNCTION&#39;</span>] <span class="op">=</span> exponential_smoothing(df[<span class="st">&#39;BuildingMaterials&#39;</span>], <span class="fl">0.3</span>)</span>
-<span id="cb17-6"><a href="smoothing.html#cb17-6" tabindex="-1"></a></span>
-<span id="cb17-7"><a href="smoothing.html#cb17-7" tabindex="-1"></a><span class="co">## dùng tsa</span></span>
-<span id="cb17-8"><a href="smoothing.html#cb17-8" tabindex="-1"></a>es <span class="op">=</span> tsa.SimpleExpSmoothing(df[<span class="st">&#39;BuildingMaterials&#39;</span>])</span>
-<span id="cb17-9"><a href="smoothing.html#cb17-9" tabindex="-1"></a>model <span class="op">=</span> es.fit(smoothing_level<span class="op">=</span><span class="fl">0.3</span>)</span>
-<span id="cb17-10"><a href="smoothing.html#cb17-10" tabindex="-1"></a>df[<span class="st">&#39;ExponentialSmoothing_TSA&#39;</span>] <span class="op">=</span> model.fittedvalues</span>
-<span id="cb17-11"><a href="smoothing.html#cb17-11" tabindex="-1"></a></span>
-<span id="cb17-12"><a href="smoothing.html#cb17-12" tabindex="-1"></a>df</span></code></pre></div>
+<span id="cb17-6"><a href="smoothing.html#cb17-6" tabindex="-1"></a><span class="co">## dùng tsa</span></span>
+<span id="cb17-7"><a href="smoothing.html#cb17-7" tabindex="-1"></a>es <span class="op">=</span> tsa.SimpleExpSmoothing(df[<span class="st">&#39;BuildingMaterials&#39;</span>])</span>
+<span id="cb17-8"><a href="smoothing.html#cb17-8" tabindex="-1"></a>model <span class="op">=</span> es.fit(smoothing_level<span class="op">=</span><span class="fl">0.3</span>)</span>
+<span id="cb17-9"><a href="smoothing.html#cb17-9" tabindex="-1"></a>df[<span class="st">&#39;ExponentialSmoothing_TSA&#39;</span>] <span class="op">=</span> model.fittedvalues</span>
+<span id="cb17-10"><a href="smoothing.html#cb17-10" tabindex="-1"></a></span>
+<span id="cb17-11"><a href="smoothing.html#cb17-11" tabindex="-1"></a>df</span></code></pre></div>
 <div class="sourceCode" id="cb18"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb18-1"><a href="smoothing.html#cb18-1" tabindex="-1"></a>         Month  BuildingMaterials   ExponentialSmoothing_PANDAS   ExponentialSmoothing_FUNCTION   ExponentialSmoothing_TSA</span>
 <span id="cb18-2"><a href="smoothing.html#cb18-2" tabindex="-1"></a><span class="dv">0</span>   <span class="dv">1992</span><span class="op">-</span><span class="dv">0</span><span class="er">1</span><span class="op">-</span><span class="dv">0</span><span class="er">1</span>               <span class="dv">8964</span>                   <span class="fl">8964.000000</span>                     <span class="fl">8964.000000</span>                <span class="fl">8964.000000</span></span>
 <span id="cb18-3"><a href="smoothing.html#cb18-3" tabindex="-1"></a><span class="dv">1</span>   <span class="dv">1992</span><span class="op">-</span><span class="dv">0</span><span class="er">2</span><span class="op">-</span><span class="dv">0</span><span class="er">1</span>               <span class="dv">9023</span>                   <span class="fl">8981.700000</span>                     <span class="fl">8981.700000</span>                <span class="fl">8964.000000</span></span>
