@@ -1,3 +1,4 @@
+# ARIMA
 ## Autoregressive Model
 Mô hình tự hồi quy là mô hình ước lượng giá trị tương lai của timeseries dựa vào các giá trị trong quá khứ cửa chính timeseries đó.
 

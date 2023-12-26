@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Page not found | Phân tích Chuỗi thời gian</title>
+  <title>Chương 3 ARIMA | Phân tích Chuỗi thời gian</title>
   <meta name="description" content="Time Serie Analysis" />
   <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Page not found | Phân tích Chuỗi thời gian" />
+  <meta property="og:title" content="Chương 3 ARIMA | Phân tích Chuỗi thời gian" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="Time Serie Analysis" />
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Page not found | Phân tích Chuỗi thời gian" />
+  <meta name="twitter:title" content="Chương 3 ARIMA | Phân tích Chuỗi thời gian" />
   
   <meta name="twitter:description" content="Time Serie Analysis" />
   
@@ -30,7 +30,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
+<link rel="prev" href="smoothing.html"/>
 
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -201,18 +201,72 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="page-not-found" class="section level1">
-<h1>Page not found</h1>
-<p>The page you requested cannot be found (perhaps it was moved or renamed).</p>
-<p>You may want to try searching to find the page's new location, or use
-the table of contents to find the page you are looking for.</p>
+<div id="arima" class="section level1 hasAnchor" number="3">
+<h1><span class="header-section-number">Chương 3</span> ARIMA<a href="arima.html#arima" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="autoregressive-model" class="section level2 hasAnchor" number="3.1">
+<h2><span class="header-section-number">3.1</span> Autoregressive Model<a href="arima.html#autoregressive-model" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Mô hình tự hồi quy là mô hình ước lượng giá trị tương lai của timeseries dựa vào các giá trị trong quá khứ cửa chính timeseries đó.</p>
+<p>Công thức tự hồi quy được biểu diễn như sau</p>
+<p><span class="math display">\[
+y_t = c + \theta_1 y_{t-1} + \theta_2 y_{t-2} + \theta_3 y_{t-3} + .... + \theta_p y_{t-p} + \epsilon_t
+\]</span></p>
+<p>Trong đó: <span class="math inline">\(\epsilon_t\)</span> là nhiễu trắng. Có thể nói mô hình này là mô hình hồi quy đa biến với các biến là các giá trị lag tại thời điểm từ <span class="math inline">\(1\)</span> đến <span class="math inline">\(p\)</span>. Chúng ta kí hiệu mô hình này là <span class="math inline">\(AR(p)\)</span></p>
+<p>Để sử dụng AR model, ta dùng class <code>AutoReg</code> của thư viện <code>statsmodels</code>, chúng ta dùng <code>root_mean_squared_error</code> để đánh giá mô hình. Mô hình sẽ được huấn luyện và dự đoán cho 7 ngày tiếp theo</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb20-1"><a href="arima.html#cb20-1" tabindex="-1"></a><span class="im">from</span> statsmodels.tsa.ar_model <span class="im">import</span> AutoReg</span>
+<span id="cb20-2"><a href="arima.html#cb20-2" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd </span>
+<span id="cb20-3"><a href="arima.html#cb20-3" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb20-4"><a href="arima.html#cb20-4" tabindex="-1"></a></span>
+<span id="cb20-5"><a href="arima.html#cb20-5" tabindex="-1"></a><span class="co"># Đọc dữ liệu</span></span>
+<span id="cb20-6"><a href="arima.html#cb20-6" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">&#39;../data/daily-total-female-births.csv&#39;</span>)</span>
+<span id="cb20-7"><a href="arima.html#cb20-7" tabindex="-1"></a>df.head()</span>
+<span id="cb20-8"><a href="arima.html#cb20-8" tabindex="-1"></a></span>
+<span id="cb20-9"><a href="arima.html#cb20-9" tabindex="-1"></a><span class="co"># Chia dữ liệu thành train test</span></span>
+<span id="cb20-10"><a href="arima.html#cb20-10" tabindex="-1"></a>Y <span class="op">=</span> df.Births.values</span>
+<span id="cb20-11"><a href="arima.html#cb20-11" tabindex="-1"></a>train, test <span class="op">=</span> Y[:<span class="bu">len</span>(Y)<span class="op">-</span><span class="dv">7</span>], Y[<span class="bu">len</span>(Y)<span class="op">-</span><span class="dv">7</span>:]</span>
+<span id="cb20-12"><a href="arima.html#cb20-12" tabindex="-1"></a></span>
+<span id="cb20-13"><a href="arima.html#cb20-13" tabindex="-1"></a><span class="co"># Huấn luyện mô hình với p=29</span></span>
+<span id="cb20-14"><a href="arima.html#cb20-14" tabindex="-1"></a>model <span class="op">=</span> AutoReg(train, lags<span class="op">=</span><span class="dv">29</span>)</span>
+<span id="cb20-15"><a href="arima.html#cb20-15" tabindex="-1"></a>model_fit <span class="op">=</span> model.fit()</span>
+<span id="cb20-16"><a href="arima.html#cb20-16" tabindex="-1"></a></span>
+<span id="cb20-17"><a href="arima.html#cb20-17" tabindex="-1"></a><span class="co"># Dự đoán kết quả mô hình</span></span>
+<span id="cb20-18"><a href="arima.html#cb20-18" tabindex="-1"></a>Y_hat <span class="op">=</span> model_fit.predict(start<span class="op">=</span><span class="bu">len</span>(train), end<span class="op">=</span><span class="bu">len</span>(train)<span class="op">+</span><span class="bu">len</span>(test)<span class="op">-</span><span class="dv">1</span>, dynamic<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb20-19"><a href="arima.html#cb20-19" tabindex="-1"></a><span class="cf">for</span> y_hat, y_true <span class="kw">in</span> <span class="bu">zip</span>(Y_hat, test):</span>
+<span id="cb20-20"><a href="arima.html#cb20-20" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f&#39;Predicted=</span><span class="sc">{</span>y_hat<span class="sc">}</span><span class="ss"> </span><span class="ch">\t</span><span class="ss">Expected=</span><span class="sc">{</span>y_true<span class="sc">}</span><span class="ss">&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb21-1"><a href="arima.html#cb21-1" tabindex="-1"></a>Predicted<span class="op">=</span><span class="fl">41.94770376100972</span>     Expected<span class="op">=</span><span class="dv">44</span></span>
+<span id="cb21-2"><a href="arima.html#cb21-2" tabindex="-1"></a>Predicted<span class="op">=</span><span class="fl">39.110919166721224</span>    Expected<span class="op">=</span><span class="dv">34</span></span>
+<span id="cb21-3"><a href="arima.html#cb21-3" tabindex="-1"></a>Predicted<span class="op">=</span><span class="fl">39.31595241329576</span>     Expected<span class="op">=</span><span class="dv">37</span></span>
+<span id="cb21-4"><a href="arima.html#cb21-4" tabindex="-1"></a>Predicted<span class="op">=</span><span class="fl">41.277277685616205</span>    Expected<span class="op">=</span><span class="dv">52</span></span>
+<span id="cb21-5"><a href="arima.html#cb21-5" tabindex="-1"></a>Predicted<span class="op">=</span><span class="fl">42.933771871507425</span>    Expected<span class="op">=</span><span class="dv">48</span></span>
+<span id="cb21-6"><a href="arima.html#cb21-6" tabindex="-1"></a>Predicted<span class="op">=</span><span class="fl">42.558113213240745</span>    Expected<span class="op">=</span><span class="dv">55</span></span>
+<span id="cb21-7"><a href="arima.html#cb21-7" tabindex="-1"></a>Predicted<span class="op">=</span><span class="fl">41.76852911572844</span>     Expected<span class="op">=</span><span class="dv">50</span></span></code></pre></div>
+<p>Để xem các params của mô hình ta gọi <code>model_fit.params</code>. Trong đó giá trị đầu tiên là hằng số <span class="math inline">\(c\)</span>, các giá trị tiếp theo tương ứng là các <span class="math inline">\(\theta\)</span> tại các lag</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb22-1"><a href="arima.html#cb22-1" tabindex="-1"></a>model_fit.params</span></code></pre></div>
+<pre><code>array([ 1.02059905e+01,  1.44428304e-01,  7.36131415e-02,  1.63274491e-02,
+        4.04382220e-02,  4.36485615e-02, -2.10332720e-02,  1.38010371e-01,
+        6.69075575e-02, -4.06667216e-02,  1.76155123e-02,  2.79512698e-02,
+       -9.12731426e-02, -4.88545302e-02, -1.11333442e-03,  4.74045580e-02,
+        4.00381240e-02, -5.00957332e-02,  2.83834804e-02,  2.70181922e-02,
+        1.52596823e-02,  2.22803143e-01,  1.16878446e-02, -4.81962255e-02,
+        3.11342589e-02, -3.88000648e-02, -1.77851389e-02,  6.77930532e-02,
+        5.20638466e-02,  3.62816255e-03])</code></pre>
+<p>Để đánh giá kết quả mô hình, chúng ta dùng thư viện <code>sklearn.metrics</code></p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb24-1"><a href="arima.html#cb24-1" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> mean_squared_error</span>
+<span id="cb24-2"><a href="arima.html#cb24-2" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&#39;RMSE:&#39;</span>, np.sqrt(mean_squared_error(test, Y_hat)))</span></code></pre></div>
+<pre><code>7.548870787612078</code></pre>
+<p>Dưới đây là biểu đồ thể hiện giá trị Dự đoán và giá trị thực tế trong 7 ngày</p>
+<p><img src="../images/03/autoregressive.png" /></p>
+</div>
+<div id="moving-average-model" class="section level2 hasAnchor" number="3.2">
+<h2><span class="header-section-number">3.2</span> Moving Average Model<a href="arima.html#moving-average-model" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
+<a href="smoothing.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 
     </div>
   </div>
