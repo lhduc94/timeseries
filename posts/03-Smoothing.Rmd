@@ -174,4 +174,32 @@ def exponential_smoothing(Y, alpha):
 ```
 Hoặc chúng ta cũng có thể sử dụng phương thức `ewm` của `Pandas` hoặc Class `SimpleExpSmoothing` của thư viện `statsmodel.tsa`
 
-``````
+```python
+from statsmodels.api import tsa
+## dùng pandas
+df['ExponentialSmoothing_PANDAS'] = df['BuildingMaterials'].ewm(alpha=0.3, adjust=False).mean()
+## dùng function
+df['ExponentialSmoothing_FUNCTION'] = exponential_smoothing(df['BuildingMaterials'], 0.3)
+
+## dùng tsa
+es = tsa.SimpleExpSmoothing(df['BuildingMaterials'])
+model = es.fit(smoothing_level=0.3)
+df['ExponentialSmoothing_TSA'] = model.fittedvalues
+
+df
+```
+
+```python
+		 Month	BuildingMaterials	ExponentialSmoothing_PANDAS	  ExponentialSmoothing_FUNCTION	  ExponentialSmoothing_TSA
+0	1992-01-01				 8964					8964.000000						8964.000000	 			   8964.000000
+1	1992-02-01				 9023					8981.700000						8981.700000				   8964.000000
+2	1992-03-01				10608					9469.590000						9469.590000				   8981.700000
+3	1992-04-01				11630				   10117.713000					   10117.713000				   9469.590000
+4	1992-05-01				12327				   10780.499100					   10780.499100				  10117.713000
+...		   ...				  ...							...								...						   ...
+331	2019-08-01				32375				   32749.580399					   32749.580399				  32910.114856
+332	2019-09-01				29963				   31913.606280					   31913.606280				  32749.580399
+333	2019-10-01				32629				   32128.224396					   32128.224396				  31913.606280
+334	2019-11-01				29793				   31427.657077					   31427.657077				  32128.224396
+335	2019-12-01				28621				   30585.659954					   30585.659954				  31427.657077
+```
