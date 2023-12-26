@@ -61,9 +61,11 @@ Biến đổi chu kỳ xảy ra khi một dữ liệu tăng giảm không có t�
 ---
 
 ## Các đặc điểm của Time Series
+
 ### Stationary (Tính dừng của dữ liệu)
 
 Chuỗi thời gian dừng là chuỗi có các đặc trưng thống kê như mean, variance, autocorrelation không đổi theo thời gian.
+
 ### Lag
 
 Lag của Time Series thể hiện việc lùi về một mốc trước đó. Ví dụ lag(1) nghĩa là lùi về trước đó 1 đơn vị $X_{T-1}$. Lag(n) nghĩa là lùi về trước đó n đơn vị $X_{T-n}$

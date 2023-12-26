@@ -3,6 +3,7 @@ time-series-là-gì
 các-patterns-time-series
 các-đặc-điểm-của-time-series
 stationary-tính-dừng-của-dữ-liệu
+lag
 autocorrelation-tự-tương-quan
 ứng-dụng-của-autocorrelation
 partial-autocorrelation
