@@ -129,12 +129,12 @@ Trong đó $\alpha$ được gọi là tham số smoothing và  $0 < \alpha < 1$
 
 Với công thức Truy hồi trên ta có thể biến đổi như sau
 
-$
+$$
 S_T = \alpha Y_T + (1 - \alpha)S_{T-1} \\
 S_T = \alpha Y_T + (1 - \alpha)(\alpha Y_{T-1} + (1 - \alpha)S_{T-2})\\
 S_T = \alpha Y_T + \alpha(1 - \alpha)Y_{T-1} + (1-\alpha)^2S_{T-2}\\
 S_T = \alpha[Y_T + (1 - \alpha)Y_{T-1} + (1-\alpha)^2Y_{T-2} + (1-\alpha)^3Y_{T-3} + ... +(1-\alpha)^TY_0]
-$
+$$
 
 
 Ta có thể thấy $S_T$ có liên quan đến trung bình các giá trị với các trọng số 
