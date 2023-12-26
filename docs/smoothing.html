@@ -267,8 +267,34 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><img src="../images/03/MA.png" /></p>
 <p>Với dữ liệu bao gồm xu hướng và mùa vụ, việc gia tăng cửa sổ trượt giúp loại bỏ tính mùa vụ và chỉ để lại tính xu hướng. Ví dụ dưới đây cho dữ liệu <code>Số Vật liệu xây dựng đã sử dụng ở Mỹ</code>
 với các tham số <span class="math inline">\(k =6\)</span> và <span class="math inline">\(k=12\)</span></p>
-<p><img src="../images/03/6-MA.png" title="abc" alt="‘abc’" />
-<img src="../images/03/12-MA.png" title="abcd" alt="‘abcd’" /></p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb14-1"><a href="smoothing.html#cb14-1" tabindex="-1"></a>fig1 <span class="op">=</span> plt.figure(figsize<span class="op">=</span>(<span class="dv">7</span>,<span class="dv">5</span>))</span>
+<span id="cb14-2"><a href="smoothing.html#cb14-2" tabindex="-1"></a>df[<span class="st">&#39;BuildingMaterials_MA&#39;</span>] <span class="op">=</span> df[<span class="st">&#39;BuildingMaterials&#39;</span>].rolling(window<span class="op">=</span><span class="dv">6</span>, center<span class="op">=</span><span class="va">False</span>).mean()</span>
+<span id="cb14-3"><a href="smoothing.html#cb14-3" tabindex="-1"></a>sns.lineplot(x<span class="op">=</span><span class="st">&#39;Month&#39;</span>, y<span class="op">=</span><span class="st">&#39;BuildingMaterials&#39;</span>, data<span class="op">=</span>df, label<span class="op">=</span><span class="st">&#39;original&#39;</span>)</span>
+<span id="cb14-4"><a href="smoothing.html#cb14-4" tabindex="-1"></a>sns.lineplot(x<span class="op">=</span><span class="st">&#39;Month&#39;</span>, y<span class="op">=</span><span class="st">&#39;BuildingMaterials_MA&#39;</span>, data<span class="op">=</span>df, label<span class="op">=</span><span class="st">&#39;6-MA&#39;</span>)</span>
+<span id="cb14-5"><a href="smoothing.html#cb14-5" tabindex="-1"></a>plt.xlabel(<span class="st">&#39;Month&#39;</span>,fontsize<span class="op">=</span><span class="dv">15</span>)</span>
+<span id="cb14-6"><a href="smoothing.html#cb14-6" tabindex="-1"></a>plt.xticks(fontsize<span class="op">=</span><span class="dv">15</span>)</span>
+<span id="cb14-7"><a href="smoothing.html#cb14-7" tabindex="-1"></a>plt.yticks(fontsize<span class="op">=</span><span class="dv">15</span>)</span>
+<span id="cb14-8"><a href="smoothing.html#cb14-8" tabindex="-1"></a>plt.ylabel(<span class="st">&#39;BuildingMaterials&#39;</span>,fontsize<span class="op">=</span><span class="dv">15</span>)</span>
+<span id="cb14-9"><a href="smoothing.html#cb14-9" tabindex="-1"></a>plt.legend(fontsize<span class="op">=</span><span class="dv">15</span>)</span>
+<span id="cb14-10"><a href="smoothing.html#cb14-10" tabindex="-1"></a>plt.title(<span class="st">&#39;6-MA&#39;</span>, fontsize<span class="op">=</span><span class="dv">15</span>)</span></code></pre></div>
+<div class="float">
+<img src="../images/03/6-MA.png" title="abc" alt="‘abc’" />
+<div class="figcaption">‘abc’</div>
+</div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb15-1"><a href="smoothing.html#cb15-1" tabindex="-1"></a>fig2 <span class="op">=</span> plt.figure(figsize<span class="op">=</span>(<span class="dv">7</span>,<span class="dv">5</span>))</span>
+<span id="cb15-2"><a href="smoothing.html#cb15-2" tabindex="-1"></a>df[<span class="st">&#39;BuildingMaterials_MA&#39;</span>] <span class="op">=</span> df[<span class="st">&#39;BuildingMaterials&#39;</span>].rolling(window<span class="op">=</span><span class="dv">12</span>, center<span class="op">=</span><span class="va">False</span>).mean()</span>
+<span id="cb15-3"><a href="smoothing.html#cb15-3" tabindex="-1"></a>sns.lineplot(x<span class="op">=</span><span class="st">&#39;Month&#39;</span>, y<span class="op">=</span><span class="st">&#39;BuildingMaterials&#39;</span>, data<span class="op">=</span>df, label<span class="op">=</span><span class="st">&#39;original&#39;</span>)</span>
+<span id="cb15-4"><a href="smoothing.html#cb15-4" tabindex="-1"></a>sns.lineplot(x<span class="op">=</span><span class="st">&#39;Month&#39;</span>, y<span class="op">=</span><span class="st">&#39;BuildingMaterials_MA&#39;</span>, data<span class="op">=</span>df, label<span class="op">=</span><span class="st">&#39;12-MA&#39;</span>)</span>
+<span id="cb15-5"><a href="smoothing.html#cb15-5" tabindex="-1"></a>plt.xlabel(<span class="st">&#39;Month&#39;</span>,fontsize<span class="op">=</span><span class="dv">15</span>)</span>
+<span id="cb15-6"><a href="smoothing.html#cb15-6" tabindex="-1"></a>plt.xticks(fontsize<span class="op">=</span><span class="dv">15</span>)</span>
+<span id="cb15-7"><a href="smoothing.html#cb15-7" tabindex="-1"></a>plt.yticks(fontsize<span class="op">=</span><span class="dv">15</span>)</span>
+<span id="cb15-8"><a href="smoothing.html#cb15-8" tabindex="-1"></a>plt.ylabel(<span class="st">&#39;BuildingMaterials&#39;</span>,fontsize<span class="op">=</span><span class="dv">15</span>)</span>
+<span id="cb15-9"><a href="smoothing.html#cb15-9" tabindex="-1"></a>plt.legend(fontsize<span class="op">=</span><span class="dv">15</span>)</span>
+<span id="cb15-10"><a href="smoothing.html#cb15-10" tabindex="-1"></a>plt.title(<span class="st">&#39;12-MA&#39;</span>, fontsize<span class="op">=</span><span class="dv">15</span>)</span></code></pre></div>
+<div class="float">
+<img src="../images/03/12-MA.png" title="abcd" alt="‘abcd’" />
+<div class="figcaption">‘abcd’</div>
+</div>
 </div>
 </div>
 <div id="exponential-smoothing" class="section level2 hasAnchor" number="3.2">
@@ -286,6 +312,15 @@ với các tham số <span class="math inline">\(k =6\)</span> và <span class="
 <p><span class="math inline">\(S_T = \alpha[Y_T + (1 - \alpha)Y_{T-1} + (1-\alpha)^2Y_{T-2} + (1-\alpha)^3Y_{T-3} + ... +(1-\alpha)^TY_0]\)</span></p>
 <p>Ta có thể thấy <span class="math inline">\(S_T\)</span> có liên quan đến trung bình các giá trị với các trọng số
 <span class="math inline">\(1, (1-\alpha), (1-\alpha)^2, ....,(1-\alpha)^T\)</span></p>
+<p>Dưới đây là code mẫu cho cách tính Exponential Smoothing</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb16-1"><a href="smoothing.html#cb16-1" tabindex="-1"></a><span class="kw">def</span> exponential_smoothing(Y, alpha):</span>
+<span id="cb16-2"><a href="smoothing.html#cb16-2" tabindex="-1"></a>    S <span class="op">=</span> np.zeros(Y.shape[<span class="dv">0</span>])</span>
+<span id="cb16-3"><a href="smoothing.html#cb16-3" tabindex="-1"></a>    S[<span class="dv">0</span>] <span class="op">=</span> Y[<span class="dv">0</span>]</span>
+<span id="cb16-4"><a href="smoothing.html#cb16-4" tabindex="-1"></a>    <span class="cf">for</span> t <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, Y.shape[<span class="dv">0</span>]):</span>
+<span id="cb16-5"><a href="smoothing.html#cb16-5" tabindex="-1"></a>        S[t] <span class="op">=</span> alpha <span class="op">*</span> Y[t] <span class="op">+</span> (<span class="dv">1</span><span class="op">-</span> alpha) <span class="op">*</span> S[t<span class="op">-</span><span class="dv">1</span>]</span>
+<span id="cb16-6"><a href="smoothing.html#cb16-6" tabindex="-1"></a>    <span class="cf">return</span> S</span></code></pre></div>
+<p>Hoặc chúng ta cũng có thể sử dụng phương thức <code>ewm</code> của <code>Pandas</code> hoặc Class <code>SimpleExpSmoothing</code> của thư viện <code>statsmodel.tsa</code></p>
+<p>``````</p>
 
 </div>
 </div>
