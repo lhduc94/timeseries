@@ -199,7 +199,7 @@ Ví dụ tương quan Partial Autocorrelation với lag = 3 sẽ bỏ qua các g
 
 ## Các bài toán về chuỗi thời gian
 
-### Dự đoán giá trị tiếp theo dựa trên các giá trị trước đó
+### Dự báo chuỗi thời gian
 
 ### Phân loại chuỗi thời gian
 

@@ -8,7 +8,7 @@ autocorrelation-tự-tương-quan
 ứng-dụng-của-autocorrelation
 partial-autocorrelation
 các-bài-toán-về-chuỗi-thời-gian
-dự-đoán-giá-trị-tiếp-theo-dựa-trên-các-giá-trị-trước-đó
+dư-bao-chuôi-thơi-gian
 phân-loại-chuỗi-thời-gian
 phân-đoạn-chuỗi-thời-gian
 smoothing
@@ -24,3 +24,4 @@ arima
 autoregressive-model
 moving-average-model
 autoregressive-moving-average-model
+autogregressive-integrated-moving-average-model

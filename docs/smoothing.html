@@ -23,7 +23,7 @@
 <meta name="author" content="Lê Huỳnh Đức" />
 
 
-<meta name="date" content="2023-12-26" />
+<meta name="date" content="2023-12-27" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -156,7 +156,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="1.4" data-path="giới-thiệu-cơ-bản-về-time-series.html"><a href="giới-thiệu-cơ-bản-về-time-series.html#các-bài-toán-về-chuỗi-thời-gian"><i class="fa fa-check"></i><b>1.4</b> Các bài toán về chuỗi thời gian</a>
 <ul>
-<li class="chapter" data-level="1.4.1" data-path="giới-thiệu-cơ-bản-về-time-series.html"><a href="giới-thiệu-cơ-bản-về-time-series.html#dự-đoán-giá-trị-tiếp-theo-dựa-trên-các-giá-trị-trước-đó"><i class="fa fa-check"></i><b>1.4.1</b> Dự đoán giá trị tiếp theo dựa trên các giá trị trước đó</a></li>
+<li class="chapter" data-level="1.4.1" data-path="giới-thiệu-cơ-bản-về-time-series.html"><a href="giới-thiệu-cơ-bản-về-time-series.html#dư-bao-chuôi-thơi-gian"><i class="fa fa-check"></i><b>1.4.1</b> Dự báo chuỗi thời gian</a></li>
 <li class="chapter" data-level="1.4.2" data-path="giới-thiệu-cơ-bản-về-time-series.html"><a href="giới-thiệu-cơ-bản-về-time-series.html#phân-loại-chuỗi-thời-gian"><i class="fa fa-check"></i><b>1.4.2</b> Phân loại chuỗi thời gian</a></li>
 <li class="chapter" data-level="1.4.3" data-path="giới-thiệu-cơ-bản-về-time-series.html"><a href="giới-thiệu-cơ-bản-về-time-series.html#phân-đoạn-chuỗi-thời-gian"><i class="fa fa-check"></i><b>1.4.3</b> Phân đoạn chuỗi thời gian</a></li>
 </ul></li>
@@ -180,7 +180,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="3.1" data-path="arima.html"><a href="arima.html#autoregressive-model"><i class="fa fa-check"></i><b>3.1</b> Autoregressive Model</a></li>
 <li class="chapter" data-level="3.2" data-path="arima.html"><a href="arima.html#moving-average-model"><i class="fa fa-check"></i><b>3.2</b> Moving Average Model</a></li>
-<li class="chapter" data-level="3.3" data-path="arima.html"><a href="arima.html#autoregressive-moving-average-model"><i class="fa fa-check"></i><b>3.3</b> AutoRegressive Moving Average Model</a></li>
+<li class="chapter" data-level="3.3" data-path="arima.html"><a href="arima.html#autoregressive-moving-average-model"><i class="fa fa-check"></i><b>3.3</b> AutoRegressive Moving Average Model</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="arima.html"><a href="arima.html#autogregressive-integrated-moving-average-model"><i class="fa fa-check"></i><b>3.3.1</b> Autogregressive Integrated Moving Average Model</a></li>
+</ul></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="" target="blank">Lê Huỳnh Đức</a></li>
@@ -208,7 +211,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Các kỹ thuật làm mịn dữ liệu bao gồm:</p>
 <ul>
 <li>Làm mịn trung bình trượt (Moving Average Smoothing)</li>
-<li>Làm mịn cấp số nhân (Exponential smoothing)</li>
+<li>Làm mịn cấp số nhân (Exponential Smoothing)</li>
 </ul>
 <div id="moving-average-smoothing" class="section level2 hasAnchor" number="2.1">
 <h2><span class="header-section-number">2.1</span> Moving Average Smoothing<a href="smoothing.html#moving-average-smoothing" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -248,18 +251,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb10-5"><a href="smoothing.html#cb10-5" tabindex="-1"></a>df[<span class="st">&#39;lead_1&#39;</span>] <span class="op">=</span> df[<span class="st">&#39;Births&#39;</span>].shift(<span class="op">-</span><span class="dv">1</span>)</span>
 <span id="cb10-6"><a href="smoothing.html#cb10-6" tabindex="-1"></a>df[<span class="st">&#39;Centered_MA&#39;</span>] <span class="op">=</span> (df[<span class="st">&#39;Births&#39;</span>] <span class="op">+</span> df[<span class="st">&#39;lead_1&#39;</span>] <span class="op">+</span> df[<span class="st">&#39;lag_1&#39;</span>])<span class="op">/</span><span class="dv">3</span></span>
 <span id="cb10-7"><a href="smoothing.html#cb10-7" tabindex="-1"></a>df[<span class="st">&#39;Trailing_MA&#39;</span>] <span class="op">=</span> (df[<span class="st">&#39;Births&#39;</span>] <span class="op">+</span> df[<span class="st">&#39;lag_1&#39;</span>] <span class="op">+</span> df[<span class="st">&#39;lag_2&#39;</span>])<span class="op">/</span><span class="dv">3</span></span></code></pre></div>
-<pre><code>          Date Births   lag_1   lag_2   lead_1  Centered_MA Trailing_MA Births_MA
-0   1959-01-01     35     NaN     NaN     32.0          NaN         NaN       NaN
-1   1959-01-02     32    35.0     NaN     30.0    32.333333         NaN       NaN
-2   1959-01-03     30    32.0    35.0     31.0    31.000000   32.333333       NaN
-3   1959-01-04     31    30.0    32.0     44.0    35.000000   31.000000       NaN
-4   1959-01-05     44    31.0    30.0     29.0    34.666667   35.000000       NaN
-...        ...    ...     ...     ...      ...          ...         ...       ...
-360 1959-12-27     37    34.0    44.0     52.0    41.000000   38.333333 41.666667
-361 1959-12-28     52    37.0    34.0     48.0    45.666667   41.000000 41.666667
-362 1959-12-29     48    52.0    37.0     55.0    51.666667   45.666667 42.416667
-363 1959-12-30     55    48.0    52.0     50.0    51.000000   51.666667 43.666667
-364 1959-12-31     50    55.0    48.0      NaN          NaN   51.000000 44.333333</code></pre>
+<pre><code>          Date Births   lag_1   lag_2   lead_1  Centered_MA Trailing_MA
+0   1959-01-01     35     NaN     NaN     32.0          NaN         NaN
+1   1959-01-02     32    35.0     NaN     30.0    32.333333         NaN 
+2   1959-01-03     30    32.0    35.0     31.0    31.000000   32.333333
+3   1959-01-04     31    30.0    32.0     44.0    35.000000   31.000000
+4   1959-01-05     44    31.0    30.0     29.0    34.666667   35.000000
+...        ...    ...     ...     ...      ...          ...         ...
+360 1959-12-27     37    34.0    44.0     52.0    41.000000   38.333333
+361 1959-12-28     52    37.0    34.0     48.0    45.666667   41.000000
+362 1959-12-29     48    52.0    37.0     55.0    51.666667   45.666667
+363 1959-12-30     55    48.0    52.0     50.0    51.000000   51.666667
+364 1959-12-31     50    55.0    48.0      NaN          NaN   51.000000</code></pre>
 <p>Ta cũng có thể sử dụng phương thức <code>rolling()</code> trong Pandas</p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb12-1"><a href="smoothing.html#cb12-1" tabindex="-1"></a>df[<span class="st">&#39;Centered_MA&#39;</span>] <span class="op">=</span> df[<span class="st">&#39;Births&#39;</span>].rolling(window<span class="op">=</span><span class="dv">3</span>, center<span class="op">=</span><span class="va">True</span>).mean()</span>
 <span id="cb12-2"><a href="smoothing.html#cb12-2" tabindex="-1"></a>df[<span class="st">&#39;Trailing_MA&#39;</span>] <span class="op">=</span> df[<span class="st">&#39;Births&#39;</span>].rolling(window<span class="op">=</span><span class="dv">3</span>, center<span class="op">=</span><span class="va">False</span>).mean()</span></code></pre></div>

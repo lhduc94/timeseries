@@ -5,13 +5,13 @@ Mô hình tự hồi quy là mô hình ước lượng giá trị tương lai c�
 Công thức tự hồi quy được biểu diễn như sau
 
 $$
-y_t = c + \theta_1 y_{t-1} + \theta_2 y_{t-2} + \theta_3 y_{t-3} + .... + \theta_p y_{t-p} + \epsilon_t
+y_t = c + \phi_1 y_{t-1} + \phi_2 y_{t-2} + \phi_3 y_{t-3} + .... + \phi_p y_{t-p} + \epsilon_t
 $$
 
 Hoặc có thể viết lại
 
 $$
-y_t = c + \sum^{p}_{1}\theta y_{t-i} + \epsilon_t
+y_t = c + \sum^{p}_{1}\phi y_{t-i} + \epsilon_t
 $$
 
 Trong đó: $\epsilon_t$ là nhiễu trắng. Có thể nói mô hình này là mô hình hồi quy đa biến với các biến là các giá trị lag tại thời điểm từ $1$ đến $p$. Chúng ta kí hiệu mô hình này là $AR(p)$
@@ -31,41 +31,33 @@ df.head()
 Y = df.Births.values
 train, test = Y[:len(Y)-7], Y[len(Y)-7:]
 
-# Huấn luyện mô hình với p=29
-model = AutoReg(train, lags=29)
-model_fit = model.fit()
-
+# Huấn luyện mô hình với p=2
+AR_model = AutoReg(train, lags=2)
+AR_results = AR_model.fit()
 # Dự đoán kết quả mô hình
-Y_hat = model_fit.predict(start=len(train), end=len(train)+len(test)-1, dynamic=False)
+Y_hat = AR_results.predict(start=len(train), end=len(train)+len(test)-1, dynamic=False)
 for y_hat, y_true in zip(Y_hat, test):
     print(f'Predicted={y_hat} \tExpected={y_true}')
 ```
 
 ```python
-Predicted=41.94770376100972 	Expected=44
-Predicted=39.110919166721224 	Expected=34
-Predicted=39.31595241329576 	Expected=37
-Predicted=41.277277685616205 	Expected=52
-Predicted=42.933771871507425 	Expected=48
-Predicted=42.558113213240745 	Expected=55
-Predicted=41.76852911572844 	Expected=50
+Predicted=41.009982996211406 	Expected=44
+Predicted=41.3395707860348 	    Expected=34
+Predicted=41.741049087971845 	Expected=37
+Predicted=41.8524930508191 	    Expected=52
+Predicted=41.91850636281712 	Expected=48
+Predicted=41.94330911921793 	Expected=55
+Predicted=41.95535989900887 	Expected=50
 ```
 
-Để xem các params của mô hình ta gọi `model_fit.params`. Trong đó giá trị đầu tiên là hằng số $c$, các giá trị tiếp theo tương ứng là các $\theta$ tại các lag 
+Để xem các params của mô hình ta gọi `model_fit.params`. Trong đó giá trị đầu tiên là hằng số $c$, các giá trị tiếp theo tương ứng là các $\phi$ tại các lag 
 
 ```python
-model_fit.params
+AR_results.params
 ```
 
 ```
-array([ 1.02059905e+01,  1.44428304e-01,  7.36131415e-02,  1.63274491e-02,
-        4.04382220e-02,  4.36485615e-02, -2.10332720e-02,  1.38010371e-01,
-        6.69075575e-02, -4.06667216e-02,  1.76155123e-02,  2.79512698e-02,
-       -9.12731426e-02, -4.88545302e-02, -1.11333442e-03,  4.74045580e-02,
-        4.00381240e-02, -5.00957332e-02,  2.83834804e-02,  2.70181922e-02,
-        1.52596823e-02,  2.22803143e-01,  1.16878446e-02, -4.81962255e-02,
-        3.11342589e-02, -3.88000648e-02, -1.77851389e-02,  6.77930532e-02,
-        5.20638466e-02,  3.62816255e-03])
+array([29.46548462,  0.18468755,  0.11315929])
 ```
 
 Để đánh giá kết quả mô hình, chúng ta dùng thư viện `sklearn.metrics`
@@ -76,12 +68,39 @@ print('RMSE:', np.sqrt(mean_squared_error(test, Y_hat)))
 ```
 
 ```
-7.548870787612078
+8.110283777968577
 ```
 
 Dưới đây là biểu đồ thể hiện giá trị Dự đoán và giá trị thực tế trong 7 ngày
 
 ![](../images/03/autoregressive.png)
+
+Chúng ta có thể mô phỏng lại cách tính các giá trị dự đoán dựa trên các params của model với $c=29.46548462, \phi_1=0.18468755, \phi_2=0.11315929$
+
+```python
+Y_hat_sim = list(train[-2:])
+c = 29.46548462
+phi_1 = 0.18468755
+phi_2 = 0.11315929
+
+for i in range(7):
+    predict = c + phi_1*Y_hat_sim[-1] + phi_2*Y_hat_sim[-2]
+    Y_hat_sim.append(predict)
+
+for a, b in zip(Y_hat_sim[2:], Y_hat):
+    print(f"Simulated={a} \t Predicted={b}")
+```
+
+```
+Simulated=41.00998312 	         Predicted=41.009982996211406
+Simulated=41.33957094797416 	 Predicted=41.3395707860348
+Simulated=41.74104926920371 	 Predicted=41.741049087971845
+Simulated=41.85249324133591 	 Predicted=41.8524930508191
+Simulated=41.918506557292 	     Predicted=41.91850636281712
+Simulated=41.94330931564456 	 Predicted=41.94330911921793
+Simulated=41.95536009628208 	 Predicted=41.95535989900887
+```
+
 
 ## Moving Average Model
 
@@ -106,9 +125,54 @@ $$
 y_t = c  + \sum^{q}_{i=1}\theta_{i}\epsilon_{t-i} +  \epsilon_t
 $$
 
-Trong đó $c$ là trung bình series, $\epsilon_{t-i}$ là sai số tại $t-i$
+Trong đó $c$ là trung bình series, $\epsilon_{t-i}$ là white noise tại $t-i$. Trong thực tế, chúng ta không có quan sát cho các giá trị white noise này, do đó nó không thực sự là hồi quy theo nghĩa hiểu thông thường.
 
-Trong thư viện `statsmodels` không hỗ trợ chính thức cách tính **Moving Average Model**, nhưng chúng ta có thể áp dụng thông qua `ARIMA`. Ở phần sau chúng ta sẽ tìm hiểu về `ARIMA` rồi quay ngược lại ví dụ về `MA`
+Trong thư viện `statsmodels` không hỗ trợ chính thức cách tính **Moving Average Model**, nhưng chúng ta có thể áp dụng thông qua `ARIMA`. 
+
+Ví dụ về cách sử dụng ARMA
+
+```python
+# Huấn luyện mô hình với q=2
+MA_model = ARIMA(train, order=(0, 0, 2))
+MA_results = MA_model.fit()
+# Dự đoán kết quả mô hình
+Y_hat = MA_results.predict(start=len(train), end=len(train)+len(test)-1, dynamic=False)
+for y_hat, y_true in zip(Y_hat, test):
+    print(f'Predicted={y_hat} \tExpected={y_true}')
+```
+
+```
+Predicted=41.11548396873163 	Expected=44
+Predicted=41.5656013608698  	Expected=34
+Predicted=41.89874024020355 	Expected=37
+Predicted=41.89874024020355 	Expected=52
+Predicted=41.89874024020355 	Expected=48
+Predicted=41.89874024020355 	Expected=55
+Predicted=41.89874024020355 	Expected=50
+```
+
+xem các tham số $\theta$
+```
+MA_results.params
+```
+
+```
+array([41.89874024,  0.17900771,  0.11330768, 50.91597007])
+```
+
+Đánh giá kết quả mô hình
+
+```python
+print('RMSE:', np.sqrt(mean_squared_error(test, Y_hat)))
+```
+
+```
+RMSE: 8.15992514853609
+```
+
+Dưới đây là biểu đồ thể hiện giá trị Dự đoán và giá trị thực tế trong 7 ngày
+
+![](../images/03/MA_model.png)
 
 ## AutoRegressive Moving Average Model
 
@@ -117,7 +181,7 @@ Như cái tên của nó, mô hình này kết hợp 2 Mô hình Autoregressive 
 Nhăc lại công thức AR
 
 $$
-y_t = c + \sum^{p}_{1}\theta y_{t-i} + \epsilon_t
+y_t = c + \sum^{p}_{1}\phi y_{t-i} + \epsilon_t
 $$
 
 Và công thức MA
@@ -126,10 +190,12 @@ $$
 y_t = c  + \sum^{q}_{i=1}\theta_{i}\epsilon_{t-i} +  \epsilon_t
 $$
 
-Do đó công thức ARMA là kết hợp cả hai công thức
+Do đó công thức ARMA là kết hợp cả hai công thức.
 
 $$
 y_t = c + \epsilon_t + \sum^{p}_{1}\phi y_{t-i}  + \sum^{q}_{i=1}\theta_{i}\epsilon_{t-i}
 $$
 
 Tương tự, trong thư viện `statsmodels` không hỗ trợ chính thức cách tính **Moving Average Model**, nhưng chúng ta có thể áp dụng thông qua `ARIMA`. Ở phần sau chúng ta sẽ tìm hiểu về `ARIMA` rồi quay ngược lại ví dụ về `MA`
+
+### Autogregressive Integrated Moving Average Model
