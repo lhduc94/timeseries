@@ -338,7 +338,7 @@ và
 <span id="cb38-4"><a href="arima.html#cb38-4" tabindex="-1"></a>resid_t <span class="op">=</span> <span class="op">-</span><span class="fl">2.94012608</span></span>
 <span id="cb38-5"><a href="arima.html#cb38-5" tabindex="-1"></a>resid_t_prev_1 <span class="op">=</span> <span class="op">-</span><span class="fl">2.2677281</span></span></code></pre></div>
 <p>lúc này, giá trị dự báo cho T+1 sẽ là:</p>
-<div class="sourceCode" id="cb39"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb39-1"><a href="arima.html#cb39-1" tabindex="-1"></a>c <span class="op">+</span> theta_t <span class="op">*</span> resid_t <span class="op">+</span> theta_t_prev <span class="op">*</span> resid_t_prev_1</span></code></pre></div>
+<div class="sourceCode" id="cb39"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb39-1"><a href="arima.html#cb39-1" tabindex="-1"></a>c <span class="op">+</span> theta_t <span class="op">*</span> resid_t <span class="op">+</span> theta_t_prev_1 <span class="op">*</span> resid_t_prev_1</span></code></pre></div>
 <pre><code>41.11548399342612</code></pre>
 <p>lúc này, giá trị dự báo cho T+2 sẽ là:</p>
 <div class="sourceCode" id="cb41"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb41-1"><a href="arima.html#cb41-1" tabindex="-1"></a>resid_t_prev_1 <span class="op">=</span> resid_t</span>

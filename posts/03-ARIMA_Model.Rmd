@@ -210,7 +210,7 @@ resid_t_prev_1 = -2.2677281
 
 lúc này, giá trị dự báo cho T+1 sẽ là:
 ```python
-c + theta_t * resid_t + theta_t_prev * resid_t_prev_1
+c + theta_t * resid_t + theta_t_prev_1 * resid_t_prev_1
 ```
 
 ```
