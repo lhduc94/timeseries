@@ -152,14 +152,24 @@ Predicted=41.89874024020355 	Expected=50
 ```
 
 xem các tham số $\theta$
-```
-MA_results.params
+
+```python
+MA_results.maparams
 ```
 
-```
-array([41.89874024,  0.17900771,  0.11330768, 50.91597007])
+```python
+array([0.17900771,  0.11330768])
 ```
 
+xem tham số $c$
+
+```python
+MA_results.params[0]
+```
+
+```python
+41.89874024020355
+```
 Đánh giá kết quả mô hình
 
 ```python

@@ -312,10 +312,13 @@ Predicted=41.89874024020355     Expected=48
 Predicted=41.89874024020355     Expected=55
 Predicted=41.89874024020355     Expected=50</code></pre>
 <p>xem các tham số <span class="math inline">\(\theta\)</span></p>
-<pre><code>MA_results.params</code></pre>
-<pre><code>array([41.89874024,  0.17900771,  0.11330768, 50.91597007])</code></pre>
+<div class="sourceCode" id="cb30"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb30-1"><a href="arima.html#cb30-1" tabindex="-1"></a>MA_results.maparams</span></code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb31-1"><a href="arima.html#cb31-1" tabindex="-1"></a>array([<span class="fl">0.17900771</span>,  <span class="fl">0.11330768</span>])</span></code></pre></div>
+<p>xem tham số <span class="math inline">\(c\)</span></p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb32-1"><a href="arima.html#cb32-1" tabindex="-1"></a>MA_results.params[<span class="dv">0</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb33-1"><a href="arima.html#cb33-1" tabindex="-1"></a><span class="fl">41.89874024020355</span></span></code></pre></div>
 <p>Đánh giá kết quả mô hình</p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb32-1"><a href="arima.html#cb32-1" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&#39;RMSE:&#39;</span>, np.sqrt(mean_squared_error(test, Y_hat)))</span></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb34-1"><a href="arima.html#cb34-1" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&#39;RMSE:&#39;</span>, np.sqrt(mean_squared_error(test, Y_hat)))</span></code></pre></div>
 <pre><code>RMSE: 8.15992514853609</code></pre>
 <p>Dưới đây là biểu đồ thể hiện giá trị Dự đoán và giá trị thực tế trong 7 ngày</p>
 <p><img src="../images/03/MA_model.png" /></p>
