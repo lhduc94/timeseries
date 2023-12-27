@@ -35,7 +35,7 @@ train, test = Y[:len(Y)-7], Y[len(Y)-7:]
 AR_model = AutoReg(train, lags=2)
 AR_results = AR_model.fit()
 # Dự đoán kết quả mô hình
-Y_hat = AR_results.predict(start=len(train), end=len(train)+len(test)-1, dynamic=False)
+Y_hat = AR_results.forecast(7)
 for y_hat, y_true in zip(Y_hat, test):
     print(f'Predicted={y_hat} \tExpected={y_true}')
 ```
