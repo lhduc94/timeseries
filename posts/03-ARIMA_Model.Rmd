@@ -259,7 +259,10 @@ c + theta_1*resid_t + theta_2*resid_t_previous_1
 Và giá trị từ T+3 trở đi sẽ là
 
 ```python
-resid_t_previous_1 = resid_t #lúc này resid_t từ T+2 đã bằng 0 nên giá trị resid_t_previous_1 cũng bằng 0, do đó kết quả trở về giá trị trung bình c
+resid_t_previous_1 = resid_t 
+# lúc này resid_t từ T+2 đã bằng 0 
+# nên giá trị resid_t_previous_1 cũng bằng 0, 
+# do đó kết quả trở về giá trị trung bình c
 resid_t = 0
 c + theta_1*resid_t + theta_2*resid_t_previous_1
 ```

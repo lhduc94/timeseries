@@ -374,9 +374,12 @@ và
 <span id="cb41-3"><a href="arima.html#cb41-3" tabindex="-1"></a>c <span class="op">+</span> theta_1<span class="op">*</span>resid_t <span class="op">+</span> theta_2<span class="op">*</span>resid_t_previous_1</span></code></pre></div>
 <pre><code>41.565601374967706</code></pre>
 <p>Và giá trị từ T+3 trở đi sẽ là</p>
-<div class="sourceCode" id="cb43"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb43-1"><a href="arima.html#cb43-1" tabindex="-1"></a>resid_t_previous_1 <span class="op">=</span> resid_t <span class="co">#lúc này resid_t từ T+2 đã bằng 0 nên giá trị resid_t_previous_1 cũng bằng 0, do đó kết quả trở về giá trị trung bình c</span></span>
-<span id="cb43-2"><a href="arima.html#cb43-2" tabindex="-1"></a>resid_t <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb43-3"><a href="arima.html#cb43-3" tabindex="-1"></a>c <span class="op">+</span> theta_1<span class="op">*</span>resid_t <span class="op">+</span> theta_2<span class="op">*</span>resid_t_previous_1</span></code></pre></div>
+<div class="sourceCode" id="cb43"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb43-1"><a href="arima.html#cb43-1" tabindex="-1"></a>resid_t_previous_1 <span class="op">=</span> resid_t </span>
+<span id="cb43-2"><a href="arima.html#cb43-2" tabindex="-1"></a><span class="co"># lúc này resid_t từ T+2 đã bằng 0 </span></span>
+<span id="cb43-3"><a href="arima.html#cb43-3" tabindex="-1"></a><span class="co"># nên giá trị resid_t_previous_1 cũng bằng 0, </span></span>
+<span id="cb43-4"><a href="arima.html#cb43-4" tabindex="-1"></a><span class="co"># do đó kết quả trở về giá trị trung bình c</span></span>
+<span id="cb43-5"><a href="arima.html#cb43-5" tabindex="-1"></a>resid_t <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb43-6"><a href="arima.html#cb43-6" tabindex="-1"></a>c <span class="op">+</span> theta_1<span class="op">*</span>resid_t <span class="op">+</span> theta_2<span class="op">*</span>resid_t_previous_1</span></code></pre></div>
 <pre><code>41.89874024</code></pre>
 <p>Đây cũng chính là điểm yếu của mô hình Moving Average</p>
 </div>
