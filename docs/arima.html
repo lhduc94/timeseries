@@ -255,7 +255,7 @@ y_t = c + \sum^{p}_{1}\phi y_{t-i} + \epsilon_t
 <pre><code>8.110283777968577</code></pre>
 <p>Dưới đây là biểu đồ thể hiện giá trị Dự đoán và giá trị thực tế trong 7 ngày</p>
 <p><img src="../images/03/autoregressive.png" /></p>
-<p>Chúng ta có thể mô phỏng lại cách tính các giá trị dự đoán dựa trên các params của model với <span class="math inline">\(c=29.46548462, \phi_1=0.18468755, \phi_2=0.11315929\)</span></p>
+<p>Chúng ta có thể mô phỏng lại cách tính các giá trị dự đoán dựa trên các params của model với <span class="math inline">\(c=29.46548462, \phi_t=0.18468755, \phi_{t-1}=0.11315929\)</span></p>
 <div class="sourceCode" id="cb26"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb26-1"><a href="arima.html#cb26-1" tabindex="-1"></a>Y_hat_sim <span class="op">=</span> <span class="bu">list</span>(train[<span class="op">-</span><span class="dv">2</span>:])</span>
 <span id="cb26-2"><a href="arima.html#cb26-2" tabindex="-1"></a>c <span class="op">=</span> <span class="fl">29.46548462</span></span>
 <span id="cb26-3"><a href="arima.html#cb26-3" tabindex="-1"></a>phi_1 <span class="op">=</span> <span class="fl">0.18468755</span></span>
@@ -323,63 +323,35 @@ Predicted=41.89874024020355     Expected=50</code></pre>
 <p>để xem các espilon</p>
 <div class="sourceCode" id="cb36"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb36-1"><a href="arima.html#cb36-1" tabindex="-1"></a>MA_results.resid</span></code></pre></div>
 <pre><code>array([-6.89874024e+00, -8.58294190e+00, -9.63603195e+00, -8.20730676e+00,
-        4.66081766e+00, -1.28031243e+01,  4.86502357e+00,  1.68107497e+00,
-       -4.75091009e+00, -1.42387694e+01, -8.11576067e-01, -7.14009987e+00,
-        1.44713505e+01,  3.31980458e+00,  8.67273907e-01, -5.43014833e+00,
-        8.97502940e+00,  1.09937808e-01, -1.93535976e+00,  1.04352473e+01,
-       -9.54743886e+00,  1.16279312e+01, -3.89843143e+00, -1.05184249e+01,
-       -2.57413881e+00,  2.75386884e+00, -3.10003429e+00, -6.65584469e+00,
-        3.64396501e+00, -3.79687973e+00, -1.76319587e+01, -1.53122680e+01,
-       -6.15988974e+00,  4.93892517e+00, -4.08488310e+00,  8.27286716e+00,
-       -4.91679863e+00,  9.04402521e+00, -1.19605794e+01, -9.78246182e+00,
-        1.22076214e+01, -6.97557054e+00,  2.96672336e+00,  9.36057914e+00,
-       -9.91050866e+00,  1.08146917e+01,  4.28828332e+00,  1.10823629e+00,
-        3.41698146e+00, -3.63597797e+00,  6.36495760e+00, -5.62613250e+00,
-       -6.61281774e+00,  1.19224892e+01, -1.28367470e+00,  1.98013778e+00,
-       -3.10774997e+00, -4.56679385e+00, -1.07291170e+01, -4.46069271e+00,
-       -1.18845504e+01,  5.73411672e+00, -7.57858046e+00, -5.19183537e+00,
-        9.88934975e+00,  9.19264723e-01, -4.18383504e+00, -9.25396125e+00,
-       -7.68149134e-01,  4.28730931e+00,  4.20835525e-01, -3.45985814e+00,
-       -1.03270828e+01, -1.26580842e+01, -8.46270768e+00,  3.05040793e+00,
-        4.51410303e+00, -2.05243416e+00, -6.04282126e+00,  4.41552794e+00,
-        3.99554429e+00, -1.14286735e-01, -4.33100791e+00, -7.11050685e+00,
-       -5.13516819e+00,  1.58261695e+01, -8.14989264e+00, -1.02330732e+01,
-        1.08565043e+01, -1.68265240e+00, -3.82765785e+00, -2.29025133e-02,
-        5.53906254e+00, -8.88768013e+00, -4.93539530e+00, -7.00822395e+00,
-       -5.08499588e+00, -2.19440112e+00, -2.92975640e+00, -7.12564874e+00,
 ...
-       -3.63316822e+00,  8.57959651e+00, -2.28883118e-02,  1.33222726e-01,
-       -7.91999471e+00, -1.49609526e+00, -5.73353138e+00,  1.12971252e+01,
-        3.72864038e+00,  8.15375327e+00, -4.78080858e+00, -1.96682154e+00,
-        9.95038338e-01,  1.45996217e-01,  1.09623798e+01, -4.87763328e+00,
-       -2.26772814e+00, -2.94012608e+00])</code></pre>
+       -4.87763328e+00, -2.26772814e+00, -2.94012608e+00])</code></pre>
 <p>Dưới đây là biểu đồ thể hiện giá trị Dự đoán và giá trị thực tế trong 7 ngày</p>
 <p><img src="../images/03/MA_model.png" /></p>
-<p>Nếu để ý kĩ, chúng ta sẽ thấy kể từ giá trị dự đoán thứ 3, giá trị dự đoán bằng đầu là một giá trị không đổi 41.89874024020355. Lý do là mô hình không biết trước các sai số dự đoán của các giá trị tiếp theo để từ bước tính toán thứ 3.
+<p>Nếu để ý kỹ, chúng ta sẽ thấy kể từ giá trị dự đoán thứ 3, giá trị dự đoán bằng đầu là một giá trị không đổi 41.89874024020355. Lý do là mô hình không biết trước các sai số dự đoán của các giá trị tiếp theo để từ bước tính toán thứ 3.
 Để mô phỏng lại cách tính toán.
-Ta có <span class="math inline">\(c = 41.89874024 ,\theta_1 = 0.17900771, \theta_2 = 0.11330768\)</span>
+Ta có <span class="math inline">\(c = 41.89874024 ,\theta_{t} = 0.17900771, \theta_{t-1} = 0.11330768\)</span>
 và
 <span class="math inline">\(resid_t = -2.94012608, resid_{t-1}=-2.26772814\)</span></p>
 <div class="sourceCode" id="cb38"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb38-1"><a href="arima.html#cb38-1" tabindex="-1"></a>c <span class="op">=</span> <span class="fl">41.89874024</span></span>
-<span id="cb38-2"><a href="arima.html#cb38-2" tabindex="-1"></a>theta_1 <span class="op">=</span> <span class="fl">0.17900771</span></span>
-<span id="cb38-3"><a href="arima.html#cb38-3" tabindex="-1"></a>theta_2 <span class="op">=</span> <span class="fl">0.11330768</span></span>
+<span id="cb38-2"><a href="arima.html#cb38-2" tabindex="-1"></a>theta_t <span class="op">=</span> <span class="fl">0.17900771</span></span>
+<span id="cb38-3"><a href="arima.html#cb38-3" tabindex="-1"></a>theta_t_prev_1 <span class="op">=</span> <span class="fl">0.11330768</span></span>
 <span id="cb38-4"><a href="arima.html#cb38-4" tabindex="-1"></a>resid_t <span class="op">=</span> <span class="op">-</span><span class="fl">2.94012608</span></span>
-<span id="cb38-5"><a href="arima.html#cb38-5" tabindex="-1"></a>resid_t_previous_1 <span class="op">=</span> <span class="op">-</span><span class="fl">2.2677281</span></span></code></pre></div>
+<span id="cb38-5"><a href="arima.html#cb38-5" tabindex="-1"></a>resid_t_prev_1 <span class="op">=</span> <span class="op">-</span><span class="fl">2.2677281</span></span></code></pre></div>
 <p>lúc này, giá trị dự báo cho T+1 sẽ là:</p>
-<div class="sourceCode" id="cb39"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb39-1"><a href="arima.html#cb39-1" tabindex="-1"></a>c <span class="op">+</span> theta_1<span class="op">*</span>resid_t <span class="op">+</span> theta_2<span class="op">*</span>resid_t_previous_1</span></code></pre></div>
+<div class="sourceCode" id="cb39"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb39-1"><a href="arima.html#cb39-1" tabindex="-1"></a>c <span class="op">+</span> theta_t <span class="op">*</span> resid_t <span class="op">+</span> theta_t_prev <span class="op">*</span> resid_t_prev_1</span></code></pre></div>
 <pre><code>41.11548399342612</code></pre>
 <p>lúc này, giá trị dự báo cho T+2 sẽ là:</p>
-<div class="sourceCode" id="cb41"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb41-1"><a href="arima.html#cb41-1" tabindex="-1"></a>resid_t_previous_1 <span class="op">=</span> resid_t</span>
+<div class="sourceCode" id="cb41"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb41-1"><a href="arima.html#cb41-1" tabindex="-1"></a>resid_t_prev_1 <span class="op">=</span> resid_t</span>
 <span id="cb41-2"><a href="arima.html#cb41-2" tabindex="-1"></a>resid_t <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb41-3"><a href="arima.html#cb41-3" tabindex="-1"></a>c <span class="op">+</span> theta_1<span class="op">*</span>resid_t <span class="op">+</span> theta_2<span class="op">*</span>resid_t_previous_1</span></code></pre></div>
+<span id="cb41-3"><a href="arima.html#cb41-3" tabindex="-1"></a>c <span class="op">+</span> theta_t <span class="op">*</span> resid_t <span class="op">+</span> theta_t_prev_1 <span class="op">*</span> resid_t_prev_1</span></code></pre></div>
 <pre><code>41.565601374967706</code></pre>
 <p>Và giá trị từ T+3 trở đi sẽ là</p>
-<div class="sourceCode" id="cb43"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb43-1"><a href="arima.html#cb43-1" tabindex="-1"></a>resid_t_previous_1 <span class="op">=</span> resid_t </span>
+<div class="sourceCode" id="cb43"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb43-1"><a href="arima.html#cb43-1" tabindex="-1"></a>resid_t_prev_1 <span class="op">=</span> resid_t <span class="co"># = 0</span></span>
 <span id="cb43-2"><a href="arima.html#cb43-2" tabindex="-1"></a><span class="co"># lúc này resid_t từ T+2 đã bằng 0 </span></span>
 <span id="cb43-3"><a href="arima.html#cb43-3" tabindex="-1"></a><span class="co"># nên giá trị resid_t_previous_1 cũng bằng 0, </span></span>
 <span id="cb43-4"><a href="arima.html#cb43-4" tabindex="-1"></a><span class="co"># do đó kết quả trở về giá trị trung bình c</span></span>
 <span id="cb43-5"><a href="arima.html#cb43-5" tabindex="-1"></a>resid_t <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb43-6"><a href="arima.html#cb43-6" tabindex="-1"></a>c <span class="op">+</span> theta_1<span class="op">*</span>resid_t <span class="op">+</span> theta_2<span class="op">*</span>resid_t_previous_1</span></code></pre></div>
+<span id="cb43-6"><a href="arima.html#cb43-6" tabindex="-1"></a>c <span class="op">+</span> theta_t <span class="op">*</span> resid_t <span class="op">+</span> theta_t_prev_1 <span class="op">*</span> resid_t_prev_1</span></code></pre></div>
 <pre><code>41.89874024</code></pre>
 <p>Đây cũng chính là điểm yếu của mô hình Moving Average</p>
 </div>
