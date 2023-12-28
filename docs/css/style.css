@@ -43,9 +43,12 @@ code.sourceCode > span{
   color: black;
 }
 div.sourceCode {
-  background-color: #1da83b;
+  background-color: #ffffff;
 }
 
+pre.sourceCode.python {
+  background-color: #af1313;
+}
 .rmdcaution, .rmdimportant, .rmdnote, .rmdtip, .rmdwarning{
   padding: 1em 1em 1em 4em;
   margin-bottom: 10px;
