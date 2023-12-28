@@ -52,7 +52,7 @@ Phương pháp này chỉ sử dụng dữ liệu quá khứ nên có thể áp 
 Dưới đây là ví dụ về số bé gái sinh ra mỗi ngày
 
 
-```python{class.source="bg-danger", class.output="bg-warning"}
+```python
 df = pd.read_csv('../data/daily-total-female-births.csv')
 df['Date'] = pd.to_datetime(df['Date'])
 df['lag_1'] = df['Births'].shift(1)
