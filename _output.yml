@@ -6,7 +6,7 @@ bookdown::gitbook:
       collapse: subsection
       scroll_highlight: yes
       before: |
-        <li><a href="./">Notes</a></li>
+        <li><a href="./">TimeSeries</a></li>
       after: |
         <li><a href="" target="blank">Lê Huỳnh Đức</a></li>
     edit: null
@@ -26,7 +26,7 @@ bookdown::pdf_book:
     after_body: latex/after_body.tex
   keep_tex: yes
   dev: "cairo_pdf"
-  latex_engine: xelatex
+  latex_engine: pdflatex
   citation_package: natbib
   template: null
   pandoc_args: --top-level-division=chapter

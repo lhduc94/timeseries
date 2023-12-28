@@ -223,7 +223,7 @@
 
 \title{Phân tích Chuỗi thời gian}
 \author{Lê Huỳnh Đức}
-\date{2023-12-27}
+\date{2023-12-28}
 
 \begin{document}
 \maketitle
@@ -266,6 +266,7 @@ Chuỗi thời gian rời rạc là tập hợp các điểm quan sát có kho�
 
 Chuỗi thời gian liên tục là tập hợp các điểm quan sát có khoảng cách quan sát là một giây.
 
+\begin{rmdnote}
 \textbf{Thời gian là gì}
 
 Thời gian có thể định nghĩa theo:
@@ -281,6 +282,7 @@ Thời gian có thể định nghĩa theo:
 \end{itemize}
 
 Tóm lại, miễn các thông tin tuân theo thời gian và có hướng giá trị tuân theo
+\end{rmdnote}
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
@@ -566,7 +568,7 @@ Với trung bình trượt với cửa sổ trượt \(k\) bằng 3 ta có:
 Tổng quát hơn
 
 \[\begin{align}
-\Large s_{t} = \frac{1}{m}  \sum_{j=-m}^{m}{y_{t+j}}
+\Large s_{t} = \frac{1}{k}  \sum_{j=-m}^{m}{y_{t+j}}
 \end{align}\]
 
 Trong đó \(k = 2m + 1\)
@@ -800,13 +802,13 @@ Mô hình tự hồi quy là mô hình ước lượng giá trị tương lai c�
 Công thức tự hồi quy được biểu diễn như sau
 
 \[
-y_t = c + \theta_1 y_{t-1} + \theta_2 y_{t-2} + \theta_3 y_{t-3} + .... + \theta_p y_{t-p} + \epsilon_t
+y_t = c + \phi_1 y_{t-1} + \phi_2 y_{t-2} + \phi_3 y_{t-3} + .... + \phi_p y_{t-p} + \epsilon_t
 \]
 
 Hoặc có thể viết lại
 
 \[
-y_t = c + \sum^{p}_{1}\theta y_{t-i} + \epsilon_t
+y_t = c + \sum^{p}_{1}\phi y_{t-i} + \epsilon_t
 \]
 
 Trong đó: \(\epsilon_t\) là nhiễu trắng. Có thể nói mô hình này là mô hình hồi quy đa biến với các biến là các giá trị lag tại thời điểm từ \(1\) đến \(p\). Chúng ta kí hiệu mô hình này là \(AR(p)\)
@@ -827,12 +829,11 @@ Trong đó: \(\epsilon_t\) là nhiễu trắng. Có thể nói mô hình này l�
 \NormalTok{Y }\OperatorTok{=}\NormalTok{ df.Births.values}
 \NormalTok{train, test }\OperatorTok{=}\NormalTok{ Y[:}\BuiltInTok{len}\NormalTok{(Y)}\OperatorTok{{-}}\DecValTok{7}\NormalTok{], Y[}\BuiltInTok{len}\NormalTok{(Y)}\OperatorTok{{-}}\DecValTok{7}\NormalTok{:]}
 
-\CommentTok{\# Huấn luyện mô hình với p=29}
-\NormalTok{model }\OperatorTok{=}\NormalTok{ AutoReg(train, lags}\OperatorTok{=}\DecValTok{29}\NormalTok{)}
-\NormalTok{model\_fit }\OperatorTok{=}\NormalTok{ model.fit()}
-
+\CommentTok{\# Huấn luyện mô hình với p=2}
+\NormalTok{AR\_model }\OperatorTok{=}\NormalTok{ AutoReg(train, lags}\OperatorTok{=}\DecValTok{2}\NormalTok{)}
+\NormalTok{AR\_results }\OperatorTok{=}\NormalTok{ AR\_model.fit()}
 \CommentTok{\# Dự đoán kết quả mô hình}
-\NormalTok{Y\_hat }\OperatorTok{=}\NormalTok{ model\_fit.predict(start}\OperatorTok{=}\BuiltInTok{len}\NormalTok{(train), end}\OperatorTok{=}\BuiltInTok{len}\NormalTok{(train)}\OperatorTok{+}\BuiltInTok{len}\NormalTok{(test)}\OperatorTok{{-}}\DecValTok{1}\NormalTok{, dynamic}\OperatorTok{=}\VariableTok{False}\NormalTok{)}
+\NormalTok{Y\_hat }\OperatorTok{=}\NormalTok{ AR\_results.forecast(}\DecValTok{7}\NormalTok{)}
 \ControlFlowTok{for}\NormalTok{ y\_hat, y\_true }\KeywordTok{in} \BuiltInTok{zip}\NormalTok{(Y\_hat, test):}
     \BuiltInTok{print}\NormalTok{(}\SpecialStringTok{f\textquotesingle{}Predicted=}\SpecialCharTok{\{}\NormalTok{y\_hat}\SpecialCharTok{\}}\SpecialStringTok{ }\CharTok{\textbackslash{}t}\SpecialStringTok{Expected=}\SpecialCharTok{\{}\NormalTok{y\_true}\SpecialCharTok{\}}\SpecialStringTok{\textquotesingle{}}\NormalTok{)}
 \end{Highlighting}
@@ -840,33 +841,26 @@ Trong đó: \(\epsilon_t\) là nhiễu trắng. Có thể nói mô hình này l�
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{Predicted}\OperatorTok{=}\FloatTok{41.94770376100972}\NormalTok{     Expected}\OperatorTok{=}\DecValTok{44}
-\NormalTok{Predicted}\OperatorTok{=}\FloatTok{39.110919166721224}\NormalTok{    Expected}\OperatorTok{=}\DecValTok{34}
-\NormalTok{Predicted}\OperatorTok{=}\FloatTok{39.31595241329576}\NormalTok{     Expected}\OperatorTok{=}\DecValTok{37}
-\NormalTok{Predicted}\OperatorTok{=}\FloatTok{41.277277685616205}\NormalTok{    Expected}\OperatorTok{=}\DecValTok{52}
-\NormalTok{Predicted}\OperatorTok{=}\FloatTok{42.933771871507425}\NormalTok{    Expected}\OperatorTok{=}\DecValTok{48}
-\NormalTok{Predicted}\OperatorTok{=}\FloatTok{42.558113213240745}\NormalTok{    Expected}\OperatorTok{=}\DecValTok{55}
-\NormalTok{Predicted}\OperatorTok{=}\FloatTok{41.76852911572844}\NormalTok{     Expected}\OperatorTok{=}\DecValTok{50}
+\NormalTok{Predicted}\OperatorTok{=}\FloatTok{41.009982996211406}\NormalTok{    Expected}\OperatorTok{=}\DecValTok{44}
+\NormalTok{Predicted}\OperatorTok{=}\FloatTok{41.3395707860348}\NormalTok{      Expected}\OperatorTok{=}\DecValTok{34}
+\NormalTok{Predicted}\OperatorTok{=}\FloatTok{41.741049087971845}\NormalTok{    Expected}\OperatorTok{=}\DecValTok{37}
+\NormalTok{Predicted}\OperatorTok{=}\FloatTok{41.8524930508191}\NormalTok{      Expected}\OperatorTok{=}\DecValTok{52}
+\NormalTok{Predicted}\OperatorTok{=}\FloatTok{41.91850636281712}\NormalTok{     Expected}\OperatorTok{=}\DecValTok{48}
+\NormalTok{Predicted}\OperatorTok{=}\FloatTok{41.94330911921793}\NormalTok{     Expected}\OperatorTok{=}\DecValTok{55}
+\NormalTok{Predicted}\OperatorTok{=}\FloatTok{41.95535989900887}\NormalTok{     Expected}\OperatorTok{=}\DecValTok{50}
 \end{Highlighting}
 \end{Shaded}
 
-Để xem các params của mô hình ta gọi \texttt{model\_fit.params}. Trong đó giá trị đầu tiên là hằng số \(c\), các giá trị tiếp theo tương ứng là các \(\theta\) tại các lag
+Để xem các params của mô hình ta gọi \texttt{model\_fit.params}. Trong đó giá trị đầu tiên là hằng số \(c\), các giá trị tiếp theo tương ứng là các \(\phi\) tại các lag
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{model\_fit.params}
+\NormalTok{AR\_results.params}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-array([ 1.02059905e+01,  1.44428304e-01,  7.36131415e-02,  1.63274491e-02,
-        4.04382220e-02,  4.36485615e-02, -2.10332720e-02,  1.38010371e-01,
-        6.69075575e-02, -4.06667216e-02,  1.76155123e-02,  2.79512698e-02,
-       -9.12731426e-02, -4.88545302e-02, -1.11333442e-03,  4.74045580e-02,
-        4.00381240e-02, -5.00957332e-02,  2.83834804e-02,  2.70181922e-02,
-        1.52596823e-02,  2.22803143e-01,  1.16878446e-02, -4.81962255e-02,
-        3.11342589e-02, -3.88000648e-02, -1.77851389e-02,  6.77930532e-02,
-        5.20638466e-02,  3.62816255e-03])
+array([29.46548462,  0.18468755,  0.11315929])
 \end{verbatim}
 
 Để đánh giá kết quả mô hình, chúng ta dùng thư viện \texttt{sklearn.metrics}
@@ -879,12 +873,40 @@ array([ 1.02059905e+01,  1.44428304e-01,  7.36131415e-02,  1.63274491e-02,
 \end{Shaded}
 
 \begin{verbatim}
-7.548870787612078
+8.110283777968577
 \end{verbatim}
 
 Dưới đây là biểu đồ thể hiện giá trị Dự đoán và giá trị thực tế trong 7 ngày
 
 \includegraphics{../images/03/autoregressive.png}
+
+Chúng ta có thể mô phỏng lại cách tính các giá trị dự đoán dựa trên các params của model với \(c=29.46548462, \phi_t=0.18468755, \phi_{t-1}=0.11315929\)
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Y\_hat\_sim }\OperatorTok{=} \BuiltInTok{list}\NormalTok{(train[}\OperatorTok{{-}}\DecValTok{2}\NormalTok{:])}
+\NormalTok{c }\OperatorTok{=} \FloatTok{29.46548462}
+\NormalTok{phi\_1 }\OperatorTok{=} \FloatTok{0.18468755}
+\NormalTok{phi\_2 }\OperatorTok{=} \FloatTok{0.11315929}
+
+\ControlFlowTok{for}\NormalTok{ i }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(}\DecValTok{7}\NormalTok{):}
+\NormalTok{    predict }\OperatorTok{=}\NormalTok{ c }\OperatorTok{+}\NormalTok{ phi\_1}\OperatorTok{*}\NormalTok{Y\_hat\_sim[}\OperatorTok{{-}}\DecValTok{1}\NormalTok{] }\OperatorTok{+}\NormalTok{ phi\_2}\OperatorTok{*}\NormalTok{Y\_hat\_sim[}\OperatorTok{{-}}\DecValTok{2}\NormalTok{]}
+\NormalTok{    Y\_hat\_sim.append(predict)}
+
+\ControlFlowTok{for}\NormalTok{ a, b }\KeywordTok{in} \BuiltInTok{zip}\NormalTok{(Y\_hat\_sim[}\DecValTok{2}\NormalTok{:], Y\_hat):}
+    \BuiltInTok{print}\NormalTok{(}\SpecialStringTok{f"Simulated=}\SpecialCharTok{\{}\NormalTok{a}\SpecialCharTok{\}}\SpecialStringTok{ }\CharTok{\textbackslash{}t}\SpecialStringTok{ Predicted=}\SpecialCharTok{\{}\NormalTok{b}\SpecialCharTok{\}}\SpecialStringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+Simulated=41.00998312            Predicted=41.009982996211406
+Simulated=41.33957094797416      Predicted=41.3395707860348
+Simulated=41.74104926920371      Predicted=41.741049087971845
+Simulated=41.85249324133591      Predicted=41.8524930508191
+Simulated=41.918506557292        Predicted=41.91850636281712
+Simulated=41.94330931564456      Predicted=41.94330911921793
+Simulated=41.95536009628208      Predicted=41.95535989900887
+\end{verbatim}
 
 \hypertarget{moving-average-model}{%
 \section{Moving Average Model}\label{moving-average-model}}
@@ -916,7 +938,144 @@ y_t = c  + \sum^{q}_{i=1}\theta_{i}\epsilon_{t-i} +  \epsilon_t
 
 Trong đó \(c\) là trung bình series, \(\epsilon_{t-i}\) là white noise tại \(t-i\). Trong thực tế, chúng ta không có quan sát cho các giá trị white noise này, do đó nó không thực sự là hồi quy theo nghĩa hiểu thông thường.
 
-Trong thư viện \texttt{statsmodels} không hỗ trợ chính thức cách tính \textbf{Moving Average Model}, nhưng chúng ta có thể áp dụng thông qua \texttt{ARIMA}. Ở phần sau chúng ta sẽ tìm hiểu về \texttt{ARIMA} rồi quay ngược lại ví dụ về \texttt{MA}
+Trong thư viện \texttt{statsmodels} không hỗ trợ chính thức cách tính \textbf{Moving Average Model}, nhưng chúng ta có thể áp dụng thông qua \texttt{ARIMA}.
+
+Ví dụ về cách sử dụng ARMA
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Huấn luyện mô hình với q=2}
+\NormalTok{MA\_model }\OperatorTok{=}\NormalTok{ ARIMA(train, order}\OperatorTok{=}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{2}\NormalTok{))}
+\NormalTok{MA\_results }\OperatorTok{=}\NormalTok{ MA\_model.fit()}
+\CommentTok{\# Dự đoán kết quả mô hình}
+\NormalTok{Y\_hat }\OperatorTok{=}\NormalTok{ MA\_results.predict(start}\OperatorTok{=}\BuiltInTok{len}\NormalTok{(train), end}\OperatorTok{=}\BuiltInTok{len}\NormalTok{(train)}\OperatorTok{+}\BuiltInTok{len}\NormalTok{(test)}\OperatorTok{{-}}\DecValTok{1}\NormalTok{, dynamic}\OperatorTok{=}\VariableTok{False}\NormalTok{)}
+\ControlFlowTok{for}\NormalTok{ y\_hat, y\_true }\KeywordTok{in} \BuiltInTok{zip}\NormalTok{(Y\_hat, test):}
+    \BuiltInTok{print}\NormalTok{(}\SpecialStringTok{f\textquotesingle{}Predicted=}\SpecialCharTok{\{}\NormalTok{y\_hat}\SpecialCharTok{\}}\SpecialStringTok{ }\CharTok{\textbackslash{}t}\SpecialStringTok{Expected=}\SpecialCharTok{\{}\NormalTok{y\_true}\SpecialCharTok{\}}\SpecialStringTok{\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+Predicted=41.11548396873163     Expected=44
+Predicted=41.5656013608698      Expected=34
+Predicted=41.89874024020355     Expected=37
+Predicted=41.89874024020355     Expected=52
+Predicted=41.89874024020355     Expected=48
+Predicted=41.89874024020355     Expected=55
+Predicted=41.89874024020355     Expected=50
+\end{verbatim}
+
+xem các tham số \(\theta\)
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{MA\_results.maparams}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+array([0.17900771,  0.11330768])
+\end{verbatim}
+
+xem tham số \(c\)
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{MA\_results.params[}\DecValTok{0}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+41.89874024020355
+\end{verbatim}
+
+Đánh giá kết quả mô hình
+
+\begin{verbatim}
+print('RMSE:', np.sqrt(mean_squared_error(test, Y_hat)))
+\end{verbatim}
+
+\begin{verbatim}
+RMSE: 8.15992514853609
+\end{verbatim}
+
+để xem các espilon
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{MA\_results.resid}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+array([-6.89874024e+00, -8.58294190e+00, -9.63603195e+00, -8.20730676e+00,
+...
+       -4.87763328e+00, -2.26772814e+00, -2.94012608e+00])
+\end{verbatim}
+
+Dưới đây là biểu đồ thể hiện giá trị Dự đoán và giá trị thực tế trong 7 ngày
+
+\includegraphics{../images/03/MA_model.png}
+
+Nếu để ý kỹ, chúng ta sẽ thấy kể từ giá trị dự đoán thứ 3, giá trị dự đoán bằng đầu là một giá trị không đổi 41.89874024020355. Lý do là mô hình không biết trước các sai số dự đoán của các giá trị tiếp theo để từ bước tính toán thứ 3.
+Để mô phỏng lại cách tính toán.
+Ta có \(c = 41.89874024 ,\theta_{t} = 0.17900771, \theta_{t-1} = 0.11330768\)
+và
+\(resid_t = -2.94012608, resid_{t-1}=-2.26772814\)
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{c }\OperatorTok{=} \FloatTok{41.89874024}
+\NormalTok{theta\_t }\OperatorTok{=} \FloatTok{0.17900771}
+\NormalTok{theta\_t\_prev\_1 }\OperatorTok{=} \FloatTok{0.11330768}
+\NormalTok{resid\_t }\OperatorTok{=} \OperatorTok{{-}}\FloatTok{2.94012608}
+\NormalTok{resid\_t\_prev\_1 }\OperatorTok{=} \OperatorTok{{-}}\FloatTok{2.2677281}
+\end{Highlighting}
+\end{Shaded}
+
+lúc này, giá trị dự báo cho T+1 sẽ là:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{c }\OperatorTok{+}\NormalTok{ theta\_t }\OperatorTok{*}\NormalTok{ resid\_t }\OperatorTok{+}\NormalTok{ theta\_t\_prev\_1 }\OperatorTok{*}\NormalTok{ resid\_t\_prev\_1}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+41.11548399342612
+\end{verbatim}
+
+lúc này, giá trị dự báo cho T+2 sẽ là:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{resid\_t\_prev\_1 }\OperatorTok{=}\NormalTok{ resid\_t}
+\NormalTok{resid\_t }\OperatorTok{=} \DecValTok{0}
+\NormalTok{c }\OperatorTok{+}\NormalTok{ theta\_t }\OperatorTok{*}\NormalTok{ resid\_t }\OperatorTok{+}\NormalTok{ theta\_t\_prev\_1 }\OperatorTok{*}\NormalTok{ resid\_t\_prev\_1}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+41.565601374967706
+\end{verbatim}
+
+Và giá trị từ T+3 trở đi sẽ là
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{resid\_t\_prev\_1 }\OperatorTok{=}\NormalTok{ resid\_t }\CommentTok{\# = 0}
+\CommentTok{\# lúc này resid\_t từ T+2 đã bằng 0 }
+\CommentTok{\# nên giá trị resid\_t\_previous\_1 cũng bằng 0, }
+\CommentTok{\# do đó kết quả trở về giá trị trung bình c}
+\NormalTok{resid\_t }\OperatorTok{=} \DecValTok{0}
+\NormalTok{c }\OperatorTok{+}\NormalTok{ theta\_t }\OperatorTok{*}\NormalTok{ resid\_t }\OperatorTok{+}\NormalTok{ theta\_t\_prev\_1 }\OperatorTok{*}\NormalTok{ resid\_t\_prev\_1}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+41.89874024
+\end{verbatim}
+
+Đây cũng chính là điểm yếu của mô hình Moving Average
 
 \hypertarget{autoregressive-moving-average-model}{%
 \section{AutoRegressive Moving Average Model}\label{autoregressive-moving-average-model}}
@@ -926,7 +1085,7 @@ Như cái tên của nó, mô hình này kết hợp 2 Mô hình Autoregressive 
 Nhăc lại công thức AR
 
 \[
-y_t = c + \sum^{p}_{1}\theta y_{t-i} + \epsilon_t
+y_t = c + \sum^{p}_{1}\phi y_{t-i} + \epsilon_t
 \]
 
 Và công thức MA
@@ -935,7 +1094,7 @@ Và công thức MA
 y_t = c  + \sum^{q}_{i=1}\theta_{i}\epsilon_{t-i} +  \epsilon_t
 \]
 
-Do đó công thức ARMA là kết hợp cả hai công thức
+Do đó công thức ARMA là kết hợp cả hai công thức.
 
 \[
 y_t = c + \epsilon_t + \sum^{p}_{1}\phi y_{t-i}  + \sum^{q}_{i=1}\theta_{i}\epsilon_{t-i}
