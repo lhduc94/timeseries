@@ -36,10 +36,10 @@
   display: inline-block;
   float: left;
   margin: 0;
-  color: #cc1414
+  color: #ffffff
 }
 #TOC > ul > li > a {
-  color: #ffffff;
+  color: #fcfcfc;
 }
 #TOC > ul > li:hover:after {
   content: '';
