@@ -10,6 +10,7 @@ Chuỗi thời gian rời rạc là tập hợp các điểm quan sát có kho�
 
 Chuỗi thời gian liên tục là tập hợp các điểm quan sát có khoảng cách quan sát là một giây.
 
+```{block2, type='rmdnote'}
 **Thời gian là gì**
 
 Thời gian có thể định nghĩa theo:
@@ -19,6 +20,7 @@ Thời gian có thể định nghĩa theo:
 - Theo độ sâu: Xuống 1 milimet, xuống 2 milimet
 
 Tóm lại, miễn các thông tin tuân theo thời gian và có hướng giá trị tuân theo 
+```
 
 ---
 
