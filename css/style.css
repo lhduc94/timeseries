@@ -13,6 +13,8 @@ pre {
 }
 pre code {
   white-space: inherit;
+  background-color: #f4f4f4; /* Màu xám nhạt */
+  color: #0000ff; /* Màu xanh dương */
 }
 
 p code {
@@ -46,9 +48,6 @@ div.sourceCode {
   background-color: #ffffff;
 }
 
-pre.sourceCode.python {
-  background-color: #af1313;
-}
 .rmdcaution, .rmdimportant, .rmdnote, .rmdtip, .rmdwarning{
   padding: 1em 1em 1em 4em;
   margin-bottom: 10px;
