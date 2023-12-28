@@ -13,6 +13,8 @@ pre {
 }
 pre code {
   white-space: inherit;
+  border: 3px solid #8cd2f3;
+
 }
 
 p code {
