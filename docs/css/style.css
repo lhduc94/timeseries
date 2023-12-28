@@ -43,7 +43,7 @@ code.sourceCode > span{
   color: black;
 }
 div.sourceCode {
-  background-color: #ffffff;
+  background-color: #1da83b;
 }
 
 .rmdcaution, .rmdimportant, .rmdnote, .rmdtip, .rmdwarning{
@@ -72,3 +72,4 @@ div.sourceCode {
 .rmdwarning {
   background-image: url("../images/warning.png");
 }
+
