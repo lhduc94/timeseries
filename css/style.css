@@ -18,9 +18,7 @@ pre code {
 p code {
   white-space: inherit;
 }
-.python {
-  background-color: #ee0e0e
-}
+
 
 .book .book-body .page-wrapper .page-inner section.normal pre {
   border: 1px solid #c9c9c9;
@@ -44,9 +42,6 @@ p code {
 
 code.sourceCode > span{
   color: black;
-}
-div.sourceCode {
-  background-color: #ffffff;
 }
 
 .rmdcaution, .rmdimportant, .rmdnote, .rmdtip, .rmdwarning{
