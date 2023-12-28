@@ -13,12 +13,13 @@ pre {
 }
 pre code {
   white-space: inherit;
-  background-color: #c00f0f; /* Màu xám nhạt */
-  color: #0000ff; /* Màu xanh dương */
 }
 
 p code {
   white-space: inherit;
+}
+.python {
+  background-color: #ee0e0e
 }
 
 .book .book-body .page-wrapper .page-inner section.normal pre {
