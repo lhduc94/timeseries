@@ -223,7 +223,7 @@
 
 \title{Phân tích Chuỗi thời gian}
 \author{Lê Huỳnh Đức}
-\date{2023-12-28}
+\date{2023-12-30}
 
 \begin{document}
 \maketitle
@@ -243,15 +243,12 @@
 \setcounter{tocdepth}{2}
 \tableofcontents
 }
-\hypertarget{lux1eddi-nuxf3i-ux111ux1ea7u}{%
-\chapter*{Lời nói đầu}\label{lux1eddi-nuxf3i-ux111ux1ea7u}}
+\chapter*{Lời nói đầu}\label{lux1eddi-nuxf3i-ux111ux1ea7u}
 
 
-\hypertarget{giux1edbi-thiux1ec7u-cux1a1-bux1ea3n-vux1ec1-time-series}{%
-\chapter{Giới thiệu Cơ bản về Time Series}\label{giux1edbi-thiux1ec7u-cux1a1-bux1ea3n-vux1ec1-time-series}}
+\chapter{Giới thiệu Cơ bản về Time Series}\label{giux1edbi-thiux1ec7u-cux1a1-bux1ea3n-vux1ec1-time-series}
 
-\hypertarget{time-series-luxe0-guxec}{%
-\section{Time Series là gì}\label{time-series-luxe0-guxec}}
+\section{Time Series là gì}\label{time-series-luxe0-guxec}
 
 Chuỗi thời gian là tập hợp các quan sát \(y_t\) theo thời gian tuần tự.
 
@@ -286,8 +283,7 @@ Tóm lại, miễn các thông tin tuân theo thời gian và có hướng giá 
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-\hypertarget{cuxe1c-patterns-time-series}{%
-\section{Các patterns Time Series}\label{cuxe1c-patterns-time-series}}
+\section{Các patterns Time Series}\label{cuxe1c-patterns-time-series}
 
 Khi mô tả về chuỗi thời gian, chúng ta thường nhắc đến các yếu tố như xu hướng, chu kỳ và theo mùa.
 
@@ -331,16 +327,13 @@ Unexpected situations/events/scenarios and spikes in a short time span.
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-\hypertarget{cuxe1c-ux111ux1eb7c-ux111iux1ec3m-cux1ee7a-time-series}{%
-\section{Các đặc điểm của Time Series}\label{cuxe1c-ux111ux1eb7c-ux111iux1ec3m-cux1ee7a-time-series}}
+\section{Các đặc điểm của Time Series}\label{cuxe1c-ux111ux1eb7c-ux111iux1ec3m-cux1ee7a-time-series}
 
-\hypertarget{stationary-tuxednh-dux1eebng-cux1ee7a-dux1eef-liux1ec7u}{%
-\subsection{Stationary (Tính dừng của dữ liệu)}\label{stationary-tuxednh-dux1eebng-cux1ee7a-dux1eef-liux1ec7u}}
+\subsection{Stationary (Tính dừng của dữ liệu)}\label{stationary-tuxednh-dux1eebng-cux1ee7a-dux1eef-liux1ec7u}
 
 Chuỗi thời gian dừng là chuỗi có các đặc trưng thống kê như mean, variance, autocorrelation không đổi theo thời gian.
 
-\hypertarget{lag}{%
-\subsection{Lag}\label{lag}}
+\subsection{Lag}\label{lag}
 
 Lag của Time Series thể hiện việc lùi về một mốc trước đó. Ví dụ lag(1) nghĩa là lùi về trước đó 1 đơn vị \(X_{T-1}\). Lag(n) nghĩa là lùi về trước đó n đơn vị \(X_{T-n}\)
 
@@ -394,8 +387,7 @@ Trong pandas, để tìm lag, ta dùng phương thức \texttt{shift}. Ví dụ
 335 2019-12-01     35157  25170.0  19567.0  33950.0
 \end{verbatim}
 
-\hypertarget{autocorrelation-tux1ef1-tux1b0ux1a1ng-quan}{%
-\subsection{Autocorrelation (Tự tương quan)}\label{autocorrelation-tux1ef1-tux1b0ux1a1ng-quan}}
+\subsection{Autocorrelation (Tự tương quan)}\label{autocorrelation-tux1ef1-tux1b0ux1a1ng-quan}
 
 \textbf{Correlation}
 
@@ -463,8 +455,7 @@ Tương quan giữa 2 biến này là 0.5
 
 Trong hình vẽ ta có thể thấy, correlation tại lag=12 và lag=24 có giá trị rất cao, do đó có thể suy đoán được timeseries này có tính tuần hoàn sau 12 tháng
 
-\hypertarget{ux1ee9ng-dux1ee5ng-cux1ee7a-autocorrelation}{%
-\subsubsection{Ứng dụng của Autocorrelation}\label{ux1ee9ng-dux1ee5ng-cux1ee7a-autocorrelation}}
+\subsubsection{Ứng dụng của Autocorrelation}\label{ux1ee9ng-dux1ee5ng-cux1ee7a-autocorrelation}
 
 \begin{itemize}
 \tightlist
@@ -517,27 +508,21 @@ Trong hình vẽ ta có thể thấy, correlation tại lag=12 và lag=24 có gi
   \end{itemize}
 \end{itemize}
 
-\hypertarget{partial-autocorrelation}{%
-\subsection{Partial Autocorrelation}\label{partial-autocorrelation}}
+\subsection{Partial Autocorrelation}\label{partial-autocorrelation}
 
 Partial Autocorrelation cũng tương tự như Autocorrelation. Tuy nhiên, nó mở rộng hơn bằng cách loại bỏ ảnh hưởng của các mốc thời gian trước đó.
 
 Ví dụ tương quan Partial Autocorrelation với lag = 3 sẽ bỏ qua các giá trị trễ tại lag = 1 và lag = 2
 
-\hypertarget{cuxe1c-buxe0i-touxe1n-vux1ec1-chuux1ed7i-thux1eddi-gian}{%
-\section{Các bài toán về chuỗi thời gian}\label{cuxe1c-buxe0i-touxe1n-vux1ec1-chuux1ed7i-thux1eddi-gian}}
+\section{Các bài toán về chuỗi thời gian}\label{cuxe1c-buxe0i-touxe1n-vux1ec1-chuux1ed7i-thux1eddi-gian}
 
-\hypertarget{dux1b0-bao-chuuxf4i-thux1a1i-gian}{%
-\subsection{Dự báo chuỗi thời gian}\label{dux1b0-bao-chuuxf4i-thux1a1i-gian}}
+\subsection{Dự báo chuỗi thời gian}\label{dux1b0-bao-chuuxf4i-thux1a1i-gian}
 
-\hypertarget{phuxe2n-loux1ea1i-chuux1ed7i-thux1eddi-gian}{%
-\subsection{Phân loại chuỗi thời gian}\label{phuxe2n-loux1ea1i-chuux1ed7i-thux1eddi-gian}}
+\subsection{Phân loại chuỗi thời gian}\label{phuxe2n-loux1ea1i-chuux1ed7i-thux1eddi-gian}
 
-\hypertarget{phuxe2n-ux111oux1ea1n-chuux1ed7i-thux1eddi-gian}{%
-\subsection{Phân đoạn chuỗi thời gian}\label{phuxe2n-ux111oux1ea1n-chuux1ed7i-thux1eddi-gian}}
+\subsection{Phân đoạn chuỗi thời gian}\label{phuxe2n-ux111oux1ea1n-chuux1ed7i-thux1eddi-gian}
 
-\hypertarget{smoothing}{%
-\chapter{Smoothing}\label{smoothing}}
+\chapter{Smoothing}\label{smoothing}
 
 Kỹ thuật làm mịn là một trong các kỹ thuật tiền xử lý dữ liệu để loại bỏ các nhiễu trong dữ liệu. Việc làm mịn dữ liệu giúp xóa bỏ mùa vụ của dữ liệu và giúp đơn giản hóa các mô hình dự đoán.
 
@@ -551,13 +536,11 @@ Các kỹ thuật làm mịn dữ liệu bao gồm:
   Làm mịn cấp số nhân (Exponential Smoothing)
 \end{itemize}
 
-\hypertarget{moving-average-smoothing}{%
-\section{Moving Average Smoothing}\label{moving-average-smoothing}}
+\section{Moving Average Smoothing}\label{moving-average-smoothing}
 
 Có 2 loại trung bình trượt : Centered MA và Trailing MA
 
-\hypertarget{centered-moving-average}{%
-\subsection{Centered Moving Average}\label{centered-moving-average}}
+\subsection{Centered Moving Average}\label{centered-moving-average}
 
 Với trung bình trượt với cửa sổ trượt \(k\) bằng 3 ta có:
 
@@ -575,8 +558,7 @@ Trong đó \(k = 2m + 1\)
 
 Phương pháp này sử dụng giá trị tương lai \(y_{t+1}\) do đó không áp dụng được vào các mô hình dự báo. Phương pháp dùng để thống kê mô tả dữ liệu
 
-\hypertarget{trailing-moving-average}{%
-\subsection{Trailing Moving Average}\label{trailing-moving-average}}
+\subsection{Trailing Moving Average}\label{trailing-moving-average}
 
 Với trung bình trượt với cửa sổ trượt \(k\) bằng 3 ta có
 
@@ -592,8 +574,7 @@ Tổng quát hơn
 
 Phương pháp này chỉ sử dụng dữ liệu quá khứ nên có thể áp dụng cho việc dự báo các giá trị tương lai
 
-\hypertarget{vuxed-dux1ee5}{%
-\subsection{Ví dụ}\label{vuxed-dux1ee5}}
+\subsection{Ví dụ}\label{vuxed-dux1ee5}
 
 Dưới đây là ví dụ về số bé gái sinh ra mỗi ngày
 
@@ -690,13 +671,11 @@ với các tham số \(k =6\) và \(k=12\)
 
 \includegraphics{../images/02/12-MA.png}
 
-\hypertarget{exponential-smoothing}{%
-\section{Exponential Smoothing}\label{exponential-smoothing}}
+\section{Exponential Smoothing}\label{exponential-smoothing}
 
 Hàm làm mịn Exponential là một hàm làm mịn sử dụng hàm mũ. Trong khi các hàm Moving Average đơn giản sử dụng các giá trị quá khứ với trọng số bằng nhau thì hàm Exponential sử dụng hàm số mũ cho trọng số đảm bảo giảm dần theo thời gian.
 
-\hypertarget{simple-exponential-smoothing}{%
-\subsection{Simple Exponential Smoothing}\label{simple-exponential-smoothing}}
+\subsection{Simple Exponential Smoothing}\label{simple-exponential-smoothing}
 
 Hàm làm mịn Exponential thường áp dụng vào xử lý tín hiệu số để lọc những nhiễu có tầm số cao. Hàm này là dạy truy hồi với công thức như sau
 
@@ -785,17 +764,13 @@ Biểu đồ so sánh giữa giá trị gốc và Exponential Smoothing
 
 \includegraphics{../images/02/Exponential_Smoothing.png}
 
-\hypertarget{double-exponential-smoothing-holts-method}{%
-\subsection{Double Exponential Smoothing (Holt's Method)}\label{double-exponential-smoothing-holts-method}}
+\subsection{Double Exponential Smoothing (Holt's Method)}\label{double-exponential-smoothing-holts-method}
 
-\hypertarget{triple-exponential-smoothing-holt-winters-method}{%
-\subsection{Triple Exponential Smoothing (Holt-Winters' Method)}\label{triple-exponential-smoothing-holt-winters-method}}
+\subsection{Triple Exponential Smoothing (Holt-Winters' Method)}\label{triple-exponential-smoothing-holt-winters-method}
 
-\hypertarget{arima}{%
-\chapter{ARIMA}\label{arima}}
+\chapter{ARIMA}\label{arima}
 
-\hypertarget{autoregressive-model}{%
-\section{Autoregressive Model}\label{autoregressive-model}}
+\section{Autoregressive Model}\label{autoregressive-model}
 
 Mô hình tự hồi quy là mô hình ước lượng giá trị tương lai của timeseries dựa vào các giá trị trong quá khứ cửa chính timeseries đó.
 
@@ -908,8 +883,7 @@ Simulated=41.94330931564456      Predicted=41.94330911921793
 Simulated=41.95536009628208      Predicted=41.95535989900887
 \end{verbatim}
 
-\hypertarget{moving-average-model}{%
-\section{Moving Average Model}\label{moving-average-model}}
+\section{Moving Average Model}\label{moving-average-model}
 
 Thay vì sử dụng các giá trị trong quá khứ làm đầu vào để dự đoán, Moving Average Model sử dụng các lỗi dự báo của quá khứ để dự đoán giá trị tiếp theo.
 
@@ -1077,8 +1051,7 @@ Và giá trị từ T+3 trở đi sẽ là
 
 Đây cũng chính là điểm yếu của mô hình Moving Average
 
-\hypertarget{autoregressive-moving-average-model}{%
-\section{AutoRegressive Moving Average Model}\label{autoregressive-moving-average-model}}
+\section{AutoRegressive Moving Average Model}\label{autoregressive-moving-average-model}
 
 Như cái tên của nó, mô hình này kết hợp 2 Mô hình Autoregressive và Moving Average
 
@@ -1102,8 +1075,7 @@ y_t = c + \epsilon_t + \sum^{p}_{1}\phi y_{t-i}  + \sum^{q}_{i=1}\theta_{i}\epsi
 
 Tương tự, trong thư viện \texttt{statsmodels} không hỗ trợ chính thức cách tính \textbf{Moving Average Model}, nhưng chúng ta có thể áp dụng thông qua \texttt{ARIMA}. Ở phần sau chúng ta sẽ tìm hiểu về \texttt{ARIMA} rồi quay ngược lại ví dụ về \texttt{MA}
 
-\hypertarget{autogregressive-integrated-moving-average-model}{%
-\subsection{Autogregressive Integrated Moving Average Model}\label{autogregressive-integrated-moving-average-model}}
+\subsection{Autogregressive Integrated Moving Average Model}\label{autogregressive-integrated-moving-average-model}
 
 \printindex
 
