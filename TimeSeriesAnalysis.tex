@@ -105,10 +105,12 @@
 \setcounter{secnumdepth}{5}
 \usepackage{booktabs}
 \usepackage{longtable}
+\usepackage{hyperref}
 \usepackage[bf,singlelinecheck=off]{caption}
 \usepackage{graphicx}
 \usepackage{Alegreya}
 \usepackage[scale=.7]{sourcecodepro}
+\usepackage[utf8]{inputenc}
 
 \usepackage{framed,color}
 \definecolor{shadecolor}{RGB}{248,248,248}
@@ -223,7 +225,7 @@
 
 \title{Phân tích Chuỗi thời gian}
 \author{Lê Huỳnh Đức}
-\date{2023-12-30}
+\date{2024-01-01}
 
 \begin{document}
 \maketitle
@@ -233,7 +235,7 @@
 %\cleardoublepage\newpage
 \thispagestyle{empty}
 \begin{center}
-\includegraphics{images/dedication.pdf}
+% \includegraphics{images/dedication.pdf}
 \end{center}
 
 \setlength{\abovedisplayskip}{-5pt}
@@ -292,10 +294,11 @@ Khi mô tả về chuỗi thời gian, chúng ta thường nhắc đến các y�
 Chúng ta nói dữ liệu có tính xu hướng khi nó tăng hoặc giảm trong một thời gian dài, xu hướng không nhất thiết phải là tăng/giảm tuyến tính, nó có thể là đường cong. Một chuỗi thời gian có thể tồn tại cả xu hướng tăng và xu hướng giảm cùng một lúc.
 
 Ví dụ về dân số Việt Nam có xu hướng tăng hằng năm
+
 \includegraphics{../images/01/danso.png}
 
 Ví dụ về tỉ lệ tử vong của trẻ sơ sinh có xu hướng giảm dần thời gian nhờ có sự tiến bộ về y tế
-\includegraphics{https://upload.wikimedia.org/wikipedia/commons/1/15/First-World-Infant-Mortality-Trends.jpg}
+\includegraphics{../images/01/First-World-Infant-Mortality-Trends.jpg}
 
 Ví dụ về sự thay đổi của giá Bitcoin theo thời gian, giá bitcoin có xu hướng tăng mạnh từ giữa tháng 08/2020 đến 03/2021, đến tháng 11/2021 bắt đầu có xu hướng giảm dần
 \includegraphics{../images/01/coin.png}
@@ -319,8 +322,6 @@ Ví dụ như
 \textbf{\emph{Chu kì}}
 
 Biến đổi chu kỳ xảy ra khi một dữ liệu tăng giảm không có tần suất cố định. Những biến động này thường xảy ra do điều kiện kinh tế và hay gọi là ``chu kì kinh doanh''. Độ dài của một chu kì thường ít nhất là 2 năm.
-
-\includegraphics{https://sciencetheory.net/wp-content/uploads/2020/03/Business-Cycle-Graph-e1577193470836.png}
 
 \textbf{\emph{Irregularity}}
 Unexpected situations/events/scenarios and spikes in a short time span.
@@ -346,20 +347,22 @@ Ví dụ về số lượng quần áo bán ra của US từ năm 1992 đến n�
 \end{Highlighting}
 \end{Shaded}
 
-\begin{verbatim}
-         Month  Clothing
-0   1992-01-01  6938
-1   1992-02-01  7524
-2   1992-03-01  8475
-3   1992-04-01  9401
-4   1992-05-01  9558
-... ... ...
-331 2019-08-01  23829
-332 2019-09-01  19567
-333 2019-10-01  21400
-334 2019-11-01  25170
-335 2019-12-01  35157
-\end{verbatim}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{         Month  Clothing}
+\DecValTok{0}   \DecValTok{1992}\OperatorTok{{-}}\DecValTok{0}\ErrorTok{1}\OperatorTok{{-}}\DecValTok{0}\ErrorTok{1}  \DecValTok{6938}
+\DecValTok{1}   \DecValTok{1992}\OperatorTok{{-}}\DecValTok{0}\ErrorTok{2}\OperatorTok{{-}}\DecValTok{0}\ErrorTok{1}  \DecValTok{7524}
+\DecValTok{2}   \DecValTok{1992}\OperatorTok{{-}}\DecValTok{0}\ErrorTok{3}\OperatorTok{{-}}\DecValTok{0}\ErrorTok{1}  \DecValTok{8475}
+\DecValTok{3}   \DecValTok{1992}\OperatorTok{{-}}\DecValTok{0}\ErrorTok{4}\OperatorTok{{-}}\DecValTok{0}\ErrorTok{1}  \DecValTok{9401}
+\DecValTok{4}   \DecValTok{1992}\OperatorTok{{-}}\DecValTok{0}\ErrorTok{5}\OperatorTok{{-}}\DecValTok{0}\ErrorTok{1}  \DecValTok{9558}
+\NormalTok{... ... ...}
+\DecValTok{331} \DecValTok{2019}\OperatorTok{{-}}\DecValTok{0}\ErrorTok{8}\OperatorTok{{-}}\DecValTok{0}\ErrorTok{1}  \DecValTok{23829}
+\DecValTok{332} \DecValTok{2019}\OperatorTok{{-}}\DecValTok{0}\ErrorTok{9}\OperatorTok{{-}}\DecValTok{0}\ErrorTok{1}  \DecValTok{19567}
+\DecValTok{333} \DecValTok{2019}\OperatorTok{{-}}\DecValTok{10}\OperatorTok{{-}}\DecValTok{0}\ErrorTok{1}  \DecValTok{21400}
+\DecValTok{334} \DecValTok{2019}\OperatorTok{{-}}\DecValTok{11}\OperatorTok{{-}}\DecValTok{0}\ErrorTok{1}  \DecValTok{25170}
+\DecValTok{335} \DecValTok{2019}\OperatorTok{{-}}\DecValTok{12}\OperatorTok{{-}}\DecValTok{0}\ErrorTok{1}  \DecValTok{35157}
+\end{Highlighting}
+\end{Shaded}
 
 Trong pandas, để tìm lag, ta dùng phương thức \texttt{shift}. Ví dụ
 
@@ -372,20 +375,22 @@ Trong pandas, để tìm lag, ta dùng phương thức \texttt{shift}. Ví dụ
 \end{Highlighting}
 \end{Shaded}
 
-\begin{verbatim}
-         Month  Clothing    lag_1    lag_3   lag_12
-0   1992-01-01      6938      NaN      NaN      NaN
-1   1992-02-01      7524   6938.0      NaN      NaN
-2   1992-03-01      8475   7524.0      NaN      NaN
-3   1992-04-01      9401   8475.0   6938.0      NaN
-4   1992-05-01      9558   9401.0   7524.0      NaN
-..         ...       ...      ...      ...      ...
-331 2019-08-01     23829  21742.0  23079.0  23121.0
-332 2019-09-01     19567  23829.0  21116.0  19782.0
-333 2019-10-01     21400  19567.0  21742.0  21203.0
-334 2019-11-01     25170  21400.0  23829.0  25364.0
-335 2019-12-01     35157  25170.0  19567.0  33950.0
-\end{verbatim}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{         Month  Clothing    lag\_1    lag\_3   lag\_12}
+\DecValTok{0}   \DecValTok{1992}\OperatorTok{{-}}\DecValTok{0}\ErrorTok{1}\OperatorTok{{-}}\DecValTok{0}\ErrorTok{1}      \DecValTok{6938}\NormalTok{      NaN      NaN      NaN}
+\DecValTok{1}   \DecValTok{1992}\OperatorTok{{-}}\DecValTok{0}\ErrorTok{2}\OperatorTok{{-}}\DecValTok{0}\ErrorTok{1}      \DecValTok{7524}   \FloatTok{6938.0}\NormalTok{      NaN      NaN}
+\DecValTok{2}   \DecValTok{1992}\OperatorTok{{-}}\DecValTok{0}\ErrorTok{3}\OperatorTok{{-}}\DecValTok{0}\ErrorTok{1}      \DecValTok{8475}   \FloatTok{7524.0}\NormalTok{      NaN      NaN}
+\DecValTok{3}   \DecValTok{1992}\OperatorTok{{-}}\DecValTok{0}\ErrorTok{4}\OperatorTok{{-}}\DecValTok{0}\ErrorTok{1}      \DecValTok{9401}   \FloatTok{8475.0}   \FloatTok{6938.0}\NormalTok{      NaN}
+\DecValTok{4}   \DecValTok{1992}\OperatorTok{{-}}\DecValTok{0}\ErrorTok{5}\OperatorTok{{-}}\DecValTok{0}\ErrorTok{1}      \DecValTok{9558}   \FloatTok{9401.0}   \FloatTok{7524.0}\NormalTok{      NaN}
+\NormalTok{..         ...       ...      ...      ...      ...}
+\DecValTok{331} \DecValTok{2019}\OperatorTok{{-}}\DecValTok{0}\ErrorTok{8}\OperatorTok{{-}}\DecValTok{0}\ErrorTok{1}     \DecValTok{23829}  \FloatTok{21742.0}  \FloatTok{23079.0}  \FloatTok{23121.0}
+\DecValTok{332} \DecValTok{2019}\OperatorTok{{-}}\DecValTok{0}\ErrorTok{9}\OperatorTok{{-}}\DecValTok{0}\ErrorTok{1}     \DecValTok{19567}  \FloatTok{23829.0}  \FloatTok{21116.0}  \FloatTok{19782.0}
+\DecValTok{333} \DecValTok{2019}\OperatorTok{{-}}\DecValTok{10}\OperatorTok{{-}}\DecValTok{0}\ErrorTok{1}     \DecValTok{21400}  \FloatTok{19567.0}  \FloatTok{21742.0}  \FloatTok{21203.0}
+\DecValTok{334} \DecValTok{2019}\OperatorTok{{-}}\DecValTok{11}\OperatorTok{{-}}\DecValTok{0}\ErrorTok{1}     \DecValTok{25170}  \FloatTok{21400.0}  \FloatTok{23829.0}  \FloatTok{25364.0}
+\DecValTok{335} \DecValTok{2019}\OperatorTok{{-}}\DecValTok{12}\OperatorTok{{-}}\DecValTok{0}\ErrorTok{1}     \DecValTok{35157}  \FloatTok{25170.0}  \FloatTok{19567.0}  \FloatTok{33950.0}
+\end{Highlighting}
+\end{Shaded}
 
 \subsection{Autocorrelation (Tự tương quan)}\label{autocorrelation-tux1ef1-tux1b0ux1a1ng-quan}
 
@@ -544,15 +549,15 @@ Có 2 loại trung bình trượt : Centered MA và Trailing MA
 
 Với trung bình trượt với cửa sổ trượt \(k\) bằng 3 ta có:
 
-\[\begin{align}
+\[\begin{aligned}
 \Large s_{t} = \frac{y_{t+1} + y_{t} + y_{t-1}}{3}
-\end{align}\]
+\end{aligned}\]
 
 Tổng quát hơn
 
-\[\begin{align}
+\[\begin{aligned}
 \Large s_{t} = \frac{1}{k}  \sum_{j=-m}^{m}{y_{t+j}}
-\end{align}\]
+\end{aligned}\]
 
 Trong đó \(k = 2m + 1\)
 
@@ -562,15 +567,15 @@ Phương pháp này sử dụng giá trị tương lai \(y_{t+1}\) do đó khôn
 
 Với trung bình trượt với cửa sổ trượt \(k\) bằng 3 ta có
 
-\[\begin{align}
+\[\begin{aligned}
 \Large s_{t} = \frac{y_{t} + y_{t - 1} + y_{t - 2}}{3}
-\end{align}\]
+\end{aligned}\]
 
 Tổng quát hơn
 
-\[\begin{align}
+\[\begin{aligned}
 \Large s_{t} = \frac{1}{k} \sum^{k}_{i=1}{y_{t-i+1}}
-\end{align}\]
+\end{aligned}\]
 
 Phương pháp này chỉ sử dụng dữ liệu quá khứ nên có thể áp dụng cho việc dự báo các giá trị tương lai
 
