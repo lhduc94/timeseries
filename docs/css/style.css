@@ -19,7 +19,6 @@ p code {
   white-space: inherit;
 }
 
-
 .book .book-body .page-wrapper .page-inner section.normal pre {
   border: 1px solid #c9c9c9;
   box-shadow: 1px 1px 1px #d8d8d8;
@@ -40,6 +39,12 @@ p code {
     background: #dce3f5;
 } */
 
+code.sourceCode > span{
+  color: black;
+}
+div.sourceCode {
+  background-color: #ffffff;
+}
 
 .rmdcaution, .rmdimportant, .rmdnote, .rmdtip, .rmdwarning{
   padding: 1em 1em 1em 4em;
@@ -67,4 +72,3 @@ p code {
 .rmdwarning {
   background-image: url("../images/warning.png");
 }
-
