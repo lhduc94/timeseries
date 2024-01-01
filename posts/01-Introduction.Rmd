@@ -81,7 +81,7 @@ df = pd.read_csv('../data/us-retail-sales.csv')
 df
 ```
 
-```
+```{block2, type='rmdnote'}
 	     Month	Clothing
 0	1992-01-01	6938
 1	1992-02-01	7524
