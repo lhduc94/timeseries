@@ -206,3 +206,7 @@ Ví dụ tương quan Partial Autocorrelation với lag = 3 sẽ bỏ qua các g
 ### Phân loại chuỗi thời gian
 
 ### Phân đoạn chuỗi thời gian
+
+
+## Pandas Time Series
+## TimeSeries Decomposition

@@ -1,4 +1,7 @@
-# Smoothing
+# Stationarity và Time Series Smoothing
+
+## Stationarity
+## Smoothing
 
 Kỹ thuật làm mịn là một trong các kỹ thuật tiền xử lý dữ liệu để loại bỏ các nhiễu trong dữ liệu. Việc làm mịn dữ liệu giúp xóa bỏ mùa vụ của dữ liệu và giúp đơn giản hóa các mô hình dự đoán.
 
@@ -7,11 +10,11 @@ Các kỹ thuật làm mịn dữ liệu bao gồm:
 - Làm mịn trung bình trượt (Moving Average Smoothing)
 - Làm mịn cấp số nhân (Exponential Smoothing)
 
-## Moving Average Smoothing
+### Moving Average Smoothing
 
 Có 2 loại trung bình trượt : Centered MA và Trailing MA
 
-### Centered Moving Average
+#### Centered Moving Average
 
 Với trung bình trượt với cửa sổ trượt $k$ bằng 3 ta có:
 
@@ -31,7 +34,7 @@ Trong đó $k = 2m + 1$
 
 Phương pháp này sử dụng giá trị tương lai $y_{t+1}$ do đó không áp dụng được vào các mô hình dự báo. Phương pháp dùng để thống kê mô tả dữ liệu
 
-### Trailing Moving Average
+#### Trailing Moving Average
 
 Với trung bình trượt với cửa sổ trượt $k$ bằng 3 ta có
 
@@ -47,7 +50,7 @@ $$\begin{aligned}
 
 Phương pháp này chỉ sử dụng dữ liệu quá khứ nên có thể áp dụng cho việc dự báo các giá trị tương lai
 
-### Ví dụ
+#### Ví dụ
 
 Dưới đây là ví dụ về số bé gái sinh ra mỗi ngày
 
@@ -134,11 +137,11 @@ plt.title('12-MA', fontsize=15)
 ```
 ![](../images/02/12-MA.png)
 
-## Exponential Smoothing
+### Exponential Smoothing
 
 Hàm làm mịn Exponential là một hàm làm mịn sử dụng hàm mũ. Trong khi các hàm Moving Average đơn giản sử dụng các giá trị quá khứ với trọng số bằng nhau thì hàm Exponential sử dụng hàm số mũ cho trọng số đảm bảo giảm dần theo thời gian.
 
-### Simple Exponential Smoothing
+#### Simple Exponential Smoothing
 Hàm làm mịn Exponential thường áp dụng vào xử lý tín hiệu số để lọc những nhiễu có tầm số cao. Hàm này là dạy truy hồi với công thức như sau
 
 $s_{0} = y_{0}$
@@ -217,6 +220,6 @@ plt.title('Exponential Smoothing with alpha=0.3', fontsize=15)
 
 ![](../images/02/Exponential_Smoothing.png)
 
-### Double Exponential Smoothing (Holt's Method) 
+#### Double Exponential Smoothing (Holt's Method) 
 
-### Triple Exponential Smoothing (Holt-Winters' Method)
+#### Triple Exponential Smoothing (Holt-Winters' Method)
