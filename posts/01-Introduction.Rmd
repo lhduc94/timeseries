@@ -134,7 +134,7 @@ Ví dụ tương quan giữa `Clothing` và `lag_1`
 df[['Clothing','lag_1']].corr()
 ```
 
-```python
+```{.python_output}
 	        Clothing	   lag_1
 Clothing	1.000000	0.518296
 lag_1	    0.518296	1.000000
@@ -151,7 +151,7 @@ from statsmodels.api import tsa
 tsa.acf(df['Clothing'])
 ```
 
-```python
+```{.python_output}
 array([1.        , 0.50679045, 0.42793583, 0.48943282, 0.54920848,
        0.51760066, 0.47709491, 0.50840091, 0.5311846 , 0.46104267,
        0.38738473, 0.45582436, 0.9264336 , 0.45220705, 0.37936738,
