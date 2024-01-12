@@ -22,6 +22,6 @@ double-exponential-smoothing-holts-method
 triple-exponential-smoothing-holt-winters-method
 arima
 autoregressive-model
-moving-average-model
+mô-phong-cach-tinh-autoregressive-model-băng-sklearn
 autoregressive-moving-average-model
 autogregressive-integrated-moving-average-model

@@ -81,7 +81,7 @@ df = pd.read_csv('../data/us-retail-sales.csv')
 df
 ```
 
-```python
+```{.python_output}
 	     Month	Clothing
 0	1992-01-01	6938
 1	1992-02-01	7524
@@ -104,7 +104,7 @@ df['lag_12'] = df['Clothing'].shift(12)
 df
 ```
 
-```python
+```{.python_output}
          Month  Clothing    lag_1    lag_3   lag_12
 0   1992-01-01      6938      NaN      NaN      NaN
 1   1992-02-01      7524   6938.0      NaN      NaN

@@ -11,11 +11,16 @@ $$
 Hoặc có thể viết lại
 
 $$
-y_t = c + \sum^{p}_{1}\phi y_{t-i} + \epsilon_t
+y_t = c + \sum^{p}_{1}\phi_{i} y_{t-i} + \epsilon_t
 $$
 
 Trong đó: $\epsilon_t$ là nhiễu trắng. Có thể nói mô hình này là mô hình hồi quy đa biến với các biến là các giá trị lag tại thời điểm từ $1$ đến $p$. Chúng ta kí hiệu mô hình này là $AR(p)$
 
+Và khi đó giá trị dự đoán sẽ là:
+
+$$
+\hat{y}_{t+1} = c + \sum^{p}_{1}\phi_{i} y_{t-i+1}
+$$
 Để sử dụng AR model, ta dùng class `AutoReg` của thư viện `statsmodels`, chúng ta dùng `root_mean_squared_error` để đánh giá mô hình. Mô hình sẽ được huấn luyện và dự đoán cho 7 ngày tiếp theo
 
 ```python
@@ -101,7 +106,27 @@ Simulated=41.94330931564456 	 Predicted=41.94330911921793
 Simulated=41.95536009628208 	 Predicted=41.95535989900887
 ```
 
+### Mô phỏng cách tính AutoRegressive Model bằng Sklearn
 
+```python
+df['Births_shift_1'] = df['Births'].shift(1)
+df['Births_shift_2'] = df['Births'].shift(2)
+
+train = df.iloc[:len(df)-7]
+train.dropna(inplace=True)
+
+from sklearn.linear_model import LinearRegression
+model = LinearRegression()
+model.fit(train[['Births_shift_1','Births_shift_2']], train['Births'])
+
+print(model.intercept_ , model.coef_)
+```
+
+```{.python_output}
+29.46548461980426 [0.18468755 0.11315929]
+```
+
+Ta có thể thấy các parameters sau khi dùng `sklearn` tương tự với các params của thư viện `statsmodels`
 ## Moving Average Model
 
 Thay vì sử dụng các giá trị trong quá khứ làm đầu vào để dự đoán, Moving Average Model sử dụng các lỗi dự báo của quá khứ để dự đoán giá trị tiếp theo. 
@@ -126,6 +151,12 @@ y_t = c  + \sum^{q}_{i=1}\theta_{i}\epsilon_{t-i} +  \epsilon_t
 $$
 
 Trong đó $c$ là trung bình series, $\epsilon_{t-i}$ là white noise tại $t-i$. Trong thực tế, chúng ta không có quan sát cho các giá trị white noise này, do đó nó không thực sự là hồi quy theo nghĩa hiểu thông thường.
+
+Và khi đó giá trị dự đoán sẽ là 
+
+$$
+\hat{y}_{t+1} = c  + \sum^{q}_{i=1}\theta_{i}\epsilon_{t-i+1}
+$$
 
 Trong thư viện `statsmodels` không hỗ trợ chính thức cách tính **Moving Average Model**, nhưng chúng ta có thể áp dụng thông qua `ARIMA`. 
 
@@ -172,7 +203,7 @@ MA_results.params[0]
 ```
 Đánh giá kết quả mô hình
 
-```
+```{.python_output}
 print('RMSE:', np.sqrt(mean_squared_error(test, Y_hat)))
 ```
 

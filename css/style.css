@@ -1,5 +1,6 @@
 h1, h2, h3, h4 {
   color: #026992;
+  font-family: "Fira Sans", Helvetica, Arial, sans-serif;
 }
 
 p.caption {
@@ -19,9 +20,17 @@ p code {
   white-space: inherit;
 }
 
+
 .book .book-body .page-wrapper .page-inner section.normal pre {
   border: 1px solid #c9c9c9;
   box-shadow: 1px 1px 1px #d8d8d8;
+}
+
+.book .book-body .page-wrapper .page-inner section.normal pre.python_output {
+  background: #080808;
+}
+.book .book-body .page-wrapper .page-inner section.normal pre.python_output code {
+  color: white
 }
 .book .book-body .page-wrapper .page-inner section.normal code {
   color: #bd1481;
@@ -71,4 +80,23 @@ div.sourceCode {
 }
 .rmdwarning {
   background-image: url("../images/warning.png");
+}
+
+.book .book-summary {
+  background-color: #026992;
+
+}
+
+.book .book-summary ul.summary li a {
+  padding: 10px 5px 5px 5px;
+  color: #ffffff;
+}
+
+.book .book-summary ul.summary li.active>a {
+  color: #ffcc00;
+}
+
+.book .book-summary ul.summary li a:hover {
+  background-color: #99afc4;
+  color: #3b556e;
 }

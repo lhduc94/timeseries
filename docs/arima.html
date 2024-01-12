@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chương 3 ARIMA | Phân tích Chuỗi thời gian</title>
   <meta name="description" content="Time Serie Analysis" />
-  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chương 3 ARIMA | Phân tích Chuỗi thời gian" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Lê Huỳnh Đức" />
 
 
-<meta name="date" content="2024-01-01" />
+<meta name="date" content="2024-01-12" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -56,7 +56,7 @@
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -178,11 +178,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="3" data-path="arima.html"><a href="arima.html"><i class="fa fa-check"></i><b>3</b> ARIMA</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="arima.html"><a href="arima.html#autoregressive-model"><i class="fa fa-check"></i><b>3.1</b> Autoregressive Model</a></li>
-<li class="chapter" data-level="3.2" data-path="arima.html"><a href="arima.html#moving-average-model"><i class="fa fa-check"></i><b>3.2</b> Moving Average Model</a></li>
-<li class="chapter" data-level="3.3" data-path="arima.html"><a href="arima.html#autoregressive-moving-average-model"><i class="fa fa-check"></i><b>3.3</b> AutoRegressive Moving Average Model</a>
+<li class="chapter" data-level="3.1" data-path="arima.html"><a href="arima.html#autoregressive-model"><i class="fa fa-check"></i><b>3.1</b> Autoregressive Model</a>
 <ul>
-<li class="chapter" data-level="3.3.1" data-path="arima.html"><a href="arima.html#autogregressive-integrated-moving-average-model"><i class="fa fa-check"></i><b>3.3.1</b> Autogregressive Integrated Moving Average Model</a></li>
+<li class="chapter" data-level="3.1.1" data-path="arima.html"><a href="arima.html#mô-phong-cach-tinh-autoregressive-model-băng-sklearn"><i class="fa fa-check"></i><b>3.1.1</b> Mô phỏng cách tính AutoRegressive Model bằng Sklearn</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="arima.html"><a href="arima.html#autoregressive-moving-average-model"><i class="fa fa-check"></i><b>3.2</b> AutoRegressive Moving Average Model</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="arima.html"><a href="arima.html#autogregressive-integrated-moving-average-model"><i class="fa fa-check"></i><b>3.2.1</b> Autogregressive Integrated Moving Average Model</a></li>
 </ul></li>
 </ul></li>
 <li class="divider"></li>
@@ -216,10 +218,14 @@ y_t = c + \phi_1 y_{t-1} + \phi_2 y_{t-2} + \phi_3 y_{t-3} + .... + \phi_p y_{t-
 \]</span></p>
 <p>Hoặc có thể viết lại</p>
 <p><span class="math display">\[
-y_t = c + \sum^{p}_{1}\phi y_{t-i} + \epsilon_t
+y_t = c + \sum^{p}_{1}\phi_{i} y_{t-i} + \epsilon_t
 \]</span></p>
 <p>Trong đó: <span class="math inline">\(\epsilon_t\)</span> là nhiễu trắng. Có thể nói mô hình này là mô hình hồi quy đa biến với các biến là các giá trị lag tại thời điểm từ <span class="math inline">\(1\)</span> đến <span class="math inline">\(p\)</span>. Chúng ta kí hiệu mô hình này là <span class="math inline">\(AR(p)\)</span></p>
-<p>Để sử dụng AR model, ta dùng class <code>AutoReg</code> của thư viện <code>statsmodels</code>, chúng ta dùng <code>root_mean_squared_error</code> để đánh giá mô hình. Mô hình sẽ được huấn luyện và dự đoán cho 7 ngày tiếp theo</p>
+<p>Và khi đó giá trị dự đoán sẽ là:</p>
+<p><span class="math display">\[
+\hat{y}_{t+1} = c + \sum^{p}_{1}\phi_{i} y_{t-i+1}
+\]</span>
+Để sử dụng AR model, ta dùng class <code>AutoReg</code> của thư viện <code>statsmodels</code>, chúng ta dùng <code>root_mean_squared_error</code> để đánh giá mô hình. Mô hình sẽ được huấn luyện và dự đoán cho 7 ngày tiếp theo</p>
 <div class="sourceCode" id="cb20"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb20-1"><a href="arima.html#cb20-1" tabindex="-1"></a><span class="im">from</span> statsmodels.tsa.ar_model <span class="im">import</span> AutoReg</span>
 <span id="cb20-2"><a href="arima.html#cb20-2" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd </span>
 <span id="cb20-3"><a href="arima.html#cb20-3" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -274,9 +280,22 @@ Simulated=41.85249324133591      Predicted=41.8524930508191
 Simulated=41.918506557292        Predicted=41.91850636281712
 Simulated=41.94330931564456      Predicted=41.94330911921793
 Simulated=41.95536009628208      Predicted=41.95535989900887</code></pre>
-</div>
-<div id="moving-average-model" class="section level2 hasAnchor" number="3.2">
-<h2><span class="header-section-number">3.2</span> Moving Average Model<a href="arima.html#moving-average-model" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="mô-phong-cach-tinh-autoregressive-model-băng-sklearn" class="section level3 hasAnchor" number="3.1.1">
+<h3><span class="header-section-number">3.1.1</span> Mô phỏng cách tính AutoRegressive Model bằng Sklearn<a href="arima.html#mô-phong-cach-tinh-autoregressive-model-băng-sklearn" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb28"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb28-1"><a href="arima.html#cb28-1" tabindex="-1"></a>df[<span class="st">&#39;Births_shift_1&#39;</span>] <span class="op">=</span> df[<span class="st">&#39;Births&#39;</span>].shift(<span class="dv">1</span>)</span>
+<span id="cb28-2"><a href="arima.html#cb28-2" tabindex="-1"></a>df[<span class="st">&#39;Births_shift_2&#39;</span>] <span class="op">=</span> df[<span class="st">&#39;Births&#39;</span>].shift(<span class="dv">2</span>)</span>
+<span id="cb28-3"><a href="arima.html#cb28-3" tabindex="-1"></a></span>
+<span id="cb28-4"><a href="arima.html#cb28-4" tabindex="-1"></a>train <span class="op">=</span> df.iloc[:<span class="bu">len</span>(df)<span class="op">-</span><span class="dv">7</span>]</span>
+<span id="cb28-5"><a href="arima.html#cb28-5" tabindex="-1"></a>train.dropna(inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb28-6"><a href="arima.html#cb28-6" tabindex="-1"></a></span>
+<span id="cb28-7"><a href="arima.html#cb28-7" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LinearRegression</span>
+<span id="cb28-8"><a href="arima.html#cb28-8" tabindex="-1"></a>model <span class="op">=</span> LinearRegression()</span>
+<span id="cb28-9"><a href="arima.html#cb28-9" tabindex="-1"></a>model.fit(train[[<span class="st">&#39;Births_shift_1&#39;</span>,<span class="st">&#39;Births_shift_2&#39;</span>]], train[<span class="st">&#39;Births&#39;</span>])</span>
+<span id="cb28-10"><a href="arima.html#cb28-10" tabindex="-1"></a></span>
+<span id="cb28-11"><a href="arima.html#cb28-11" tabindex="-1"></a><span class="bu">print</span>(model.intercept_ , model.coef_)</span></code></pre></div>
+<pre class="python_output"><code>29.46548461980426 [0.18468755 0.11315929]</code></pre>
+<p>Ta có thể thấy các parameters sau khi dùng <code>sklearn</code> tương tự với các params của thư viện <code>statsmodels</code>
+## Moving Average Model</p>
 <p>Thay vì sử dụng các giá trị trong quá khứ làm đầu vào để dự đoán, Moving Average Model sử dụng các lỗi dự báo của quá khứ để dự đoán giá trị tiếp theo.</p>
 <p>Lưu ý cần phân biệt Moving Average Smoothing và Moving Average Model.</p>
 <p><strong>Moving Average Smoothing</strong></p>
@@ -295,15 +314,19 @@ Hoặc có thể viết lại</p>
 y_t = c  + \sum^{q}_{i=1}\theta_{i}\epsilon_{t-i} +  \epsilon_t
 \]</span></p>
 <p>Trong đó <span class="math inline">\(c\)</span> là trung bình series, <span class="math inline">\(\epsilon_{t-i}\)</span> là white noise tại <span class="math inline">\(t-i\)</span>. Trong thực tế, chúng ta không có quan sát cho các giá trị white noise này, do đó nó không thực sự là hồi quy theo nghĩa hiểu thông thường.</p>
+<p>Và khi đó giá trị dự đoán sẽ là</p>
+<p><span class="math display">\[
+\hat{y}_{t+1} = c  + \sum^{q}_{i=1}\theta_{i}\epsilon_{t-i+1}
+\]</span></p>
 <p>Trong thư viện <code>statsmodels</code> không hỗ trợ chính thức cách tính <strong>Moving Average Model</strong>, nhưng chúng ta có thể áp dụng thông qua <code>ARIMA</code>.</p>
 <p>Ví dụ về cách sử dụng ARMA</p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb28-1"><a href="arima.html#cb28-1" tabindex="-1"></a><span class="co"># Huấn luyện mô hình với q=2</span></span>
-<span id="cb28-2"><a href="arima.html#cb28-2" tabindex="-1"></a>MA_model <span class="op">=</span> ARIMA(train, order<span class="op">=</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">2</span>))</span>
-<span id="cb28-3"><a href="arima.html#cb28-3" tabindex="-1"></a>MA_results <span class="op">=</span> MA_model.fit()</span>
-<span id="cb28-4"><a href="arima.html#cb28-4" tabindex="-1"></a><span class="co"># Dự đoán kết quả mô hình</span></span>
-<span id="cb28-5"><a href="arima.html#cb28-5" tabindex="-1"></a>Y_hat <span class="op">=</span> MA_results.predict(start<span class="op">=</span><span class="bu">len</span>(train), end<span class="op">=</span><span class="bu">len</span>(train)<span class="op">+</span><span class="bu">len</span>(test)<span class="op">-</span><span class="dv">1</span>, dynamic<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb28-6"><a href="arima.html#cb28-6" tabindex="-1"></a><span class="cf">for</span> y_hat, y_true <span class="kw">in</span> <span class="bu">zip</span>(Y_hat, test):</span>
-<span id="cb28-7"><a href="arima.html#cb28-7" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f&#39;Predicted=</span><span class="sc">{</span>y_hat<span class="sc">}</span><span class="ss"> </span><span class="ch">\t</span><span class="ss">Expected=</span><span class="sc">{</span>y_true<span class="sc">}</span><span class="ss">&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb30-1"><a href="arima.html#cb30-1" tabindex="-1"></a><span class="co"># Huấn luyện mô hình với q=2</span></span>
+<span id="cb30-2"><a href="arima.html#cb30-2" tabindex="-1"></a>MA_model <span class="op">=</span> ARIMA(train, order<span class="op">=</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">2</span>))</span>
+<span id="cb30-3"><a href="arima.html#cb30-3" tabindex="-1"></a>MA_results <span class="op">=</span> MA_model.fit()</span>
+<span id="cb30-4"><a href="arima.html#cb30-4" tabindex="-1"></a><span class="co"># Dự đoán kết quả mô hình</span></span>
+<span id="cb30-5"><a href="arima.html#cb30-5" tabindex="-1"></a>Y_hat <span class="op">=</span> MA_results.predict(start<span class="op">=</span><span class="bu">len</span>(train), end<span class="op">=</span><span class="bu">len</span>(train)<span class="op">+</span><span class="bu">len</span>(test)<span class="op">-</span><span class="dv">1</span>, dynamic<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb30-6"><a href="arima.html#cb30-6" tabindex="-1"></a><span class="cf">for</span> y_hat, y_true <span class="kw">in</span> <span class="bu">zip</span>(Y_hat, test):</span>
+<span id="cb30-7"><a href="arima.html#cb30-7" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f&#39;Predicted=</span><span class="sc">{</span>y_hat<span class="sc">}</span><span class="ss"> </span><span class="ch">\t</span><span class="ss">Expected=</span><span class="sc">{</span>y_true<span class="sc">}</span><span class="ss">&#39;</span>)</span></code></pre></div>
 <pre><code>Predicted=41.11548396873163     Expected=44
 Predicted=41.5656013608698      Expected=34
 Predicted=41.89874024020355     Expected=37
@@ -312,16 +335,16 @@ Predicted=41.89874024020355     Expected=48
 Predicted=41.89874024020355     Expected=55
 Predicted=41.89874024020355     Expected=50</code></pre>
 <p>xem các tham số <span class="math inline">\(\theta\)</span></p>
-<div class="sourceCode" id="cb30"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb30-1"><a href="arima.html#cb30-1" tabindex="-1"></a>MA_results.maparams</span></code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb32-1"><a href="arima.html#cb32-1" tabindex="-1"></a>MA_results.maparams</span></code></pre></div>
 <pre><code>array([0.17900771,  0.11330768])</code></pre>
 <p>xem tham số <span class="math inline">\(c\)</span></p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb32-1"><a href="arima.html#cb32-1" tabindex="-1"></a>MA_results.params[<span class="dv">0</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb34-1"><a href="arima.html#cb34-1" tabindex="-1"></a>MA_results.params[<span class="dv">0</span>]</span></code></pre></div>
 <pre><code>41.89874024020355</code></pre>
 <p>Đánh giá kết quả mô hình</p>
-<pre><code>print(&#39;RMSE:&#39;, np.sqrt(mean_squared_error(test, Y_hat)))</code></pre>
+<pre class="python_output"><code>print(&#39;RMSE:&#39;, np.sqrt(mean_squared_error(test, Y_hat)))</code></pre>
 <pre><code>RMSE: 8.15992514853609</code></pre>
 <p>để xem các espilon</p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb36-1"><a href="arima.html#cb36-1" tabindex="-1"></a>MA_results.resid</span></code></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb38-1"><a href="arima.html#cb38-1" tabindex="-1"></a>MA_results.resid</span></code></pre></div>
 <pre><code>array([-6.89874024e+00, -8.58294190e+00, -9.63603195e+00, -8.20730676e+00,
 ...
        -4.87763328e+00, -2.26772814e+00, -2.94012608e+00])</code></pre>
@@ -332,31 +355,32 @@ Predicted=41.89874024020355     Expected=50</code></pre>
 Ta có <span class="math inline">\(c = 41.89874024 ,\theta_{t} = 0.17900771, \theta_{t-1} = 0.11330768\)</span>
 và
 <span class="math inline">\(resid_t = -2.94012608, resid_{t-1}=-2.26772814\)</span></p>
-<div class="sourceCode" id="cb38"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb38-1"><a href="arima.html#cb38-1" tabindex="-1"></a>c <span class="op">=</span> <span class="fl">41.89874024</span></span>
-<span id="cb38-2"><a href="arima.html#cb38-2" tabindex="-1"></a>theta_t <span class="op">=</span> <span class="fl">0.17900771</span></span>
-<span id="cb38-3"><a href="arima.html#cb38-3" tabindex="-1"></a>theta_t_prev_1 <span class="op">=</span> <span class="fl">0.11330768</span></span>
-<span id="cb38-4"><a href="arima.html#cb38-4" tabindex="-1"></a>resid_t <span class="op">=</span> <span class="op">-</span><span class="fl">2.94012608</span></span>
-<span id="cb38-5"><a href="arima.html#cb38-5" tabindex="-1"></a>resid_t_prev_1 <span class="op">=</span> <span class="op">-</span><span class="fl">2.2677281</span></span></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb40-1"><a href="arima.html#cb40-1" tabindex="-1"></a>c <span class="op">=</span> <span class="fl">41.89874024</span></span>
+<span id="cb40-2"><a href="arima.html#cb40-2" tabindex="-1"></a>theta_t <span class="op">=</span> <span class="fl">0.17900771</span></span>
+<span id="cb40-3"><a href="arima.html#cb40-3" tabindex="-1"></a>theta_t_prev_1 <span class="op">=</span> <span class="fl">0.11330768</span></span>
+<span id="cb40-4"><a href="arima.html#cb40-4" tabindex="-1"></a>resid_t <span class="op">=</span> <span class="op">-</span><span class="fl">2.94012608</span></span>
+<span id="cb40-5"><a href="arima.html#cb40-5" tabindex="-1"></a>resid_t_prev_1 <span class="op">=</span> <span class="op">-</span><span class="fl">2.2677281</span></span></code></pre></div>
 <p>lúc này, giá trị dự báo cho T+1 sẽ là:</p>
-<div class="sourceCode" id="cb39"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb39-1"><a href="arima.html#cb39-1" tabindex="-1"></a>c <span class="op">+</span> theta_t <span class="op">*</span> resid_t <span class="op">+</span> theta_t_prev_1 <span class="op">*</span> resid_t_prev_1</span></code></pre></div>
+<div class="sourceCode" id="cb41"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb41-1"><a href="arima.html#cb41-1" tabindex="-1"></a>c <span class="op">+</span> theta_t <span class="op">*</span> resid_t <span class="op">+</span> theta_t_prev_1 <span class="op">*</span> resid_t_prev_1</span></code></pre></div>
 <pre><code>41.11548399342612</code></pre>
 <p>lúc này, giá trị dự báo cho T+2 sẽ là:</p>
-<div class="sourceCode" id="cb41"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb41-1"><a href="arima.html#cb41-1" tabindex="-1"></a>resid_t_prev_1 <span class="op">=</span> resid_t</span>
-<span id="cb41-2"><a href="arima.html#cb41-2" tabindex="-1"></a>resid_t <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb41-3"><a href="arima.html#cb41-3" tabindex="-1"></a>c <span class="op">+</span> theta_t <span class="op">*</span> resid_t <span class="op">+</span> theta_t_prev_1 <span class="op">*</span> resid_t_prev_1</span></code></pre></div>
+<div class="sourceCode" id="cb43"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb43-1"><a href="arima.html#cb43-1" tabindex="-1"></a>resid_t_prev_1 <span class="op">=</span> resid_t</span>
+<span id="cb43-2"><a href="arima.html#cb43-2" tabindex="-1"></a>resid_t <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb43-3"><a href="arima.html#cb43-3" tabindex="-1"></a>c <span class="op">+</span> theta_t <span class="op">*</span> resid_t <span class="op">+</span> theta_t_prev_1 <span class="op">*</span> resid_t_prev_1</span></code></pre></div>
 <pre><code>41.565601374967706</code></pre>
 <p>Và giá trị từ T+3 trở đi sẽ là</p>
-<div class="sourceCode" id="cb43"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb43-1"><a href="arima.html#cb43-1" tabindex="-1"></a>resid_t_prev_1 <span class="op">=</span> resid_t <span class="co"># = 0</span></span>
-<span id="cb43-2"><a href="arima.html#cb43-2" tabindex="-1"></a><span class="co"># lúc này resid_t từ T+2 đã bằng 0 </span></span>
-<span id="cb43-3"><a href="arima.html#cb43-3" tabindex="-1"></a><span class="co"># nên giá trị resid_t_previous_1 cũng bằng 0, </span></span>
-<span id="cb43-4"><a href="arima.html#cb43-4" tabindex="-1"></a><span class="co"># do đó kết quả trở về giá trị trung bình c</span></span>
-<span id="cb43-5"><a href="arima.html#cb43-5" tabindex="-1"></a>resid_t <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb43-6"><a href="arima.html#cb43-6" tabindex="-1"></a>c <span class="op">+</span> theta_t <span class="op">*</span> resid_t <span class="op">+</span> theta_t_prev_1 <span class="op">*</span> resid_t_prev_1</span></code></pre></div>
+<div class="sourceCode" id="cb45"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb45-1"><a href="arima.html#cb45-1" tabindex="-1"></a>resid_t_prev_1 <span class="op">=</span> resid_t <span class="co"># = 0</span></span>
+<span id="cb45-2"><a href="arima.html#cb45-2" tabindex="-1"></a><span class="co"># lúc này resid_t từ T+2 đã bằng 0 </span></span>
+<span id="cb45-3"><a href="arima.html#cb45-3" tabindex="-1"></a><span class="co"># nên giá trị resid_t_previous_1 cũng bằng 0, </span></span>
+<span id="cb45-4"><a href="arima.html#cb45-4" tabindex="-1"></a><span class="co"># do đó kết quả trở về giá trị trung bình c</span></span>
+<span id="cb45-5"><a href="arima.html#cb45-5" tabindex="-1"></a>resid_t <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb45-6"><a href="arima.html#cb45-6" tabindex="-1"></a>c <span class="op">+</span> theta_t <span class="op">*</span> resid_t <span class="op">+</span> theta_t_prev_1 <span class="op">*</span> resid_t_prev_1</span></code></pre></div>
 <pre><code>41.89874024</code></pre>
 <p>Đây cũng chính là điểm yếu của mô hình Moving Average</p>
 </div>
-<div id="autoregressive-moving-average-model" class="section level2 hasAnchor" number="3.3">
-<h2><span class="header-section-number">3.3</span> AutoRegressive Moving Average Model<a href="arima.html#autoregressive-moving-average-model" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+</div>
+<div id="autoregressive-moving-average-model" class="section level2 hasAnchor" number="3.2">
+<h2><span class="header-section-number">3.2</span> AutoRegressive Moving Average Model<a href="arima.html#autoregressive-moving-average-model" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Như cái tên của nó, mô hình này kết hợp 2 Mô hình Autoregressive và Moving Average</p>
 <p>Nhăc lại công thức AR</p>
 <p><span class="math display">\[
@@ -371,8 +395,8 @@ y_t = c  + \sum^{q}_{i=1}\theta_{i}\epsilon_{t-i} +  \epsilon_t
 y_t = c + \epsilon_t + \sum^{p}_{1}\phi y_{t-i}  + \sum^{q}_{i=1}\theta_{i}\epsilon_{t-i}
 \]</span></p>
 <p>Tương tự, trong thư viện <code>statsmodels</code> không hỗ trợ chính thức cách tính <strong>Moving Average Model</strong>, nhưng chúng ta có thể áp dụng thông qua <code>ARIMA</code>. Ở phần sau chúng ta sẽ tìm hiểu về <code>ARIMA</code> rồi quay ngược lại ví dụ về <code>MA</code></p>
-<div id="autogregressive-integrated-moving-average-model" class="section level3 hasAnchor" number="3.3.1">
-<h3><span class="header-section-number">3.3.1</span> Autogregressive Integrated Moving Average Model<a href="arima.html#autogregressive-integrated-moving-average-model" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="autogregressive-integrated-moving-average-model" class="section level3 hasAnchor" number="3.2.1">
+<h3><span class="header-section-number">3.2.1</span> Autogregressive Integrated Moving Average Model<a href="arima.html#autogregressive-integrated-moving-average-model" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 
 </div>
 </div>

@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chương 1 Giới thiệu Cơ bản về Time Series | Phân tích Chuỗi thời gian</title>
   <meta name="description" content="Time Serie Analysis" />
-  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chương 1 Giới thiệu Cơ bản về Time Series | Phân tích Chuỗi thời gian" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Lê Huỳnh Đức" />
 
 
-<meta name="date" content="2024-01-01" />
+<meta name="date" content="2024-01-12" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -56,7 +56,7 @@
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -178,11 +178,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="3" data-path="arima.html"><a href="arima.html"><i class="fa fa-check"></i><b>3</b> ARIMA</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="arima.html"><a href="arima.html#autoregressive-model"><i class="fa fa-check"></i><b>3.1</b> Autoregressive Model</a></li>
-<li class="chapter" data-level="3.2" data-path="arima.html"><a href="arima.html#moving-average-model"><i class="fa fa-check"></i><b>3.2</b> Moving Average Model</a></li>
-<li class="chapter" data-level="3.3" data-path="arima.html"><a href="arima.html#autoregressive-moving-average-model"><i class="fa fa-check"></i><b>3.3</b> AutoRegressive Moving Average Model</a>
+<li class="chapter" data-level="3.1" data-path="arima.html"><a href="arima.html#autoregressive-model"><i class="fa fa-check"></i><b>3.1</b> Autoregressive Model</a>
 <ul>
-<li class="chapter" data-level="3.3.1" data-path="arima.html"><a href="arima.html#autogregressive-integrated-moving-average-model"><i class="fa fa-check"></i><b>3.3.1</b> Autogregressive Integrated Moving Average Model</a></li>
+<li class="chapter" data-level="3.1.1" data-path="arima.html"><a href="arima.html#mô-phong-cach-tinh-autoregressive-model-băng-sklearn"><i class="fa fa-check"></i><b>3.1.1</b> Mô phỏng cách tính AutoRegressive Model bằng Sklearn</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="arima.html"><a href="arima.html#autoregressive-moving-average-model"><i class="fa fa-check"></i><b>3.2</b> AutoRegressive Moving Average Model</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="arima.html"><a href="arima.html#autogregressive-integrated-moving-average-model"><i class="fa fa-check"></i><b>3.2.1</b> Autogregressive Integrated Moving Average Model</a></li>
 </ul></li>
 </ul></li>
 <li class="divider"></li>
@@ -267,35 +269,35 @@ Unexpected situations/events/scenarios and spikes in a short time span.</p>
 <p>Ví dụ về số lượng quần áo bán ra của US từ năm 1992 đến năm 2019</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="giới-thiệu-cơ-bản-về-time-series.html#cb1-1" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">&#39;../data/us-retail-sales.csv&#39;</span>)</span>
 <span id="cb1-2"><a href="giới-thiệu-cơ-bản-về-time-series.html#cb1-2" tabindex="-1"></a>df</span></code></pre></div>
-<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="giới-thiệu-cơ-bản-về-time-series.html#cb2-1" tabindex="-1"></a>         Month  Clothing</span>
-<span id="cb2-2"><a href="giới-thiệu-cơ-bản-về-time-series.html#cb2-2" tabindex="-1"></a><span class="dv">0</span>   <span class="dv">1992</span><span class="op">-</span><span class="dv">0</span><span class="er">1</span><span class="op">-</span><span class="dv">0</span><span class="er">1</span>  <span class="dv">6938</span></span>
-<span id="cb2-3"><a href="giới-thiệu-cơ-bản-về-time-series.html#cb2-3" tabindex="-1"></a><span class="dv">1</span>   <span class="dv">1992</span><span class="op">-</span><span class="dv">0</span><span class="er">2</span><span class="op">-</span><span class="dv">0</span><span class="er">1</span>  <span class="dv">7524</span></span>
-<span id="cb2-4"><a href="giới-thiệu-cơ-bản-về-time-series.html#cb2-4" tabindex="-1"></a><span class="dv">2</span>   <span class="dv">1992</span><span class="op">-</span><span class="dv">0</span><span class="er">3</span><span class="op">-</span><span class="dv">0</span><span class="er">1</span>  <span class="dv">8475</span></span>
-<span id="cb2-5"><a href="giới-thiệu-cơ-bản-về-time-series.html#cb2-5" tabindex="-1"></a><span class="dv">3</span>   <span class="dv">1992</span><span class="op">-</span><span class="dv">0</span><span class="er">4</span><span class="op">-</span><span class="dv">0</span><span class="er">1</span>  <span class="dv">9401</span></span>
-<span id="cb2-6"><a href="giới-thiệu-cơ-bản-về-time-series.html#cb2-6" tabindex="-1"></a><span class="dv">4</span>   <span class="dv">1992</span><span class="op">-</span><span class="dv">0</span><span class="er">5</span><span class="op">-</span><span class="dv">0</span><span class="er">1</span>  <span class="dv">9558</span></span>
-<span id="cb2-7"><a href="giới-thiệu-cơ-bản-về-time-series.html#cb2-7" tabindex="-1"></a>... ... ...</span>
-<span id="cb2-8"><a href="giới-thiệu-cơ-bản-về-time-series.html#cb2-8" tabindex="-1"></a><span class="dv">331</span> <span class="dv">2019</span><span class="op">-</span><span class="dv">0</span><span class="er">8</span><span class="op">-</span><span class="dv">0</span><span class="er">1</span>  <span class="dv">23829</span></span>
-<span id="cb2-9"><a href="giới-thiệu-cơ-bản-về-time-series.html#cb2-9" tabindex="-1"></a><span class="dv">332</span> <span class="dv">2019</span><span class="op">-</span><span class="dv">0</span><span class="er">9</span><span class="op">-</span><span class="dv">0</span><span class="er">1</span>  <span class="dv">19567</span></span>
-<span id="cb2-10"><a href="giới-thiệu-cơ-bản-về-time-series.html#cb2-10" tabindex="-1"></a><span class="dv">333</span> <span class="dv">2019</span><span class="op">-</span><span class="dv">10</span><span class="op">-</span><span class="dv">0</span><span class="er">1</span>  <span class="dv">21400</span></span>
-<span id="cb2-11"><a href="giới-thiệu-cơ-bản-về-time-series.html#cb2-11" tabindex="-1"></a><span class="dv">334</span> <span class="dv">2019</span><span class="op">-</span><span class="dv">11</span><span class="op">-</span><span class="dv">0</span><span class="er">1</span>  <span class="dv">25170</span></span>
-<span id="cb2-12"><a href="giới-thiệu-cơ-bản-về-time-series.html#cb2-12" tabindex="-1"></a><span class="dv">335</span> <span class="dv">2019</span><span class="op">-</span><span class="dv">12</span><span class="op">-</span><span class="dv">0</span><span class="er">1</span>  <span class="dv">35157</span></span></code></pre></div>
+<pre class="python_output"><code>         Month  Clothing
+0   1992-01-01  6938
+1   1992-02-01  7524
+2   1992-03-01  8475
+3   1992-04-01  9401
+4   1992-05-01  9558
+... ... ...
+331 2019-08-01  23829
+332 2019-09-01  19567
+333 2019-10-01  21400
+334 2019-11-01  25170
+335 2019-12-01  35157</code></pre>
 <p>Trong pandas, để tìm lag, ta dùng phương thức <code>shift</code>. Ví dụ</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="giới-thiệu-cơ-bản-về-time-series.html#cb3-1" tabindex="-1"></a>df[<span class="st">&#39;lag_1&#39;</span>] <span class="op">=</span> df[<span class="st">&#39;Clothing&#39;</span>].shift(<span class="dv">1</span>)</span>
 <span id="cb3-2"><a href="giới-thiệu-cơ-bản-về-time-series.html#cb3-2" tabindex="-1"></a>df[<span class="st">&#39;lag_3&#39;</span>] <span class="op">=</span> df[<span class="st">&#39;Clothing&#39;</span>].shift(<span class="dv">3</span>)</span>
 <span id="cb3-3"><a href="giới-thiệu-cơ-bản-về-time-series.html#cb3-3" tabindex="-1"></a>df[<span class="st">&#39;lag_12&#39;</span>] <span class="op">=</span> df[<span class="st">&#39;Clothing&#39;</span>].shift(<span class="dv">12</span>)</span>
 <span id="cb3-4"><a href="giới-thiệu-cơ-bản-về-time-series.html#cb3-4" tabindex="-1"></a>df</span></code></pre></div>
-<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="giới-thiệu-cơ-bản-về-time-series.html#cb4-1" tabindex="-1"></a>         Month  Clothing    lag_1    lag_3   lag_12</span>
-<span id="cb4-2"><a href="giới-thiệu-cơ-bản-về-time-series.html#cb4-2" tabindex="-1"></a><span class="dv">0</span>   <span class="dv">1992</span><span class="op">-</span><span class="dv">0</span><span class="er">1</span><span class="op">-</span><span class="dv">0</span><span class="er">1</span>      <span class="dv">6938</span>      NaN      NaN      NaN</span>
-<span id="cb4-3"><a href="giới-thiệu-cơ-bản-về-time-series.html#cb4-3" tabindex="-1"></a><span class="dv">1</span>   <span class="dv">1992</span><span class="op">-</span><span class="dv">0</span><span class="er">2</span><span class="op">-</span><span class="dv">0</span><span class="er">1</span>      <span class="dv">7524</span>   <span class="fl">6938.0</span>      NaN      NaN</span>
-<span id="cb4-4"><a href="giới-thiệu-cơ-bản-về-time-series.html#cb4-4" tabindex="-1"></a><span class="dv">2</span>   <span class="dv">1992</span><span class="op">-</span><span class="dv">0</span><span class="er">3</span><span class="op">-</span><span class="dv">0</span><span class="er">1</span>      <span class="dv">8475</span>   <span class="fl">7524.0</span>      NaN      NaN</span>
-<span id="cb4-5"><a href="giới-thiệu-cơ-bản-về-time-series.html#cb4-5" tabindex="-1"></a><span class="dv">3</span>   <span class="dv">1992</span><span class="op">-</span><span class="dv">0</span><span class="er">4</span><span class="op">-</span><span class="dv">0</span><span class="er">1</span>      <span class="dv">9401</span>   <span class="fl">8475.0</span>   <span class="fl">6938.0</span>      NaN</span>
-<span id="cb4-6"><a href="giới-thiệu-cơ-bản-về-time-series.html#cb4-6" tabindex="-1"></a><span class="dv">4</span>   <span class="dv">1992</span><span class="op">-</span><span class="dv">0</span><span class="er">5</span><span class="op">-</span><span class="dv">0</span><span class="er">1</span>      <span class="dv">9558</span>   <span class="fl">9401.0</span>   <span class="fl">7524.0</span>      NaN</span>
-<span id="cb4-7"><a href="giới-thiệu-cơ-bản-về-time-series.html#cb4-7" tabindex="-1"></a>..         ...       ...      ...      ...      ...</span>
-<span id="cb4-8"><a href="giới-thiệu-cơ-bản-về-time-series.html#cb4-8" tabindex="-1"></a><span class="dv">331</span> <span class="dv">2019</span><span class="op">-</span><span class="dv">0</span><span class="er">8</span><span class="op">-</span><span class="dv">0</span><span class="er">1</span>     <span class="dv">23829</span>  <span class="fl">21742.0</span>  <span class="fl">23079.0</span>  <span class="fl">23121.0</span></span>
-<span id="cb4-9"><a href="giới-thiệu-cơ-bản-về-time-series.html#cb4-9" tabindex="-1"></a><span class="dv">332</span> <span class="dv">2019</span><span class="op">-</span><span class="dv">0</span><span class="er">9</span><span class="op">-</span><span class="dv">0</span><span class="er">1</span>     <span class="dv">19567</span>  <span class="fl">23829.0</span>  <span class="fl">21116.0</span>  <span class="fl">19782.0</span></span>
-<span id="cb4-10"><a href="giới-thiệu-cơ-bản-về-time-series.html#cb4-10" tabindex="-1"></a><span class="dv">333</span> <span class="dv">2019</span><span class="op">-</span><span class="dv">10</span><span class="op">-</span><span class="dv">0</span><span class="er">1</span>     <span class="dv">21400</span>  <span class="fl">19567.0</span>  <span class="fl">21742.0</span>  <span class="fl">21203.0</span></span>
-<span id="cb4-11"><a href="giới-thiệu-cơ-bản-về-time-series.html#cb4-11" tabindex="-1"></a><span class="dv">334</span> <span class="dv">2019</span><span class="op">-</span><span class="dv">11</span><span class="op">-</span><span class="dv">0</span><span class="er">1</span>     <span class="dv">25170</span>  <span class="fl">21400.0</span>  <span class="fl">23829.0</span>  <span class="fl">25364.0</span></span>
-<span id="cb4-12"><a href="giới-thiệu-cơ-bản-về-time-series.html#cb4-12" tabindex="-1"></a><span class="dv">335</span> <span class="dv">2019</span><span class="op">-</span><span class="dv">12</span><span class="op">-</span><span class="dv">0</span><span class="er">1</span>     <span class="dv">35157</span>  <span class="fl">25170.0</span>  <span class="fl">19567.0</span>  <span class="fl">33950.0</span></span></code></pre></div>
+<pre class="python_output"><code>         Month  Clothing    lag_1    lag_3   lag_12
+0   1992-01-01      6938      NaN      NaN      NaN
+1   1992-02-01      7524   6938.0      NaN      NaN
+2   1992-03-01      8475   7524.0      NaN      NaN
+3   1992-04-01      9401   8475.0   6938.0      NaN
+4   1992-05-01      9558   9401.0   7524.0      NaN
+..         ...       ...      ...      ...      ...
+331 2019-08-01     23829  21742.0  23079.0  23121.0
+332 2019-09-01     19567  23829.0  21116.0  19782.0
+333 2019-10-01     21400  19567.0  21742.0  21203.0
+334 2019-11-01     25170  21400.0  23829.0  25364.0
+335 2019-12-01     35157  25170.0  19567.0  33950.0</code></pre>
 </div>
 <div id="autocorrelation-tự-tương-quan" class="section level3 hasAnchor" number="1.3.3">
 <h3><span class="header-section-number">1.3.3</span> Autocorrelation (Tự tương quan)<a href="giới-thiệu-cơ-bản-về-time-series.html#autocorrelation-tự-tương-quan" class="anchor-section" aria-label="Anchor link to header"></a></h3>
