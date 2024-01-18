@@ -29,3 +29,7 @@ autoregressive-model
 mô-phong-cach-tinh-autoregressive-model-băng-sklearn
 autoregressive-moving-average-model
 autogregressive-integrated-moving-average-model
+packages
+tslearn
+mlforecasting
+prophet
