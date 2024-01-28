@@ -781,7 +781,7 @@ abc \@ref(figure-1)
 </figure>
 
 ```{r fig1, fig.cap="Chú thích cho hình ảnh 1", out.width="100%"}
-knitr::include_graphics("../images/06/hierachical.png")
+knitr::include_graphics("https://example.com/cat1.jpg")
 ```
 
 <!--chapter:end:posts/06-Hierachical_Forecasting.Rmd-->
