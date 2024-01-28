@@ -6,7 +6,7 @@
 ```{r  hiertree, echo=FALSE,  message=FALSE, warning=FALSE, fig.cap="Minh họa cây thứ bậc", out.width="75%", fig.align="center"}
 knitr::include_graphics("images/06/hierachical.png")
 ```
-Tại thời điểm $t$, ta cần phải dự đoán giá trị $y_{Total}$ sao cho
+Tại thời điểm $t$,  giá trị $y_t$ sẽ được tính bằng tổng giá trị cấp dưới
 
 $$
 y^{Total}_t = y^{Zone A}_t + y^{Zone B}_t + y^{Zone C}_t
