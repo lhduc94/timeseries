@@ -1,6 +1,6 @@
 # Dự đoán Time Series dạng thứ bậc
 
 <figure align="center">
-  <img src="../images/06/hierachical.png" alt="Mèo dễ thương">
+  <img src="../images/06/hierachical.png" alt="Minh họa cây thứ bậc">
   <figcaption>Minh họa cây thứ bậc</figcaption>
 </figure>
