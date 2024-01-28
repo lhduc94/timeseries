@@ -1,4 +1,5 @@
 fig:danso
+fig:tuvongtresosinh
 fig:hiertree
 giới-thiệu-cơ-bản-về-time-series
 time-series-là-gì
