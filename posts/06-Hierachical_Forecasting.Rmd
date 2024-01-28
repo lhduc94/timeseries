@@ -7,3 +7,7 @@ abc \@ref(figure-1)
   <img src="../images/06/hierachical.png" alt="Minh họa cây thứ bậc">
   <figcaption>Figure 1 - Minh họa cây thứ bậc</figcaption>
 </figure>
+
+```{r fig1, fig.cap="Chú thích cho hình ảnh 1", out.width="100%"}
+knitr::include_graphics("../images/06/hierachical.png")
+```
