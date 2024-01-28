@@ -32,7 +32,7 @@ Khi mô tả về chuỗi thời gian, chúng ta thường nhắc đến các y�
 
 Chúng ta nói dữ liệu có tính xu hướng khi nó tăng hoặc giảm trong một thời gian dài, xu hướng không nhất thiết phải là tăng/giảm tuyến tính, nó có thể là đường cong. Một chuỗi thời gian có thể tồn tại cả xu hướng tăng và xu hướng giảm cùng một lúc.
 
-Ví dụ về ảnh \@ref(fig:danso) thể hiện dân số Việt Nam có xu hướng tăng hằng năm
+Ví dụ về Hình \@ref(fig:danso) thể hiện dân số Việt Nam có xu hướng tăng hằng năm
 
 ```{r  danso, echo=FALSE,  message=FALSE, warning=FALSE, fig.cap="Dân số Việt Nam", out.width="100%", fig.align="center"}
 knitr::include_graphics("images/01/danso.png")

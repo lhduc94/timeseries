@@ -101,7 +101,7 @@ div.sourceCode {
   color: #3b556e;
 }
 
-figcaption {
+div.figure p.caption {
   text-align: center;
   background-color: #026992;
   color: #ffffff;
