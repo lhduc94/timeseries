@@ -34,7 +34,11 @@ Chúng ta nói dữ liệu có tính xu hướng khi nó tăng hoặc giảm tro
 
 Ví dụ về dân số Việt Nam có xu hướng tăng hằng năm
 
-![](../images/01/danso.png)
+abc \@ref(fig:danso)
+
+```{r  danso, echo=FALSE,  message=FALSE, warning=FALSE, fig.cap="Dân số Việt Nam", out.width="100%", fig.align="center"}
+knitr::include_graphics("images/01/danso.png")
+```
 
 Ví dụ về tỉ lệ tử vong của trẻ sơ sinh có xu hướng giảm dần thời gian nhờ có sự tiến bộ về y tế
 ![](../images/01/First-World-Infant-Mortality-Trends.jpg)
