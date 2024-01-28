@@ -780,7 +780,7 @@ abc \@ref(fig:hiertree)
   <figcaption>Figure 1 - Minh họa cây thứ bậc</figcaption>
 </figure>
 
-```{r hiertree, fig.cap="Minh họa cây thứ bậc" out.width="75%"}
+```{r hiertree, fig.cap="Minh họa cây thứ bậc" out.width="100%"}
 knitr::include_graphics("images/06/hierachical.png")
 ```
 
