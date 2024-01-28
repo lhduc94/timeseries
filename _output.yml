@@ -18,7 +18,7 @@ bookdown::gitbook:
     sharing:
       github: yes
       facebook: yes
-
+  fig_prefix: "hinh"
 bookdown::pdf_book:
   includes:
     in_header: latex/preamble.tex
