@@ -9,5 +9,5 @@ abc \@ref(fig:fig1)
 </figure>
 
 ```{r fig1, fig.cap="Minh họa cây thứ bậc", out.width="100%"}
-knitr::include_graphics("../images/06/hierachical.png")
+knitr::include_graphics("images/06/hierachical.png")
 ```
