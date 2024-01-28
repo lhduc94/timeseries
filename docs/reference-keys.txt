@@ -1,4 +1,4 @@
-fig:fig1
+fig:hiertree
 giới-thiệu-cơ-bản-về-time-series
 time-series-là-gì
 các-patterns-time-series
