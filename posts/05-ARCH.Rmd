@@ -1,1 +1,1 @@
-# Dữ liệu Chuỗi thời gian đa biến
+# Các mô hình phương sai có điều kiện thay đổi
