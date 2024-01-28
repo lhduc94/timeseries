@@ -217,13 +217,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="dự-đoán-time-series-dạng-thứ-bậc" class="section level1 hasAnchor" number="6">
 <h1><span class="header-section-number">Chương 6</span> Dự đoán Time Series dạng thứ bậc<a href="dự-đoán-time-series-dạng-thứ-bậc.html#dự-đoán-time-series-dạng-thứ-bậc" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>abc <a href="dự-đoán-time-series-dạng-thứ-bậc.html#fig:hiertree">6.1</a></p>
+<p>Đôi lúc ta sẽ gặp một số bài toán về dự báo nhu cầu theo dạng thứ bậc. Hình <a href="dự-đoán-time-series-dạng-thứ-bậc.html#fig:hiertree">6.1</a> là một ví dụ đơn giản về dạng thứ bậc. Ví dụ như nhu cầu mua hàng điện tử của Thương hiệu A với “Total” thể hiện nhu cầu Mua hàng điện tử của Cả nước. Thương hiệu này có ở các vùng (Zone) A, B , C tương ứng với các miền Bắc Trung Nam, tại các vùng miền lại có các Cửa hàng A1, A2, B1, B2, B3 tương ứng với các vùng.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:hiertree"></span>
 <img src="images/06/hierachical.png" alt="Minh họa cây thứ bậc" width="75%" />
 <p class="caption">
 Hình 6.1: Minh họa cây thứ bậc
 </p>
 </div>
+<p>Tại thời điểm <span class="math inline">\(t\)</span>, ta cần phải dự đoán giá trị <span class="math inline">\(y_{Total}\)</span> sao cho</p>
+<p><span class="math display">\[
+y^{Total}_t = y^{Zone A}_t + y^{Zone B}_t + y^{Zone C}_t
+\]</span></p>
+<p>và</p>
+<p><span class="math display">\[
+y^{Zone A}_t = y^{Shop A1}_t + y^{Shop A2}_t
+\]</span></p>
+<p><span class="math display">\[
+y^{Zone B}_t = y^{Shop B1}_t + y^{Shop B2}_t
+\]</span></p>
+<p><span class="math display">\[
+y^{Zone B}_t = y^{Shop B1}_t + y^{Shop B2}_t
+\]</span></p>
 
 </div>
             </section>
