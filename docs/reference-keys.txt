@@ -35,7 +35,8 @@ autoregressive-moving-average-model
 autogregressive-integrated-moving-average-model
 dữ-liệu-chuỗi-thời-gian-đa-biến
 các-mô-hình-phương-sai-có-điều-kiện-thay-đổi
-dự-đoán-time-series-dạng-thứ-bậc
+dự-đoán-time-series-dạng-thứ-bậc-và-dạng-nhóm
+cây-thứ-bậc
 các-mô-hình-cây-trong-time-series
 deep-learning-trong-time-series
 mô-hình-phân-tích-sống-sót
