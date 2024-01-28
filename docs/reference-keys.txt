@@ -1,5 +1,6 @@
 fig:danso
 fig:tuvongtresosinh
+fig:bitcoin
 fig:hiertree
 giới-thiệu-cơ-bản-về-time-series
 time-series-là-gì
