@@ -29,6 +29,12 @@ autoregressive-model
 mô-phong-cach-tinh-autoregressive-model-băng-sklearn
 autoregressive-moving-average-model
 autogregressive-integrated-moving-average-model
+dữ-liệu-chuỗi-thời-gian-đa-biến
+dữ-liệu-chuỗi-thời-gian-đa-biến-1
+dự-đoán-time-series-dạng-thứ-bậc
+các-mô-hình-cây-trong-timeseries
+deep-learning-trong-time-series
+mô-hình-phân-tích-sống-sót
 packages
 tslearn
 mlforecasting
