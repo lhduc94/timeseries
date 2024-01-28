@@ -1,1 +1,6 @@
 # Dự đoán Time Series dạng thứ bậc
+
+<figure>
+  <img src="../images/06/hierachical.png" alt="Mèo dễ thương">
+  <figcaption>Hình ảnh được lấy từ <a href="https://example.com">nguồn</a></figcaption>
+</figure>
