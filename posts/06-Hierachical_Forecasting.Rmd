@@ -3,6 +3,6 @@
 
 abc \@ref(fig:hiertree)
 
-```{r eval=FALSE hiertree, fig.cap="Minh họa cây thứ bậc", out.width="100%", fig.align="center"}
+```{r  hiertree, echo=FALSE,  message=FALSE, warning=FALSE, fig.cap="Minh họa cây thứ bậc", out.width="100%", fig.align="center"}
 knitr::include_graphics("images/06/hierachical.png")
 ```
