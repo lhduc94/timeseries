@@ -100,3 +100,8 @@ div.sourceCode {
   background-color: #99afc4;
   color: #3b556e;
 }
+
+figcaption {
+  text-align: center;
+  border: 3px solid green;
+}
