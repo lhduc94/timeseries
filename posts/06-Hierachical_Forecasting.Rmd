@@ -1,12 +1,7 @@
 # Dự đoán Time Series dạng thứ bậc
 
-Tham chiếu đến [Figure 1](#figure-1)
 
 abc \@ref(fig:hiertree)
-<figure align="center" id="figure-1">
-  <img src="../images/06/hierachical.png" alt="Minh họa cây thứ bậc">
-  <figcaption>Figure 1 - Minh họa cây thứ bậc</figcaption>
-</figure>
 
 ```{r hiertree, fig.cap="Minh họa cây thứ bậc" out.width="100%"}
 knitr::include_graphics("images/06/hierachical.png")
