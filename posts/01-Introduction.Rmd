@@ -105,7 +105,3 @@ knitr::include_graphics("images/01/additive_model.png")
 ### Phân loại chuỗi thời gian
 
 ### Phân đoạn chuỗi thời gian
-
-
-## Pandas Time Series
-## TimeSeries Decomposition

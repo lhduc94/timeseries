@@ -13,8 +13,6 @@ các-bài-toán-về-chuỗi-thời-gian
 dư-bao-chuôi-thơi-gian
 phân-loại-chuỗi-thời-gian
 phân-đoạn-chuỗi-thời-gian
-pandas-time-series
-timeseries-decomposition
 stationarity-va-time-series-smoothing
 stationarity
 smoothing
