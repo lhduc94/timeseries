@@ -26,6 +26,9 @@ Tóm lại, miễn các thông tin tuân theo thời gian và có hướng giá 
 
 ## Phân rã các thành phần của dữ liệu Chuỗi thời gian
 
+
+### Các thành phần của chuỗi thời gian
+
 Khi mô tả về chuỗi thời gian, chúng ta thường nhắc đến các yếu tố như xu hướng, chu kỳ và theo mùa.
 
 ***Xu hướng***
@@ -71,7 +74,28 @@ Unexpected situations/events/scenarios and spikes in a short time span.
 
 ---
 
+### Mô hình phân rã các thành phần 
 
+Các thành phần của timeseries có thể được phân rã theo các mô hình sau:
+
+- Mô hình cộng (Additive Decomposition Model)
+- Mô hình nhân (Multiplicative Decomposition Model)
+- Mô hình giả mô hình cộng (Pseudo-additive Decomposition Model)
+
+#### Mô hình cộng
+
+Mô hình cộng xem các quan sát của chuỗi thời gian là tổng các thành phần của nó:
+
+$$
+y_t = y^{Trend}_t + y^{Seasonality}_t + y^{Residual}_t
+$$
+
+Mô hình cộng được sử dụng khi chuỗi thời gian có xu hướng tuyến tính và biên độ không thay đổi theo thời gian.
+
+Hình \@ref(fig:additive_model)
+```{r  additive_model, echo=FALSE,  message=FALSE, warning=FALSE, fig.cap="Ví dụ về Mô hình cộng", out.width="100%", fig.align="center"}
+knitr::include_graphics("images/01/additive_model.jpg")
+```
 
 ## Các bài toán về chuỗi thời gian
 
