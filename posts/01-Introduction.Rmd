@@ -92,7 +92,7 @@ $$
 
 Mô hình cộng được sử dụng khi chuỗi thời gian có xu hướng tuyến tính và biên độ không thay đổi theo thời gian.
 
-Hình \@ref(fig:additivemodel)
+Hình \@ref(fig:additivemodel) là một ví dụ về Chuỗi thời gian có thể áp dụng được mô hình cộng, biên độ theo mùa hầu như không thay đổi theo thời gian, giả sử chúng ta trừ cho giá trị xu hướng, kết quả sẽ là một chuỗi có các thành phần theo mùa gần như giống hệt nhau
 
 ```{r  additivemodel, echo=FALSE,  message=FALSE, warning=FALSE, fig.cap="Ví dụ về Mô hình cộng", out.width="100%", fig.align="center"}
 knitr::include_graphics("images/01/additive_model.png")
