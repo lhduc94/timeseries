@@ -112,7 +112,7 @@ Hình \@ref(fig:multiplicativemodel) là một ví dụ về Chuỗi thơ�
 
 
 ```{r  multiplicativemodel, echo=FALSE,  message=FALSE, warning=FALSE, fig.cap="Ví dụ về Mô hình nhân", out.width="100%", fig.align="center"}
-knitr::include_graphics("images/01/multiplicative_model.png.png")
+knitr::include_graphics("images/01/multiplicative_model.png")
 ```
 
 ## Các bài toán về chuỗi thời gian
