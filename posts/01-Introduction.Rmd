@@ -92,9 +92,9 @@ $$
 
 Mô hình cộng được sử dụng khi chuỗi thời gian có xu hướng tuyến tính và biên độ không thay đổi theo thời gian.
 
-Hình \@ref(fig:additive_model)
+Hình \@ref(fig:additivemodel)
 
-```{r  additive_model, echo=FALSE,  message=FALSE, warning=FALSE, fig.cap="Ví dụ về Mô hình cộng", out.width="100%", fig.align="center"}
+```{r  additivemodel, echo=FALSE,  message=FALSE, warning=FALSE, fig.cap="Ví dụ về Mô hình cộng", out.width="100%", fig.align="center"}
 knitr::include_graphics("images/01/additive_model.png")
 ```
 
