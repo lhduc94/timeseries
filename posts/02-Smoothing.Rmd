@@ -223,3 +223,7 @@ plt.title('Exponential Smoothing with alpha=0.3', fontsize=15)
 #### Double Exponential Smoothing (Holt's Method) 
 
 #### Triple Exponential Smoothing (Holt-Winters' Method)
+
+### Whittaker-Eilers Smoothing
+
+https://towardsdatascience.com/the-perfect-way-to-smooth-your-noisy-data-4f3fe6b44440

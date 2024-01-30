@@ -28,7 +28,12 @@ exponential-smoothing
 simple-exponential-smoothing
 double-exponential-smoothing-holts-method
 triple-exponential-smoothing-holt-winters-method
+whittaker-eilers-smoothing
 arima
+lag-1
+autocorrelation-tự-tương-quan-1
+ứng-dụng-của-autocorrelation-1
+partial-autocorrelation-1
 autoregressive-model
 mô-phong-cach-tinh-autoregressive-model-băng-sklearn
 autoregressive-moving-average-model
