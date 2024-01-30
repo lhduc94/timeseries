@@ -4,7 +4,7 @@ fig:bitcoin
 fig:hiertree
 giới-thiệu-cơ-bản-về-time-series
 time-series-là-gì
-phân-ra-cac-thanh-phân-cua-dư-liêu-chuôi-thơi-gian
+phân-ra-cac-thanh-phân-dư-liêu-chuôi-thơi-gian
 cac-thanh-phân-cua-chuôi-thơi-gian
 mô-hinh-phân-ra-cac-thanh-phân
 mô-hinh-công

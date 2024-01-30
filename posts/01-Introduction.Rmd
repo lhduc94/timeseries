@@ -24,7 +24,7 @@ Tóm lại, miễn các thông tin tuân theo thời gian và có hướng giá 
 
 ---
 
-## Phân rã các thành phần của dữ liệu Chuỗi thời gian
+## Phân rã các thành phần dữ liệu Chuỗi thời gian
 
 
 ### Các thành phần của chuỗi thời gian
