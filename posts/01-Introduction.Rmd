@@ -106,7 +106,10 @@ $$
 y_t = y^{Trend}_t * y^{Seasonality}_t * y^{Residual}_t
 $$
 
-Mô hình cộng được sử dụng khi chuỗi thời gian có biên độ của thành phần mùa vụ tăng lên theo thời gian và sự thay đổi trong biên độ của thành phần mùa vụ quan trọng.
+Mô hình nhân được sử dụng khi chuỗi thời gian có biên độ của thành phần mùa vụ tăng lên theo thời gian và sự thay đổi trong biên độ của thành phần mùa vụ quan trọng.
+
+Hình \@ref(fig:multiplicativemodel) là một ví dụ về Chuỗi thời gian có thể áp dụng được mô hình nhân, biên độ theo mùa hầu thay đổi theo thời gian, giả sử chúng ta trừ chia giá trị xu hướng, kết quả sẽ là một chuỗi có các thành phần theo mùa gần như giống hệt nhau
+
 
 ```{r  multiplicativemodel, echo=FALSE,  message=FALSE, warning=FALSE, fig.cap="Ví dụ về Mô hình nhân", out.width="100%", fig.align="center"}
 knitr::include_graphics("images/01/multiplicative_model.png.png")
