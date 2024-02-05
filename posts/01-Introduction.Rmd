@@ -30,9 +30,12 @@ Trong phần này, chúng ta sẽ làm quen với một số hàm làm 
 
 *Numpy*
 
-1. Array: Là dạng mảng các giá trị, thông thường trong timeseries phần tử có index lớn hơn sẽ là giá trị xuất hiện muộn hơn theo thứ tự thời gian. với dạng array của numpy, chúng ta có thể sử dụng một số phép  tính như shape, max/min, sum/cumsum, var/std, prod,cumprod
+1. np.array: Là dạng mảng các giá trị, thông thường trong timeseries phần tử có index lớn hơn sẽ là giá trị xuất hiện muộn hơn theo thứ tự thời gian. với dạng array của numpy, chúng ta có thể sử dụng một số phép  tính như shape, max/min, sum/cumsum, var/std, prod,cumprod
 
-2. 
+2. datetime64: là dạng thời gian của numpy, trong đó mỗi giá trị là một timestamp. Kiểu datetime64 mặc định mức nhỏ nhất của dữ liệu là naaosecond (datetime64[ns])
+
+3. timedelta64: là dạng khoảng thời gian, thường sẽ là kết quả giữa hai giá trị thời gian trừ nhau.
+
 ---
 
 ## Phân rã các thành phần dữ liệu Chuỗi thời gian
