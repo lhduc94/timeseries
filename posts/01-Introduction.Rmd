@@ -22,6 +22,17 @@ Thời gian có thể định nghĩa theo:
 Tóm lại, miễn các thông tin tuân theo thời gian và có hướng giá trị tuân theo 
 ```
 
+## Luyện tập với chuỗi thời gian
+
+Trong phần này, chúng ta sẽ làm quen với một số hàm làm việc với dữ liệu chuỗi thời gian thông qua các thư viện Numpy, Pandas và Matplotlib. Chúng ta sẽ tìm hiểu về kiểu dữ liệu cơ bản, cách để dùng DataFrame với kiểu DateTime index. Chúng ta cũng sẽ tìm hiểu cách visualize TimeSeries.
+
+### Kiểu dữ liệu cơ bản
+
+*Numpy*
+
+1. Array: Là dạng mảng các giá trị, thông thường trong timeseries phần tử có index lớn hơn sẽ là giá trị xuất hiện muộn hơn theo thứ tự thời gian. với dạng array của numpy, chúng ta có thể sử dụng một số phép  tính như shape, max/min, sum/cumsum, var/std, prod,cumprod
+
+2. 
 ---
 
 ## Phân rã các thành phần dữ liệu Chuỗi thời gian
@@ -46,8 +57,8 @@ Hình \@ref(fig:tuvongtresosinh) về tỉ lệ tử vong của trẻ sơ sinh c
 ```{r  tuvongtresosinh, echo=FALSE,  message=FALSE, warning=FALSE, fig.cap="Tỉ lệ tử vong của trẻ sơ sinh", out.width="100%", fig.align="center"}
 knitr::include_graphics("images/01/First-World-Infant-Mortality-Trends.jpg")
 ```
-Hình \@ref(fig:bitcoin) thể hiện Sự thay đổi của giá Bitcoin theo thời gian, giá bitcoin có xu hướng tăng mạnh từ giữa tháng 08/2020 đến 03/2021, đến tháng 11/2021 bắt đầu có xu hướng giảm dần
-```{r  bitcoin, echo=FALSE,  message=FALSE, warning=FALSE, fig.cap="Sự thay đổi giá Bitcoin theo thời gian", out.width="100%", fig.align="center"}
+Hình \@ref(fig:chapter01_bitcoin) thể hiện Sự thay đổi của giá Bitcoin theo thời gian, giá bitcoin có xu hướng tăng mạnh từ giữa tháng 08/2020 đến 03/2021, đến tháng 11/2021 bắt đầu có xu hướng giảm dần
+```{r  chapter01_bitcoin, echo=FALSE,  message=FALSE, warning=FALSE, fig.cap="Sự thay đổi giá Bitcoin theo thời gian", out.width="100%", fig.align="center"}
 knitr::include_graphics("images/01/coin.png")
 ```
 
@@ -60,9 +71,11 @@ Ví dụ như
 
 - Lượng khách trong nhà hàng tăng cao vào các ngày cuối tuần.
 
-- Lượng quần áo mua cao nhất vào tháng 12 cuối năm và thấp nhất vào tháng 1 mỗi năm
+- Lượng quần áo mua cao nhất vào tháng 12 cuối năm và thấp nhất vào tháng 1 mỗi năm như mô tả trong Hình \@ref(fig:chapter01_seasonal)
 
-![](../images/01/seasonal.png)
+```{r chapter01_seasonal, echo=FALSE,  message=FALSE, warning=FALSE, fig.cap="Lượng quán áo bán ra", out.width="100%", fig.align="center"}
+knitr::include_graphics("images/01/seasonal.png")
+```
 
 ***Chu kì***
 
@@ -116,6 +129,10 @@ knitr::include_graphics("images/01/multiplicative_model.png")
 ```
 
 ## Các bài toán về chuỗi thời gian
+
+### Phân tích các thành phần thời gian
+
+### Intervention analysis
 
 ### Dự báo chuỗi thời gian
 
