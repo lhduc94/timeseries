@@ -47,7 +47,7 @@ Trong phần này, chúng ta sẽ làm quen với một số hàm làm 
 Thông thường, dữ liệu chuỗi thời gian thường lưu trữ theo dạng bảng với cấu trúc thường gồm hai cột trong đó cột thứ nhất lưu trữ thông tin về thời gian và cột thứ hai lưu trữ thông tin về  giá trị 
 
 |Date|Office Supplies|
-|:---:|-:|
+|:---:|--:|
 |1/4/2011|16.448|
 |1/5/2011|288.06|
 |1/6/2011|19.536|
@@ -57,6 +57,8 @@ Thông thường, dữ liệu chuỗi thời gian thường lưu trữ th
 |1/11/2011|2.89|
 |1/14/2011|2027.116|
 |1/17/2011|48.66|
+
+Như bảng trên, cột Date đầu tiên lưu trữ thông tin về Date và thường được sắp xếp theo thứ tự theo ngày (Date này theo Format M/D/Y). Dữ liệu thời gian không nhất thiết phải đầy đủm chúng ta có thể nhận thấy rằng tại ngày 12,13 tháng 1 năm 2021 và ngày 15,16 không có dữ liệu. có thể là do vấn đề về việc tổng hợp dữ liệu từ các bảng
 
 ---
 
