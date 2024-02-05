@@ -50,7 +50,7 @@ Trong phần này, chúng ta sẽ làm quen với một số hàm làm 
 
 Thông thường, dữ liệu chuỗi thời gian thường lưu trữ theo dạng bảng với cấu trúc thường gồm hai cột trong đó cột thứ nhất lưu trữ thông tin về thời gian và cột thứ hai lưu trữ thông tin về  giá trị 
 
-|Date(format m/D/Y)|Office Supplies|
+|Date(format m/d/y)|Office Supplies|
 |:---:|--:|
 |1/4/2011|16.448|
 |1/5/2011|288.06|
