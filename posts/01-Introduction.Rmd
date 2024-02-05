@@ -47,16 +47,16 @@ Trong phần này, chúng ta sẽ làm quen với một số hàm làm 
 Thông thường, dữ liệu chuỗi thời gian thường lưu trữ theo dạng bảng với cấu trúc thường gồm hai cột trong đó cột thứ nhất lưu trữ thông tin về thời gian và cột thứ hai lưu trữ thông tin về  giá trị 
 
 |Date|Births|
-|:---:|:---:|
-|1/1/1959|  35|
-|1/2/1959|  32|
-|1/3/1959|	30|
-|1/4/1959|	31|
-|1/5/1959|	44|
-|1/6/1959|	29|
-|1/7/1959|	45|
-|1/8/1959|	43|
-|1/9/1959|	38|
+|:-:|:-:|
+|1/1/1959|35|
+|1/2/1959|32|
+|1/3/1959|30|
+|1/4/1959|31|
+|1/5/1959|44|
+|1/6/1959|29|
+|1/7/1959|45|
+|1/8/1959|43|
+|1/9/1959|38|
 
 ---
 
