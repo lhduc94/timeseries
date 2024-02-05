@@ -1,5 +1,7 @@
-fig:danso
-fig:tuvongtresosinh
+fig:Chapter01Danso
+fig:Chapter01Tuvongtresosinh
+fig:Chapter01Bitcoin
+fig:Chapter01Seasonal
 fig:additivemodel
 fig:multiplicativemodel
 fig:hiertree
