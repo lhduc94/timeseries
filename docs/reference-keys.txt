@@ -9,6 +9,7 @@ giới-thiệu-cơ-bản-về-time-series
 time-series-là-gì
 luyên-tâp-vơi-chuôi-thơi-gian
 kiêu-dư-liêu-cơ-ban
+numpy
 phân-ra-cac-thanh-phân-dư-liêu-chuôi-thơi-gian
 cac-thanh-phân-cua-chuôi-thơi-gian
 mô-hinh-phân-ra-cac-thanh-phân
