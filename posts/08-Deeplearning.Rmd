@@ -1,1 +1,60 @@
 # Deep Learning trong Time Series
+
+**Question 1**
+
+These are all advantages of Deep Learning approaches to Time Series forecasting, except:
+
+A) Automatically learn how to incorporate series characteristics like trend, seasonality, and autocorrelation into predictions.
+
+
+B) Able to capture very complex patterns.
+
+
+C) Tend to perform best with large training datasets.
+
+
+D) Can simultaneously model many related series instead of treating each separately.
+
+**Question 2**
+
+This Deep Learning approach is well suited for long input sequences as is often the case in Time series in which sequences are often hundreds of steps:
+
+
+A) Modular Neural Network
+
+
+B) Long-Short Term Memory ( Đúng)
+
+
+C) Recurrent Neural Networks
+
+
+D) Convolutional Neural Networks
+
+
+**Question 3**
+
+(True/False) Comparing LSTMs vs RNNs, LSTMs tend to take longer to train (slower backpropagation) and can be more prone to overfitting.
+
+
+A) True (Đúng)
+
+
+B) False
+
+
+**Question 4**
+
+These are all best practices to select a Deep Learning approach for a Forecasting task, EXCEPT:
+
+
+A) If sequences are many time steps long, an RNN may perform poorly.
+
+
+B) If training time is an issue, using a LSTM may be too cumbersome.
+
+
+C) Graphics processing units (GPUs) speed up all neural network training, but are especially recommended when training LSTMs on large datasets.
+
+
+D) A common approach is to use an ensemble of both and LSTM and an RNN to improve the forecast. (Đúng)

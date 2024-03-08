@@ -23,7 +23,7 @@
 <meta name="author" content="Lê Huỳnh Đức" />
 
 
-<meta name="date" content="2024-02-05" />
+<meta name="date" content="2024-03-08" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -197,7 +197,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="7" data-path="các-mô-hình-cây-trong-time-series.html"><a href="các-mô-hình-cây-trong-time-series.html"><i class="fa fa-check"></i><b>7</b> Các mô hình cây trong Time Series</a></li>
 <li class="chapter" data-level="8" data-path="deep-learning-trong-time-series.html"><a href="deep-learning-trong-time-series.html"><i class="fa fa-check"></i><b>8</b> Deep Learning trong Time Series</a></li>
-<li class="chapter" data-level="9" data-path="mô-hình-phân-tích-sống-sót.html"><a href="mô-hình-phân-tích-sống-sót.html"><i class="fa fa-check"></i><b>9</b> Mô hình phân tích sống sót</a></li>
+<li class="chapter" data-level="9" data-path="mô-hình-phân-tích-sống-sót.html"><a href="mô-hình-phân-tích-sống-sót.html"><i class="fa fa-check"></i><b>9</b> Mô hình phân tích sống sót</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="mô-hình-phân-tích-sống-sót.html"><a href="mô-hình-phân-tích-sống-sót.html#censoring"><i class="fa fa-check"></i><b>9.1</b> Censoring</a></li>
+<li class="chapter" data-level="9.2" data-path="mô-hình-phân-tích-sống-sót.html"><a href="mô-hình-phân-tích-sống-sót.html#survival-function"><i class="fa fa-check"></i><b>9.2</b> Survival Function</a></li>
+<li class="chapter" data-level="9.3" data-path="mô-hình-phân-tích-sống-sót.html"><a href="mô-hình-phân-tích-sống-sót.html#hazard-rate"><i class="fa fa-check"></i><b>9.3</b> Hazard Rate</a></li>
+<li class="chapter" data-level="9.4" data-path="mô-hình-phân-tích-sống-sót.html"><a href="mô-hình-phân-tích-sống-sót.html#kaplan-meier-curve"><i class="fa fa-check"></i><b>9.4</b> Kaplan-Meier Curve</a></li>
+</ul></li>
 <li class="chapter" data-level="10" data-path="packages.html"><a href="packages.html"><i class="fa fa-check"></i><b>10</b> Packages</a>
 <ul>
 <li class="chapter" data-level="10.1" data-path="packages.html"><a href="packages.html#tslearn"><i class="fa fa-check"></i><b>10.1</b> TSLearn</a></li>
@@ -226,6 +232,36 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="deep-learning-trong-time-series" class="section level1 hasAnchor" number="8">
 <h1><span class="header-section-number">Chương 8</span> Deep Learning trong Time Series<a href="deep-learning-trong-time-series.html#deep-learning-trong-time-series" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p><strong>Question 1</strong></p>
+<p>These are all advantages of Deep Learning approaches to Time Series forecasting, except:</p>
+<ol style="list-style-type: upper-alpha">
+<li><p>Automatically learn how to incorporate series characteristics like trend, seasonality, and autocorrelation into predictions.</p></li>
+<li><p>Able to capture very complex patterns.</p></li>
+<li><p>Tend to perform best with large training datasets.</p></li>
+<li><p>Can simultaneously model many related series instead of treating each separately.</p></li>
+</ol>
+<p><strong>Question 2</strong></p>
+<p>This Deep Learning approach is well suited for long input sequences as is often the case in Time series in which sequences are often hundreds of steps:</p>
+<ol style="list-style-type: upper-alpha">
+<li><p>Modular Neural Network</p></li>
+<li><p>Long-Short Term Memory ( Đúng)</p></li>
+<li><p>Recurrent Neural Networks</p></li>
+<li><p>Convolutional Neural Networks</p></li>
+</ol>
+<p><strong>Question 3</strong></p>
+<p>(True/False) Comparing LSTMs vs RNNs, LSTMs tend to take longer to train (slower backpropagation) and can be more prone to overfitting.</p>
+<ol style="list-style-type: upper-alpha">
+<li><p>True (Đúng)</p></li>
+<li><p>False</p></li>
+</ol>
+<p><strong>Question 4</strong></p>
+<p>These are all best practices to select a Deep Learning approach for a Forecasting task, EXCEPT:</p>
+<ol style="list-style-type: upper-alpha">
+<li><p>If sequences are many time steps long, an RNN may perform poorly.</p></li>
+<li><p>If training time is an issue, using a LSTM may be too cumbersome.</p></li>
+<li><p>Graphics processing units (GPUs) speed up all neural network training, but are especially recommended when training LSTMs on large datasets.</p></li>
+<li><p>A common approach is to use an ensemble of both and LSTM and an RNN to improve the forecast. (Đúng)</p></li>
+</ol>
 
 </div>
             </section>

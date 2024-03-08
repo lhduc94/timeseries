@@ -51,6 +51,10 @@ cây-thứ-bậc
 các-mô-hình-cây-trong-time-series
 deep-learning-trong-time-series
 mô-hình-phân-tích-sống-sót
+censoring
+survival-function
+hazard-rate
+kaplan-meier-curve
 packages
 tslearn
 mlforecasting

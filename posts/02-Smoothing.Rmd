@@ -227,3 +227,30 @@ plt.title('Exponential Smoothing with alpha=0.3', fontsize=15)
 ### Whittaker-Eilers Smoothing
 
 https://towardsdatascience.com/the-perfect-way-to-smooth-your-noisy-data-4f3fe6b44440
+
+
+Which of the following smoothing techniques is appropriate for data with a trend but no seasonality?
+
+A) Simple (average) smoothing
+
+B) Single Exponential Smoothing
+
+C) Double Exponential Smoothing
+
+D) Triple Exponential Smoothing
+
+
+Question 2
+Which of the following smoothing techniques is appropriate for data with both trend and seasonality?
+
+
+Simple (average) smoothing
+
+
+Single Exponential Smoothing
+
+
+Double Exponential Smoothing
+
+
+Triple Exponential Smoothing

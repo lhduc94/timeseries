@@ -1,1 +1,52 @@
 # Mô hình phân tích sống sót
+
+- Sử dụng Survival Analysis để ước lượng event risk
+- Censoring và ứng dụng của Survival Analysis
+- Hazard functions( tỉ lệ sự kiện xảy ra )
+- Kaplan-Meirer curve và giải thích
+- Cox Proportional Hazard Model
+
+Mô hình sống sót tập trung vào việc đến khi nào thì một sự kiện xảy ra. Ví dụ
+- Khách hàng sẽ ở lại bao lâu trước khi rời bỏ dịch vụ
+- Khi nào thiết bị sẽ cần phải sửa chữa
+
+
+Hướng tiếp cận regression truyền thống không là việc đối với dữ liệu Censoring
+
+## Censoring
+
+Ví dụ khách hàng rời bỏ dịch vụ khi họ không sử dụng dịch vụ nữa. Nếu chúng ta chỉ ước lượng rủi ro rời dịch vụ của một nhóm khác hàng, chúng ta chỉ biết kết quả cho khách hàng đã rời đi
+Đối với khách hàng vẫn còn sử dụng dịch vụ, chúng ta không biết họ sẽ rời bỏ không và bao lâu họ sẽ rời bỏ. nhưng chúng ta biết rằng trước đó họ không rời bỏ dịch vụ.
+
+
+## Survival Function
+
+$$
+S(t) = P(T>t)
+$$
+
+Hàm sống sót đo lường xác suất mà đối tượng sẽ sống sót trong thời gian t, không phải là sống sót bao lâu.
+Hàm sống sót là một hàm giảm dần theo thời gian, bắt đầu từ 1 và kết thúc tại 0
+
+
+
+These are the libraries I recommend when working with Survival Models:
+
+lifelines: Linear Models and lots of statistical functions. This is a good starting point, but most of the time will not produce the most accurate models
+pycox: Survival Models based on Neural Nets — They mainly implement loss functions that can be put on top of any pytorch architecture
+XGBSE: XGBoost implementation of Survival Models with different model complexities
+
+## Hazard Rate
+
+Hazard Rate biểu diễn tỉ lệ tức thời mà sự kiện xảy ra, nó thể hiện khả năng đối tượng sẽ sống sót cho đến thời điểm tiếp theo nếu đối tượng đã sống sót đến thời điểm đó.
+
+$$
+h(t) = \frac{f(t)}{S(t)}
+$$
+
+Trong đó $f(t)$ là hàm mật độ xác suất mà đối tượng sống sót và $S(t)$ là hàm sống sót.
+hàm tổng tích lũy của h(t) thể hiện tổng tích lũy rủi ro theo thời gian
+
+## Kaplan-Meier Curve
+
+Ước lượng Kaplan-Meier là ước lượng phi tham số, ước lượng này sử dụng các dữ liệu quan sát được để ước lượng phân phối sống sót

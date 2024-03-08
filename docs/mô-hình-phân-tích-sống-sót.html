@@ -23,7 +23,7 @@
 <meta name="author" content="Lê Huỳnh Đức" />
 
 
-<meta name="date" content="2024-02-05" />
+<meta name="date" content="2024-03-08" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -197,7 +197,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="7" data-path="các-mô-hình-cây-trong-time-series.html"><a href="các-mô-hình-cây-trong-time-series.html"><i class="fa fa-check"></i><b>7</b> Các mô hình cây trong Time Series</a></li>
 <li class="chapter" data-level="8" data-path="deep-learning-trong-time-series.html"><a href="deep-learning-trong-time-series.html"><i class="fa fa-check"></i><b>8</b> Deep Learning trong Time Series</a></li>
-<li class="chapter" data-level="9" data-path="mô-hình-phân-tích-sống-sót.html"><a href="mô-hình-phân-tích-sống-sót.html"><i class="fa fa-check"></i><b>9</b> Mô hình phân tích sống sót</a></li>
+<li class="chapter" data-level="9" data-path="mô-hình-phân-tích-sống-sót.html"><a href="mô-hình-phân-tích-sống-sót.html"><i class="fa fa-check"></i><b>9</b> Mô hình phân tích sống sót</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="mô-hình-phân-tích-sống-sót.html"><a href="mô-hình-phân-tích-sống-sót.html#censoring"><i class="fa fa-check"></i><b>9.1</b> Censoring</a></li>
+<li class="chapter" data-level="9.2" data-path="mô-hình-phân-tích-sống-sót.html"><a href="mô-hình-phân-tích-sống-sót.html#survival-function"><i class="fa fa-check"></i><b>9.2</b> Survival Function</a></li>
+<li class="chapter" data-level="9.3" data-path="mô-hình-phân-tích-sống-sót.html"><a href="mô-hình-phân-tích-sống-sót.html#hazard-rate"><i class="fa fa-check"></i><b>9.3</b> Hazard Rate</a></li>
+<li class="chapter" data-level="9.4" data-path="mô-hình-phân-tích-sống-sót.html"><a href="mô-hình-phân-tích-sống-sót.html#kaplan-meier-curve"><i class="fa fa-check"></i><b>9.4</b> Kaplan-Meier Curve</a></li>
+</ul></li>
 <li class="chapter" data-level="10" data-path="packages.html"><a href="packages.html"><i class="fa fa-check"></i><b>10</b> Packages</a>
 <ul>
 <li class="chapter" data-level="10.1" data-path="packages.html"><a href="packages.html#tslearn"><i class="fa fa-check"></i><b>10.1</b> TSLearn</a></li>
@@ -226,7 +232,48 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="mô-hình-phân-tích-sống-sót" class="section level1 hasAnchor" number="9">
 <h1><span class="header-section-number">Chương 9</span> Mô hình phân tích sống sót<a href="mô-hình-phân-tích-sống-sót.html#mô-hình-phân-tích-sống-sót" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<ul>
+<li>Sử dụng Survival Analysis để ước lượng event risk</li>
+<li>Censoring và ứng dụng của Survival Analysis</li>
+<li>Hazard functions( tỉ lệ sự kiện xảy ra )</li>
+<li>Kaplan-Meirer curve và giải thích</li>
+<li>Cox Proportional Hazard Model</li>
+</ul>
+<p>Mô hình sống sót tập trung vào việc đến khi nào thì một sự kiện xảy ra. Ví dụ
+- Khách hàng sẽ ở lại bao lâu trước khi rời bỏ dịch vụ
+- Khi nào thiết bị sẽ cần phải sửa chữa</p>
+<p>Hướng tiếp cận regression truyền thống không là việc đối với dữ liệu Censoring</p>
+<div id="censoring" class="section level2 hasAnchor" number="9.1">
+<h2><span class="header-section-number">9.1</span> Censoring<a href="mô-hình-phân-tích-sống-sót.html#censoring" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Ví dụ khách hàng rời bỏ dịch vụ khi họ không sử dụng dịch vụ nữa. Nếu chúng ta chỉ ước lượng rủi ro rời dịch vụ của một nhóm khác hàng, chúng ta chỉ biết kết quả cho khách hàng đã rời đi
+Đối với khách hàng vẫn còn sử dụng dịch vụ, chúng ta không biết họ sẽ rời bỏ không và bao lâu họ sẽ rời bỏ. nhưng chúng ta biết rằng trước đó họ không rời bỏ dịch vụ.</p>
+</div>
+<div id="survival-function" class="section level2 hasAnchor" number="9.2">
+<h2><span class="header-section-number">9.2</span> Survival Function<a href="mô-hình-phân-tích-sống-sót.html#survival-function" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><span class="math display">\[
+S(t) = P(T&gt;t)
+\]</span></p>
+<p>Hàm sống sót đo lường xác suất mà đối tượng sẽ sống sót trong thời gian t, không phải là sống sót bao lâu.
+Hàm sống sót là một hàm giảm dần theo thời gian, bắt đầu từ 1 và kết thúc tại 0</p>
+<p>These are the libraries I recommend when working with Survival Models:</p>
+<p>lifelines: Linear Models and lots of statistical functions. This is a good starting point, but most of the time will not produce the most accurate models
+pycox: Survival Models based on Neural Nets — They mainly implement loss functions that can be put on top of any pytorch architecture
+XGBSE: XGBoost implementation of Survival Models with different model complexities</p>
+</div>
+<div id="hazard-rate" class="section level2 hasAnchor" number="9.3">
+<h2><span class="header-section-number">9.3</span> Hazard Rate<a href="mô-hình-phân-tích-sống-sót.html#hazard-rate" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Hazard Rate biểu diễn tỉ lệ tức thời mà sự kiện xảy ra, nó thể hiện khả năng đối tượng sẽ sống sót cho đến thời điểm tiếp theo nếu đối tượng đã sống sót đến thời điểm đó.</p>
+<p><span class="math display">\[
+h(t) = \frac{f(t)}{S(t)}
+\]</span></p>
+<p>Trong đó <span class="math inline">\(f(t)\)</span> là hàm mật độ xác suất mà đối tượng sống sót và <span class="math inline">\(S(t)\)</span> là hàm sống sót.
+hàm tổng tích lũy của h(t) thể hiện tổng tích lũy rủi ro theo thời gian</p>
+</div>
+<div id="kaplan-meier-curve" class="section level2 hasAnchor" number="9.4">
+<h2><span class="header-section-number">9.4</span> Kaplan-Meier Curve<a href="mô-hình-phân-tích-sống-sót.html#kaplan-meier-curve" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Ước lượng Kaplan-Meier là ước lượng phi tham số, ước lượng này sử dụng các dữ liệu quan sát được để ước lượng phân phối sống sót</p>
 
+</div>
 </div>
             </section>
 
