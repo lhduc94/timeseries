@@ -10,7 +10,7 @@ A) Automatically learn how to incorporate series characteristics like trend, sea
 B) Able to capture very complex patterns.
 
 
-C) Tend to perform best with large training datasets.
+C) Tend to perform best with large training datasets. (Đúng)
 
 
 D) Can simultaneously model many related series instead of treating each separately.

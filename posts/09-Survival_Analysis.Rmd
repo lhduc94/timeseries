@@ -50,3 +50,9 @@ hàm tổng tích lũy của h(t) thể hiện tổng tích lũy rủi 
 ## Kaplan-Meier Curve
 
 Ước lượng Kaplan-Meier là ước lượng phi tham số, ước lượng này sử dụng các dữ liệu quan sát được để ước lượng phân phối sống sót
+
+
+## Survival REgression
+
+Kaplan-Meier tính trên trung bình mẫu, tuy nhiên, chúng ta muốn tính dưới cấp độ cá nhân.
+Survival model phổ biến nhất là Cox Proportional Hazard (CPH) model, nó giả định 

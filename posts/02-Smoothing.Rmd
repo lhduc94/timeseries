@@ -254,3 +254,84 @@ Double Exponential Smoothing
 
 
 Triple Exponential Smoothing
+
+
+
+.
+Question 1
+(True/False) An important component of time series modeling involves plotting and visual inspection of the data.
+
+1 / 1 point
+
+True (Đúng)
+
+
+B: False
+
+Correct
+Correct! You can find more information in the lesson Time Series Stationarity.
+
+2.
+Question 2
+(True/False) If forecast residuals approximate white noise, the model is likely a bad fit and a different model should be selected.
+
+0 / 1 point
+
+True
+
+
+False (Đúng)
+
+Incorrect
+Incorrect. Please review the lesson Time Series Stationarity.
+
+3.
+Question 3
+This smoothing model assumes that the seasonal and residual magnitudes are independent of trend.
+
+1 / 1 point
+
+Additive Smoothing Model (Đúng)
+
+
+Multiplicative Smoothing Model
+
+
+Pseudo-additive Smoothing Model
+
+
+Seasonal-Residual Smoothing Model
+
+Correct
+Correct! You can find more information in the lesson Time Series Smoothing.
+
+4.
+Question 4
+These are all Time Series smoothing techniques, except:
+
+1 / 1 point
+
+Exponential smoothing
+
+
+Frequency-based methods
+
+
+Ordinary Least Square models (Đúng)
+
+
+Locally Estimated Scatterplot Smoothing (LOESS)
+
+Correct
+Correct! You can find more information in the lesson Time Series Smoothing.
+
+5.
+Question 5
+(True/False) A common limitation of forecasts based on smoothed data is their high sensitivity to outliers and unusual historical values.
+
+1 / 1 point
+
+True
+
+
+False (Đúng)
