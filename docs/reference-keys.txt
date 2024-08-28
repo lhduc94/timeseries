@@ -55,6 +55,7 @@ censoring
 survival-function
 hazard-rate
 kaplan-meier-curve
+survival-regression
 packages
 tslearn
 mlforecasting
